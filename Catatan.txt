@@ -1,0 +1,26 @@
+sudo systemctl stop apache2
+
+Bagian yang pertama di set
+env jadi .env CI
+    CI_environment
+
+app\Config\App
+    public string $baseURL
+    public string $indexPage
+    public array $supportedLocales
+    public int $sessionExpiration
+    public $sessionTimeToUpdate
+
+app\Config\Constants
+    defined
+
+app\Config\Database
+    public $default
+
+app\Config\Filters
+    aliases auth
+
+app\Config\Routes
+
+app\Config\Validation
+    PasswordStrength

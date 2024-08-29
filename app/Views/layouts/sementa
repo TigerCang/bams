@@ -1,0 +1,45 @@
+
+  <!-- Bahasa -->
+            <li class="nav-item dropdown-language dropdown me-1 me-xl-0">
+                <a class="nav-link btn btn-text-secondary rounded-pill btn-icon dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown" data-toggle="tooltip" title="<?= lang('app.bahasa') ?>">
+                    <i class="mdi mdi-translate mdi-24px"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                        <a class="dropdown-item" href="javascript:void(0);" data-language="en" data-text-direction="ltr">
+                            <span class="align-middle"><i class="fi fi-id me-2"></i><?= lang('app.indonesia'); ?></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="javascript:void(0);" data-language="ind" data-text-direction="ltr">
+                            <span class="align-middle"><i class="fi fi-us me-2"></i><?= lang('app.inggris'); ?></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- End Bahasa -->
+
+            <!-- Style Mode -->
+            <li class="nav-item dropdown-style-switcher dropdown me-1 me-xl-0">
+                <a class="nav-link btn btn-text-secondary rounded-pill btn-icon dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    <i class="mdi mdi-24px"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-styles">
+                    <li>
+                        <a class="dropdown-item" href="javascript:void(0);" data-theme="light">
+                            <span class="align-middle"><i class="mdi mdi-weather-sunny me-2"></i><?= lang('app.terang'); ?></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="javascript:void(0);" data-theme="dark">
+                            <span class="align-middle"><i class="mdi mdi-weather-night me-2"></i><?= lang('app.gelap'); ?></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="javascript:void(0);" data-theme="system">
+                            <span class="align-middle"><i class="mdi mdi-monitor me-2"></i><?= lang('app.sistem'); ?></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- Style Mode -->

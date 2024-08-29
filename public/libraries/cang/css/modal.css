@@ -1,0 +1,9 @@
+/* CSS untuk menangani tumpang tindih select2 dalam modal dengan modal */
+.select2-container--modal .select2-dropdown {
+  z-index: 100002; /* ubah sesuai kebutuhan */
+}
+
+/* CSS untuk menangani tumpang tindih select2 luar modal */
+.select2-container .select2-dropdown {
+  z-index: 100001;
+}

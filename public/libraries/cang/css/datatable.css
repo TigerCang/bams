@@ -1,0 +1,23 @@
+.dataTables_length label {
+    display: flex;
+    align-items: center;
+}
+.dataTables_length label span {
+    display: none;
+}
+
+.data .dataTables_wrapper .dataTables_length {
+    float: left;
+    margin-top: 10px; /* Adjust this value as needed */
+}
+.dataTables_wrapper .dt-buttons {
+    float: right;
+    margin-top: 10px; /* Adjust this value as needed */
+}
+.dataTables_wrapper .dataTables_length select {
+    height: auto;
+    margin: 0;
+}
+.dataTables_wrapper .dt-buttons .btn {
+    margin: 0;
+}

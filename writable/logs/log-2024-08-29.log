@@ -1,0 +1,916 @@
+INFO - 2024-08-29 12:02:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-29 12:02:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-08-29 12:02:31 --> [DEPRECATED] Creation of dynamic property App\Controllers\Login::$userModel is deprecated in APPPATH\Controllers\BaseController.php on line 74.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:02:31 --> [DEPRECATED] Creation of dynamic property App\Controllers\Login::$roleModel is deprecated in APPPATH\Controllers\BaseController.php on line 75.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:02:31 --> [DEPRECATED] Creation of dynamic property App\Controllers\Login::$konfigurasiModel is deprecated in APPPATH\Controllers\BaseController.php on line 76.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:02:31 --> [DEPRECATED] Creation of dynamic property App\Controllers\Login::$logModel is deprecated in APPPATH\Controllers\BaseController.php on line 77.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:02:31 --> [DEPRECATED] Creation of dynamic property App\Controllers\Login::$iduModel is deprecated in APPPATH\Controllers\BaseController.php on line 78.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:02:31 --> [DEPRECATED] Creation of dynamic property App\Controllers\Login::$mainModel is deprecated in APPPATH\Controllers\BaseController.php on line 79.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:02:31 --> [DEPRECATED] Creation of dynamic property App\Controllers\Login::$transaksiModel is deprecated in APPPATH\Controllers\BaseController.php on line 80.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:02:31 --> [DEPRECATED] Creation of dynamic property App\Controllers\Login::$language is deprecated in APPPATH\Controllers\BaseController.php on line 83.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:02:31 --> [DEPRECATED] Creation of dynamic property App\Controllers\Login::$urls is deprecated in APPPATH\Controllers\BaseController.php on line 96.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+INFO - 2024-08-29 12:02:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-08-29 12:02:46 --> [DEPRECATED] Creation of dynamic property App\Controllers\Login::$userModel is deprecated in APPPATH\Controllers\BaseController.php on line 74.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:02:46 --> [DEPRECATED] Creation of dynamic property App\Controllers\Login::$roleModel is deprecated in APPPATH\Controllers\BaseController.php on line 75.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:02:46 --> [DEPRECATED] Creation of dynamic property App\Controllers\Login::$konfigurasiModel is deprecated in APPPATH\Controllers\BaseController.php on line 76.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:02:46 --> [DEPRECATED] Creation of dynamic property App\Controllers\Login::$logModel is deprecated in APPPATH\Controllers\BaseController.php on line 77.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:02:46 --> [DEPRECATED] Creation of dynamic property App\Controllers\Login::$iduModel is deprecated in APPPATH\Controllers\BaseController.php on line 78.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:02:46 --> [DEPRECATED] Creation of dynamic property App\Controllers\Login::$mainModel is deprecated in APPPATH\Controllers\BaseController.php on line 79.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:02:46 --> [DEPRECATED] Creation of dynamic property App\Controllers\Login::$transaksiModel is deprecated in APPPATH\Controllers\BaseController.php on line 80.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:02:46 --> [DEPRECATED] Creation of dynamic property App\Controllers\Login::$language is deprecated in APPPATH\Controllers\BaseController.php on line 83.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:02:46 --> [DEPRECATED] Creation of dynamic property App\Controllers\Login::$urls is deprecated in APPPATH\Controllers\BaseController.php on line 96.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+INFO - 2024-08-29 12:02:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-08-29 12:02:47 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$roleModel is deprecated in APPPATH\Controllers\BaseController.php on line 75.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:02:47 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$konfigurasiModel is deprecated in APPPATH\Controllers\BaseController.php on line 76.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:02:47 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$logModel is deprecated in APPPATH\Controllers\BaseController.php on line 77.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:02:47 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$iduModel is deprecated in APPPATH\Controllers\BaseController.php on line 78.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:02:47 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$mainModel is deprecated in APPPATH\Controllers\BaseController.php on line 79.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:02:47 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$transaksiModel is deprecated in APPPATH\Controllers\BaseController.php on line 80.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:02:47 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$language is deprecated in APPPATH\Controllers\BaseController.php on line 83.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:02:47 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$urls is deprecated in APPPATH\Controllers\BaseController.php on line 96.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+INFO - 2024-08-29 12:23:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-08-29 12:23:48 --> [DEPRECATED] Creation of dynamic property App\Controllers\main\deklarasi\Perusahaan::$userModel is deprecated in APPPATH\Controllers\BaseController.php on line 74.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:23:48 --> [DEPRECATED] Creation of dynamic property App\Controllers\main\deklarasi\Perusahaan::$roleModel is deprecated in APPPATH\Controllers\BaseController.php on line 75.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:23:48 --> [DEPRECATED] Creation of dynamic property App\Controllers\main\deklarasi\Perusahaan::$konfigurasiModel is deprecated in APPPATH\Controllers\BaseController.php on line 76.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:23:48 --> [DEPRECATED] Creation of dynamic property App\Controllers\main\deklarasi\Perusahaan::$logModel is deprecated in APPPATH\Controllers\BaseController.php on line 77.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:23:48 --> [DEPRECATED] Creation of dynamic property App\Controllers\main\deklarasi\Perusahaan::$iduModel is deprecated in APPPATH\Controllers\BaseController.php on line 78.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:23:48 --> [DEPRECATED] Creation of dynamic property App\Controllers\main\deklarasi\Perusahaan::$mainModel is deprecated in APPPATH\Controllers\BaseController.php on line 79.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:23:48 --> [DEPRECATED] Creation of dynamic property App\Controllers\main\deklarasi\Perusahaan::$transaksiModel is deprecated in APPPATH\Controllers\BaseController.php on line 80.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:23:48 --> [DEPRECATED] Creation of dynamic property App\Controllers\main\deklarasi\Perusahaan::$language is deprecated in APPPATH\Controllers\BaseController.php on line 83.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:23:48 --> [DEPRECATED] Creation of dynamic property App\Controllers\main\deklarasi\Perusahaan::$urls is deprecated in APPPATH\Controllers\BaseController.php on line 96.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+ERROR - 2024-08-29 12:23:48 --> mysqli_sql_exception: Table 'bamsdb.m_perusahaan' doesn't exist in D:\Shared\bams\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 D:\Shared\bams\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT `a`.*, `...', 0)
+#1 D:\Shared\bams\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `a`.*, `...')
+#2 D:\Shared\bams\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `a`.*, `...')
+#3 D:\Shared\bams\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `a`.*, `...', Array, false)
+#4 D:\Shared\bams\app\Models\campur\MainModel.php(34): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\Shared\bams\app\Controllers\main\deklarasi\Perusahaan.php(33): App\Models\campur\MainModel->satuID('m_perusahaan', '', 'u')
+#6 D:\Shared\bams\system\CodeIgniter.php(934): App\Controllers\main\deklarasi\Perusahaan->inputData()
+#7 D:\Shared\bams\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\main\deklarasi\Perusahaan))
+#8 D:\Shared\bams\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\Shared\bams\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 D:\Shared\bams\system\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\...')
+#11 {main}
+CRITICAL - 2024-08-29 12:23:48 --> Table 'bamsdb.m_perusahaan' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT `a`.*, `p`.`kode` as `saveby`, `q`.`kode` as `confby`, `r`.`kode` as `aktifby`
+FROM `m_perusahaan` `a`
+LEFT JOIN `m_user` `p` ON `p`.`id` = `a`.`save_by`
+LEFT JOIN `m_user` `q` ON `q`.`id` = `a`.`conf_by`
+LEFT JOIN `m_user` `r` ON `r`.`id` = `a`.`aktif_by`
+WHERE `a`.`idunik` = \'\'
+AND `a`.`deleted_at` IS NULL', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `a`.*, `p`.`kode` as `saveby`, `q`.`kode` as `confby`, `r`.`kode` as `aktifby`
+FROM `m_perusahaan` `a`
+LEFT JOIN `m_user` `p` ON `p`.`id` = `a`.`save_by`
+LEFT JOIN `m_user` `q` ON `q`.`id` = `a`.`conf_by`
+LEFT JOIN `m_user` `r` ON `r`.`id` = `a`.`aktif_by`
+WHERE `a`.`idunik` = \'\'
+AND `a`.`deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `a`.*, `p`.`kode` as `saveby`, `q`.`kode` as `confby`, `r`.`kode` as `aktifby`
+FROM `m_perusahaan` `a`
+LEFT JOIN `m_user` `p` ON `p`.`id` = `a`.`save_by`
+LEFT JOIN `m_user` `q` ON `q`.`id` = `a`.`conf_by`
+LEFT JOIN `m_user` `r` ON `r`.`id` = `a`.`aktif_by`
+WHERE `a`.`idunik` = \'\'
+AND `a`.`deleted_at` IS NULL')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `a`.*, `p`.`kode` as `saveby`, `q`.`kode` as `confby`, `r`.`kode` as `aktifby`
+FROM `m_perusahaan` `a`
+LEFT JOIN `m_user` `p` ON `p`.`id` = `a`.`save_by`
+LEFT JOIN `m_user` `q` ON `q`.`id` = `a`.`conf_by`
+LEFT JOIN `m_user` `r` ON `r`.`id` = `a`.`aktif_by`
+WHERE `a`.`idunik` = :a.idunik:
+AND `a`.`deleted_at` IS NULL', [...], false)
+ 5 APPPATH\Models\campur\MainModel.php(34): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\main\deklarasi\Perusahaan.php(33): App\Models\campur\MainModel->satuID('m_perusahaan', '', 'u')
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\main\deklarasi\Perusahaan->inputData()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\main\deklarasi\Perusahaan))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+INFO - 2024-08-29 12:40:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-08-29 12:40:05 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$roleModel is deprecated in APPPATH\Controllers\BaseController.php on line 75.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:40:05 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$konfigurasiModel is deprecated in APPPATH\Controllers\BaseController.php on line 76.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:40:05 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$logModel is deprecated in APPPATH\Controllers\BaseController.php on line 77.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:40:05 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$iduModel is deprecated in APPPATH\Controllers\BaseController.php on line 78.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:40:05 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$mainModel is deprecated in APPPATH\Controllers\BaseController.php on line 79.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:40:05 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$transaksiModel is deprecated in APPPATH\Controllers\BaseController.php on line 80.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:40:05 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$language is deprecated in APPPATH\Controllers\BaseController.php on line 83.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:40:05 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$urls is deprecated in APPPATH\Controllers\BaseController.php on line 96.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+INFO - 2024-08-29 12:40:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-08-29 12:40:14 --> [DEPRECATED] Creation of dynamic property App\Controllers\admin\User::$userModel is deprecated in APPPATH\Controllers\BaseController.php on line 74.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:40:14 --> [DEPRECATED] Creation of dynamic property App\Controllers\admin\User::$roleModel is deprecated in APPPATH\Controllers\BaseController.php on line 75.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:40:14 --> [DEPRECATED] Creation of dynamic property App\Controllers\admin\User::$konfigurasiModel is deprecated in APPPATH\Controllers\BaseController.php on line 76.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:40:14 --> [DEPRECATED] Creation of dynamic property App\Controllers\admin\User::$logModel is deprecated in APPPATH\Controllers\BaseController.php on line 77.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:40:14 --> [DEPRECATED] Creation of dynamic property App\Controllers\admin\User::$iduModel is deprecated in APPPATH\Controllers\BaseController.php on line 78.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:40:14 --> [DEPRECATED] Creation of dynamic property App\Controllers\admin\User::$mainModel is deprecated in APPPATH\Controllers\BaseController.php on line 79.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:40:14 --> [DEPRECATED] Creation of dynamic property App\Controllers\admin\User::$transaksiModel is deprecated in APPPATH\Controllers\BaseController.php on line 80.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:40:14 --> [DEPRECATED] Creation of dynamic property App\Controllers\admin\User::$language is deprecated in APPPATH\Controllers\BaseController.php on line 83.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:40:14 --> [DEPRECATED] Creation of dynamic property App\Controllers\admin\User::$urls is deprecated in APPPATH\Controllers\BaseController.php on line 96.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+ERROR - 2024-08-29 12:40:14 --> mysqli_sql_exception: Table 'bamsdb.m_perusahaan' doesn't exist in D:\Shared\bams\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 D:\Shared\bams\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT `a`.*, `...', 0)
+#1 D:\Shared\bams\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `a`.*, `...')
+#2 D:\Shared\bams\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `a`.*, `...')
+#3 D:\Shared\bams\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `a`.*, `...', Array, false)
+#4 D:\Shared\bams\app\Models\campur\MainModel.php(192): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\Shared\bams\app\Controllers\admin\User.php(34): App\Models\campur\MainModel->getPerusahaan('', 't')
+#6 D:\Shared\bams\system\CodeIgniter.php(934): App\Controllers\admin\User->inputData()
+#7 D:\Shared\bams\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\admin\User))
+#8 D:\Shared\bams\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\Shared\bams\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 D:\Shared\bams\system\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\...')
+#11 {main}
+CRITICAL - 2024-08-29 12:40:14 --> Table 'bamsdb.m_perusahaan' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT `a`.*, `b`.`kode` as `kodepenerima`, `b`.`nama` as `namapenerima`, `x`.`id` as `xlog`
+FROM `m_perusahaan` `a`
+LEFT JOIN `m_penerima` `b` ON `b`.`id` = `a`.`penerima_id`
+LEFT JOIN `user_log` `x` ON `x`.`idunik` = `a`.`idunik`
+WHERE substring(a.kondisi, 2, 1) = \'1\'
+AND substring(a.kondisi, 3, 1) = \'1\'
+AND `a`.`deleted_at` IS NULL
+GROUP BY `a`.`id`
+ORDER BY `a`.`kode`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `a`.*, `b`.`kode` as `kodepenerima`, `b`.`nama` as `namapenerima`, `x`.`id` as `xlog`
+FROM `m_perusahaan` `a`
+LEFT JOIN `m_penerima` `b` ON `b`.`id` = `a`.`penerima_id`
+LEFT JOIN `user_log` `x` ON `x`.`idunik` = `a`.`idunik`
+WHERE substring(a.kondisi, 2, 1) = \'1\'
+AND substring(a.kondisi, 3, 1) = \'1\'
+AND `a`.`deleted_at` IS NULL
+GROUP BY `a`.`id`
+ORDER BY `a`.`kode`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `a`.*, `b`.`kode` as `kodepenerima`, `b`.`nama` as `namapenerima`, `x`.`id` as `xlog`
+FROM `m_perusahaan` `a`
+LEFT JOIN `m_penerima` `b` ON `b`.`id` = `a`.`penerima_id`
+LEFT JOIN `user_log` `x` ON `x`.`idunik` = `a`.`idunik`
+WHERE substring(a.kondisi, 2, 1) = \'1\'
+AND substring(a.kondisi, 3, 1) = \'1\'
+AND `a`.`deleted_at` IS NULL
+GROUP BY `a`.`id`
+ORDER BY `a`.`kode`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `a`.*, `b`.`kode` as `kodepenerima`, `b`.`nama` as `namapenerima`, `x`.`id` as `xlog`
+FROM `m_perusahaan` `a`
+LEFT JOIN `m_penerima` `b` ON `b`.`id` = `a`.`penerima_id`
+LEFT JOIN `user_log` `x` ON `x`.`idunik` = `a`.`idunik`
+WHERE substring(a.kondisi, 2, 1) = :substring(a.kondisi, 2, 1):
+AND substring(a.kondisi, 3, 1) = :substring(a.kondisi, 3, 1):
+AND `a`.`deleted_at` IS NULL
+GROUP BY `a`.`id`
+ORDER BY `a`.`kode`', [...], false)
+ 5 APPPATH\Models\campur\MainModel.php(192): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\admin\User.php(34): App\Models\campur\MainModel->getPerusahaan('', 't')
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\admin\User->inputData()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\admin\User))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+INFO - 2024-08-29 12:40:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-08-29 12:40:16 --> [DEPRECATED] Creation of dynamic property App\Controllers\admin\User::$userModel is deprecated in APPPATH\Controllers\BaseController.php on line 74.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:40:16 --> [DEPRECATED] Creation of dynamic property App\Controllers\admin\User::$roleModel is deprecated in APPPATH\Controllers\BaseController.php on line 75.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:40:16 --> [DEPRECATED] Creation of dynamic property App\Controllers\admin\User::$konfigurasiModel is deprecated in APPPATH\Controllers\BaseController.php on line 76.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:40:16 --> [DEPRECATED] Creation of dynamic property App\Controllers\admin\User::$logModel is deprecated in APPPATH\Controllers\BaseController.php on line 77.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:40:16 --> [DEPRECATED] Creation of dynamic property App\Controllers\admin\User::$iduModel is deprecated in APPPATH\Controllers\BaseController.php on line 78.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:40:16 --> [DEPRECATED] Creation of dynamic property App\Controllers\admin\User::$mainModel is deprecated in APPPATH\Controllers\BaseController.php on line 79.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:40:16 --> [DEPRECATED] Creation of dynamic property App\Controllers\admin\User::$transaksiModel is deprecated in APPPATH\Controllers\BaseController.php on line 80.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:40:16 --> [DEPRECATED] Creation of dynamic property App\Controllers\admin\User::$language is deprecated in APPPATH\Controllers\BaseController.php on line 83.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:40:16 --> [DEPRECATED] Creation of dynamic property App\Controllers\admin\User::$urls is deprecated in APPPATH\Controllers\BaseController.php on line 96.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+ERROR - 2024-08-29 12:40:16 --> mysqli_sql_exception: Table 'bamsdb.m_perusahaan' doesn't exist in D:\Shared\bams\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 D:\Shared\bams\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT `a`.*, `...', 0)
+#1 D:\Shared\bams\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `a`.*, `...')
+#2 D:\Shared\bams\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `a`.*, `...')
+#3 D:\Shared\bams\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `a`.*, `...', Array, false)
+#4 D:\Shared\bams\app\Models\campur\MainModel.php(192): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\Shared\bams\app\Controllers\admin\User.php(34): App\Models\campur\MainModel->getPerusahaan('', 't')
+#6 D:\Shared\bams\system\CodeIgniter.php(934): App\Controllers\admin\User->inputData()
+#7 D:\Shared\bams\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\admin\User))
+#8 D:\Shared\bams\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\Shared\bams\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 D:\Shared\bams\system\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\...')
+#11 {main}
+CRITICAL - 2024-08-29 12:40:16 --> Table 'bamsdb.m_perusahaan' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT `a`.*, `b`.`kode` as `kodepenerima`, `b`.`nama` as `namapenerima`, `x`.`id` as `xlog`
+FROM `m_perusahaan` `a`
+LEFT JOIN `m_penerima` `b` ON `b`.`id` = `a`.`penerima_id`
+LEFT JOIN `user_log` `x` ON `x`.`idunik` = `a`.`idunik`
+WHERE substring(a.kondisi, 2, 1) = \'1\'
+AND substring(a.kondisi, 3, 1) = \'1\'
+AND `a`.`deleted_at` IS NULL
+GROUP BY `a`.`id`
+ORDER BY `a`.`kode`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `a`.*, `b`.`kode` as `kodepenerima`, `b`.`nama` as `namapenerima`, `x`.`id` as `xlog`
+FROM `m_perusahaan` `a`
+LEFT JOIN `m_penerima` `b` ON `b`.`id` = `a`.`penerima_id`
+LEFT JOIN `user_log` `x` ON `x`.`idunik` = `a`.`idunik`
+WHERE substring(a.kondisi, 2, 1) = \'1\'
+AND substring(a.kondisi, 3, 1) = \'1\'
+AND `a`.`deleted_at` IS NULL
+GROUP BY `a`.`id`
+ORDER BY `a`.`kode`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `a`.*, `b`.`kode` as `kodepenerima`, `b`.`nama` as `namapenerima`, `x`.`id` as `xlog`
+FROM `m_perusahaan` `a`
+LEFT JOIN `m_penerima` `b` ON `b`.`id` = `a`.`penerima_id`
+LEFT JOIN `user_log` `x` ON `x`.`idunik` = `a`.`idunik`
+WHERE substring(a.kondisi, 2, 1) = \'1\'
+AND substring(a.kondisi, 3, 1) = \'1\'
+AND `a`.`deleted_at` IS NULL
+GROUP BY `a`.`id`
+ORDER BY `a`.`kode`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `a`.*, `b`.`kode` as `kodepenerima`, `b`.`nama` as `namapenerima`, `x`.`id` as `xlog`
+FROM `m_perusahaan` `a`
+LEFT JOIN `m_penerima` `b` ON `b`.`id` = `a`.`penerima_id`
+LEFT JOIN `user_log` `x` ON `x`.`idunik` = `a`.`idunik`
+WHERE substring(a.kondisi, 2, 1) = :substring(a.kondisi, 2, 1):
+AND substring(a.kondisi, 3, 1) = :substring(a.kondisi, 3, 1):
+AND `a`.`deleted_at` IS NULL
+GROUP BY `a`.`id`
+ORDER BY `a`.`kode`', [...], false)
+ 5 APPPATH\Models\campur\MainModel.php(192): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\admin\User.php(34): App\Models\campur\MainModel->getPerusahaan('', 't')
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\admin\User->inputData()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\admin\User))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+INFO - 2024-08-29 12:50:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-08-29 12:50:30 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$roleModel is deprecated in APPPATH\Controllers\BaseController.php on line 75.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:50:30 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$konfigurasiModel is deprecated in APPPATH\Controllers\BaseController.php on line 76.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:50:30 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$logModel is deprecated in APPPATH\Controllers\BaseController.php on line 77.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:50:30 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$iduModel is deprecated in APPPATH\Controllers\BaseController.php on line 78.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:50:30 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$mainModel is deprecated in APPPATH\Controllers\BaseController.php on line 79.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:50:30 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$transaksiModel is deprecated in APPPATH\Controllers\BaseController.php on line 80.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:50:30 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$language is deprecated in APPPATH\Controllers\BaseController.php on line 83.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:50:30 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$urls is deprecated in APPPATH\Controllers\BaseController.php on line 96.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+INFO - 2024-08-29 12:50:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-08-29 12:50:36 --> [DEPRECATED] Creation of dynamic property App\Controllers\main\deklarasi\Perusahaan::$userModel is deprecated in APPPATH\Controllers\BaseController.php on line 74.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:50:36 --> [DEPRECATED] Creation of dynamic property App\Controllers\main\deklarasi\Perusahaan::$roleModel is deprecated in APPPATH\Controllers\BaseController.php on line 75.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:50:36 --> [DEPRECATED] Creation of dynamic property App\Controllers\main\deklarasi\Perusahaan::$konfigurasiModel is deprecated in APPPATH\Controllers\BaseController.php on line 76.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:50:36 --> [DEPRECATED] Creation of dynamic property App\Controllers\main\deklarasi\Perusahaan::$logModel is deprecated in APPPATH\Controllers\BaseController.php on line 77.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:50:36 --> [DEPRECATED] Creation of dynamic property App\Controllers\main\deklarasi\Perusahaan::$iduModel is deprecated in APPPATH\Controllers\BaseController.php on line 78.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:50:36 --> [DEPRECATED] Creation of dynamic property App\Controllers\main\deklarasi\Perusahaan::$mainModel is deprecated in APPPATH\Controllers\BaseController.php on line 79.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:50:36 --> [DEPRECATED] Creation of dynamic property App\Controllers\main\deklarasi\Perusahaan::$transaksiModel is deprecated in APPPATH\Controllers\BaseController.php on line 80.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:50:36 --> [DEPRECATED] Creation of dynamic property App\Controllers\main\deklarasi\Perusahaan::$language is deprecated in APPPATH\Controllers\BaseController.php on line 83.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:50:36 --> [DEPRECATED] Creation of dynamic property App\Controllers\main\deklarasi\Perusahaan::$urls is deprecated in APPPATH\Controllers\BaseController.php on line 96.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+ERROR - 2024-08-29 12:50:36 --> mysqli_sql_exception: Table 'bamsdb.m_perusahaan' doesn't exist in D:\Shared\bams\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 D:\Shared\bams\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT `a`.*, `...', 0)
+#1 D:\Shared\bams\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `a`.*, `...')
+#2 D:\Shared\bams\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `a`.*, `...')
+#3 D:\Shared\bams\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `a`.*, `...', Array, false)
+#4 D:\Shared\bams\app\Models\campur\MainModel.php(34): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\Shared\bams\app\Controllers\main\deklarasi\Perusahaan.php(33): App\Models\campur\MainModel->satuID('m_perusahaan', '', 'u')
+#6 D:\Shared\bams\system\CodeIgniter.php(934): App\Controllers\main\deklarasi\Perusahaan->inputData()
+#7 D:\Shared\bams\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\main\deklarasi\Perusahaan))
+#8 D:\Shared\bams\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\Shared\bams\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 D:\Shared\bams\system\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\...')
+#11 {main}
+CRITICAL - 2024-08-29 12:50:36 --> Table 'bamsdb.m_perusahaan' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT `a`.*, `p`.`kode` as `saveby`, `q`.`kode` as `confby`, `r`.`kode` as `aktifby`
+FROM `m_perusahaan` `a`
+LEFT JOIN `m_user` `p` ON `p`.`id` = `a`.`save_by`
+LEFT JOIN `m_user` `q` ON `q`.`id` = `a`.`conf_by`
+LEFT JOIN `m_user` `r` ON `r`.`id` = `a`.`aktif_by`
+WHERE `a`.`idunik` = \'\'
+AND `a`.`deleted_at` IS NULL', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `a`.*, `p`.`kode` as `saveby`, `q`.`kode` as `confby`, `r`.`kode` as `aktifby`
+FROM `m_perusahaan` `a`
+LEFT JOIN `m_user` `p` ON `p`.`id` = `a`.`save_by`
+LEFT JOIN `m_user` `q` ON `q`.`id` = `a`.`conf_by`
+LEFT JOIN `m_user` `r` ON `r`.`id` = `a`.`aktif_by`
+WHERE `a`.`idunik` = \'\'
+AND `a`.`deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `a`.*, `p`.`kode` as `saveby`, `q`.`kode` as `confby`, `r`.`kode` as `aktifby`
+FROM `m_perusahaan` `a`
+LEFT JOIN `m_user` `p` ON `p`.`id` = `a`.`save_by`
+LEFT JOIN `m_user` `q` ON `q`.`id` = `a`.`conf_by`
+LEFT JOIN `m_user` `r` ON `r`.`id` = `a`.`aktif_by`
+WHERE `a`.`idunik` = \'\'
+AND `a`.`deleted_at` IS NULL')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `a`.*, `p`.`kode` as `saveby`, `q`.`kode` as `confby`, `r`.`kode` as `aktifby`
+FROM `m_perusahaan` `a`
+LEFT JOIN `m_user` `p` ON `p`.`id` = `a`.`save_by`
+LEFT JOIN `m_user` `q` ON `q`.`id` = `a`.`conf_by`
+LEFT JOIN `m_user` `r` ON `r`.`id` = `a`.`aktif_by`
+WHERE `a`.`idunik` = :a.idunik:
+AND `a`.`deleted_at` IS NULL', [...], false)
+ 5 APPPATH\Models\campur\MainModel.php(34): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\main\deklarasi\Perusahaan.php(33): App\Models\campur\MainModel->satuID('m_perusahaan', '', 'u')
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\main\deklarasi\Perusahaan->inputData()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\main\deklarasi\Perusahaan))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+INFO - 2024-08-29 12:50:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-08-29 12:50:39 --> [DEPRECATED] Creation of dynamic property App\Controllers\admin\User::$userModel is deprecated in APPPATH\Controllers\BaseController.php on line 74.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:50:39 --> [DEPRECATED] Creation of dynamic property App\Controllers\admin\User::$roleModel is deprecated in APPPATH\Controllers\BaseController.php on line 75.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:50:39 --> [DEPRECATED] Creation of dynamic property App\Controllers\admin\User::$konfigurasiModel is deprecated in APPPATH\Controllers\BaseController.php on line 76.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:50:39 --> [DEPRECATED] Creation of dynamic property App\Controllers\admin\User::$logModel is deprecated in APPPATH\Controllers\BaseController.php on line 77.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:50:39 --> [DEPRECATED] Creation of dynamic property App\Controllers\admin\User::$iduModel is deprecated in APPPATH\Controllers\BaseController.php on line 78.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:50:39 --> [DEPRECATED] Creation of dynamic property App\Controllers\admin\User::$mainModel is deprecated in APPPATH\Controllers\BaseController.php on line 79.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:50:39 --> [DEPRECATED] Creation of dynamic property App\Controllers\admin\User::$transaksiModel is deprecated in APPPATH\Controllers\BaseController.php on line 80.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:50:39 --> [DEPRECATED] Creation of dynamic property App\Controllers\admin\User::$language is deprecated in APPPATH\Controllers\BaseController.php on line 83.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 12:50:39 --> [DEPRECATED] Creation of dynamic property App\Controllers\admin\User::$urls is deprecated in APPPATH\Controllers\BaseController.php on line 96.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+ERROR - 2024-08-29 12:50:40 --> mysqli_sql_exception: Table 'bamsdb.m_perusahaan' doesn't exist in D:\Shared\bams\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 D:\Shared\bams\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT `a`.*, `...', 0)
+#1 D:\Shared\bams\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `a`.*, `...')
+#2 D:\Shared\bams\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `a`.*, `...')
+#3 D:\Shared\bams\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `a`.*, `...', Array, false)
+#4 D:\Shared\bams\app\Models\campur\MainModel.php(192): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\Shared\bams\app\Controllers\admin\User.php(34): App\Models\campur\MainModel->getPerusahaan('', 't')
+#6 D:\Shared\bams\system\CodeIgniter.php(934): App\Controllers\admin\User->inputData()
+#7 D:\Shared\bams\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\admin\User))
+#8 D:\Shared\bams\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\Shared\bams\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 D:\Shared\bams\system\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\...')
+#11 {main}
+CRITICAL - 2024-08-29 12:50:40 --> Table 'bamsdb.m_perusahaan' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT `a`.*, `b`.`kode` as `kodepenerima`, `b`.`nama` as `namapenerima`, `x`.`id` as `xlog`
+FROM `m_perusahaan` `a`
+LEFT JOIN `m_penerima` `b` ON `b`.`id` = `a`.`penerima_id`
+LEFT JOIN `user_log` `x` ON `x`.`idunik` = `a`.`idunik`
+WHERE substring(a.kondisi, 2, 1) = \'1\'
+AND substring(a.kondisi, 3, 1) = \'1\'
+AND `a`.`deleted_at` IS NULL
+GROUP BY `a`.`id`
+ORDER BY `a`.`kode`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `a`.*, `b`.`kode` as `kodepenerima`, `b`.`nama` as `namapenerima`, `x`.`id` as `xlog`
+FROM `m_perusahaan` `a`
+LEFT JOIN `m_penerima` `b` ON `b`.`id` = `a`.`penerima_id`
+LEFT JOIN `user_log` `x` ON `x`.`idunik` = `a`.`idunik`
+WHERE substring(a.kondisi, 2, 1) = \'1\'
+AND substring(a.kondisi, 3, 1) = \'1\'
+AND `a`.`deleted_at` IS NULL
+GROUP BY `a`.`id`
+ORDER BY `a`.`kode`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `a`.*, `b`.`kode` as `kodepenerima`, `b`.`nama` as `namapenerima`, `x`.`id` as `xlog`
+FROM `m_perusahaan` `a`
+LEFT JOIN `m_penerima` `b` ON `b`.`id` = `a`.`penerima_id`
+LEFT JOIN `user_log` `x` ON `x`.`idunik` = `a`.`idunik`
+WHERE substring(a.kondisi, 2, 1) = \'1\'
+AND substring(a.kondisi, 3, 1) = \'1\'
+AND `a`.`deleted_at` IS NULL
+GROUP BY `a`.`id`
+ORDER BY `a`.`kode`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `a`.*, `b`.`kode` as `kodepenerima`, `b`.`nama` as `namapenerima`, `x`.`id` as `xlog`
+FROM `m_perusahaan` `a`
+LEFT JOIN `m_penerima` `b` ON `b`.`id` = `a`.`penerima_id`
+LEFT JOIN `user_log` `x` ON `x`.`idunik` = `a`.`idunik`
+WHERE substring(a.kondisi, 2, 1) = :substring(a.kondisi, 2, 1):
+AND substring(a.kondisi, 3, 1) = :substring(a.kondisi, 3, 1):
+AND `a`.`deleted_at` IS NULL
+GROUP BY `a`.`id`
+ORDER BY `a`.`kode`', [...], false)
+ 5 APPPATH\Models\campur\MainModel.php(192): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\admin\User.php(34): App\Models\campur\MainModel->getPerusahaan('', 't')
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\admin\User->inputData()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\admin\User))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+CRITICAL - 2024-08-29 12:59:28 --> Cannot declare class App\Database\Migrations\Perusahaan3, because the name is already in use
+in APPPATH\Database\Migrations\2024-07-03-030012_Perusahaan3.php on line 7.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-08-29 13:01:25 --> Cannot declare class App\Database\Migrations\Perusahaan3, because the name is already in use
+in APPPATH\Database\Migrations\2024-07-03-030012_Perusahaan3.php on line 7.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+INFO - 2024-08-29 13:12:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-08-29 13:12:08 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$roleModel is deprecated in APPPATH\Controllers\BaseController.php on line 75.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 13:12:08 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$konfigurasiModel is deprecated in APPPATH\Controllers\BaseController.php on line 76.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 13:12:08 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$logModel is deprecated in APPPATH\Controllers\BaseController.php on line 77.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 13:12:09 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$iduModel is deprecated in APPPATH\Controllers\BaseController.php on line 78.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 13:12:09 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$mainModel is deprecated in APPPATH\Controllers\BaseController.php on line 79.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 13:12:09 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$transaksiModel is deprecated in APPPATH\Controllers\BaseController.php on line 80.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 13:12:09 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$language is deprecated in APPPATH\Controllers\BaseController.php on line 83.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 13:12:09 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$urls is deprecated in APPPATH\Controllers\BaseController.php on line 96.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+INFO - 2024-08-29 13:12:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-08-29 13:12:10 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$roleModel is deprecated in APPPATH\Controllers\BaseController.php on line 75.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 13:12:10 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$konfigurasiModel is deprecated in APPPATH\Controllers\BaseController.php on line 76.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 13:12:10 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$logModel is deprecated in APPPATH\Controllers\BaseController.php on line 77.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 13:12:10 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$iduModel is deprecated in APPPATH\Controllers\BaseController.php on line 78.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 13:12:10 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$mainModel is deprecated in APPPATH\Controllers\BaseController.php on line 79.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 13:12:10 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$transaksiModel is deprecated in APPPATH\Controllers\BaseController.php on line 80.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 13:12:10 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$language is deprecated in APPPATH\Controllers\BaseController.php on line 83.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
+WARNING - 2024-08-29 13:12:10 --> [DEPRECATED] Creation of dynamic property App\Controllers\Home::$urls is deprecated in APPPATH\Controllers\BaseController.php on line 96.
+ 1 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 2 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('D:\\Shared\\bams\\public\\index.php')
