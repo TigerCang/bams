@@ -2,19 +2,19 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header <?= json('modal input') ?>">
-                <h4 class="modal-title judul-modal"><?= ($t_modal ?? '') ?></h4>
+                <h4 class="modal-title title-modal"><?= ($t_modal ?? '') ?></h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <?= form_open('', ['class' => 'formmain']) ?>
+            <?= form_open('', ['class' => 'form-main']) ?>
             <?= csrf_field() ?>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-12">
                         <div class="form-floating form-floating-outline">
-                            <input type="text" class="form-control" id="peminta" name="peminta" placeholder="<?= lang('app.harus') ?>" value="" />
-                            <label for="peminta"><?= lang('app.peminta') ?></label>
-                            <div id="error" class="invalid-feedback errpeminta"></div>
+                            <input type="text" class="form-control" id="person" name="person" placeholder="<?= lang('app.required') ?>" value="" />
+                            <label for="person"><?= lang('app.person') ?></label>
+                            <div id="error" class="invalid-feedback err_person"></div>
                         </div>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
             <div class="modal-footer">
                 <div class="row w-100">
                     <div class="col-12 ms-auto text-end">
-                        <button type="button" class="<?= json('btn submit') ?> btnsubmit"><?= json('submit') ?></button>
+                        <button type="button" class="<?= json('btn submit') ?> btn-submit"><?= json('submit') ?></button>
                     </div>
                 </div>
             </div> <!--/ Modal Footer -->
@@ -35,13 +35,13 @@
 
 <script src="<?= base_url('libraries') ?>/cang/js/extra.js"></script>
 <script>
-    $('.btnsubmit').click(function(e) {
+    $('.btn-submit').click(function(e) {
         e.preventDefault();
-        var form = $('.formmain')[0];
+        var form = $('.form-main')[0];
         var formData = new FormData(form);
         var getAction = $(this).val();
         var url = '<?= $link ?>/save';
-        formData.append('postaction', getAction);
+        formData.append('postAction', getAction);
         $.ajax({
             type: 'POST',
             url: url,
@@ -51,23 +51,23 @@
             contentType: false,
             dataType: "json",
             beforeSend: function() {
-                $('.btnsubmit').attr('disabled', 'disabled');
-                $('.btnsubmit').html('<i class="ri-loader-5-line ri-spin ri-24px"></i>');
+                $('.btn-submit').attr('disabled', 'disabled');
+                $('.btn-submit').html('<i class="ri-loader-5-line ri-spin ri-24px"></i>');
             },
             complete: function() {
-                $('.btnsubmit').removeAttr('disabled');
-                $('.btnsubmit').each(function() {
+                $('.btn-submit').removeAttr('disabled');
+                $('.btn-submit').each(function() {
                     $(this).html('<?= json('submit') ?>');
                 });
             },
             success: function(response) {
                 if (response.error) {
-                    if (response.error.peminta) {
-                        $('#peminta').addClass('is-invalid');
-                        $('.errpeminta').html(response.error.peminta);
+                    if (response.error.person) {
+                        $('#person').addClass('is-invalid');
+                        $('.err_person').html(response.error.person);
                     } else {
-                        $('#peminta').removeClass('is-invalid');
-                        $('.errpeminta').html('');
+                        $('#person').removeClass('is-invalid');
+                        $('.err_person').html('');
                     }
                 } else {
                     window.location.href = response.redirect;

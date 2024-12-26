@@ -42,14 +42,14 @@ defined('MONTH')  || define('MONTH', 2_592_000);
 defined('YEAR')   || define('YEAR', 31_536_000);
 defined('DECADE') || define('DECADE', 315_360_000);
 
-defined('jllimit') || define('jllimit', 20);
-defined('alamathtml') || define('alamathtml', '/home');
+defined('quantityLimit') || define('quantityLimit', 20);
+defined('htmlAddress') || define('htmlAddress', '/home');
 /*
  | --------------------------------------------------------------------------
  | Exit Status Codes
  | --------------------------------------------------------------------------
  |
- | Used to indicate the conditions under which the script is exit()ing.
+ | Used to indicate the stances under which the script is exit()ing.
  | While there is no universal standard for error codes, there are some
  | broad conventions.  Three such conventions are mentioned below, for
  | those who wish to make use of them.  The CodeIgniter defaults were

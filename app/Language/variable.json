@@ -1,0 +1,42 @@
+{
+  "xCode": "BAMS",
+  "xDescription": "Budget and Accounting Management Systems",
+  "xVersion": "2.02.06",
+  "xLine": "&emsp;&emsp;&emsp;<del>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</del>",
+
+  "username": "TigerCang",
+  "password": "&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;",
+  "token": "F317ORA",
+
+  "model": "Model",
+  "status": "Status",
+  "submit": "Submit",
+  "import": "Import Budget",
+
+  "btn logout": "btn btn-danger",
+  "btn create": "btn btn-primary",
+  "btn submit": "btn btn-primary",
+  "btn import": "btn btn-outline-secondary",
+  "btn search": "btn btn-outline-primary btn-lg",
+  "btn select": "btn btn-outline-primary btn-icon btn-lg",
+  "btn toggle": "btn btn-sm btn-icon btn-text-secondary waves-effect waves-light rounded-pill dropdown-toggle hide-arrow",
+
+  "btn i-view": "<i class='ri-file-paper-2-line ri-22px'></i>",
+  "btn i-edit": "<i class='ri-edit-2-line ri-22px text-warning'></i>",
+  "btn i-delete": "<i class='ri-delete-bin-line ri-22px text-danger'></i>",
+  "btn i-toggle": "<i class='ri-more-2-fill ri-22px'></i>",
+  "btn i-select": "<i class='ri-external-link-line ri-22px'></i>",
+  "btn i-refresh": "<i class='ri-reset-right-line ri-22px'></i>",
+  "btn i-search": "<i class='ri-search-line ri-22px'></i>",
+  "btn i-dropdown": "<i class='ri-arrow-down-double-line ri-22px'></i>",
+
+  "modal input": "bg-primary ",
+  "alert success-1": "<div class='alert alert-success alert-dismissible fade show' role='alert'>",
+  "alert failed-1": "<div class='alert alert-danger alert-dismissible fade show' role='alert'>",
+  "alert success-2": "<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>",
+  "min input": "minimumInputLength: 1",
+  "template 1": "templateResult: formatOption",
+  "template 2": "templateSelection: formatOptionSelection",
+
+  "end": "End"
+}

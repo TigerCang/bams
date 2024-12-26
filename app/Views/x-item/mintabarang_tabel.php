@@ -16,7 +16,7 @@
         <?php $nomor = 1;
         foreach ($barang as $row) :
             $status = statuslabel('barangpo', $row->status) ?>
-            <tr class="<?= ($row->st_seru == '1' ? 'bgtr2' : '') . ($row->xlog == null ? ' fonbol' : '') ?>">
+            <tr class="<?= ($row->st_seru == '1' ? 'bgtr2' : '') . ($row->xLog == null ? ' fonbol' : '') ?>">
                 <td><?= $nomor++ ?>.</td>
                 <td><?= formattanggal($row->tanggal) ?></td>
                 <td><?= $row->kodepeminta . ' : ' . $row->kodeuser ?></td>

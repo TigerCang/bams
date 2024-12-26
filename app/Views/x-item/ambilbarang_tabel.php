@@ -16,7 +16,7 @@
     <tbody>
         <?php $nomor = 1;
         foreach ($ambil as $row) :
-            echo "<tr class='" . ($row->st_seru == 'on' ? 'bgtr2' : '') . ($row->xlog == null ? ' fonbol' : '') . "'>";
+            echo "<tr class='" . ($row->st_seru == 'on' ? 'bgtr2' : '') . ($row->xLog == null ? ' fonbol' : '') . "'>";
             echo "<td>" . $nomor++ . "." . "</td>";
             echo "<td>" . formattanggal($row->tanggal) . "</td>";
             echo "<td>$row->kodeuser : $row->kodepeminta</td>";

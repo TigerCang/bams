@@ -241,7 +241,8 @@ class Session implements SessionInterface
         $this->setSaveHandler();
 
         // Sanitize the cookie, because apparently PHP doesn't do that for userspace handlers
-        if (isset($_COOKIE[$this->sessionCookieName])
+        if (
+            isset($_COOKIE[$this->sessionCookieName])
             && (! is_string($_COOKIE[$this->sessionCookieName]) || ! preg_match('#\A' . $this->sidRegexp . '\z#', $_COOKIE[$this->sessionCookieName]))
         ) {
             unset($_COOKIE[$this->sessionCookieName]);
@@ -774,7 +775,7 @@ class Session implements SessionInterface
     {
         if (isset($key)) {
             return (isset($_SESSION['__ci_vars'], $_SESSION['__ci_vars'][$key], $_SESSION[$key])
-                    && is_int($_SESSION['__ci_vars'][$key])) ? $_SESSION[$key] : null;
+                && is_int($_SESSION['__ci_vars'][$key])) ? $_SESSION[$key] : null;
         }
 
         $tempdata = [];

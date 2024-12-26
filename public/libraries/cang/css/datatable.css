@@ -21,3 +21,7 @@
 .dataTables_wrapper .dt-buttons .btn {
     margin: 0;
 }
+
+.table td {
+    vertical-align: top !important;
+}

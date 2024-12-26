@@ -1,16 +1,11 @@
 {/* <script> */}
-// $(document).ready(function() {
-// });    
-$('#tabelAwal').DataTable({
+$('#tableInit').DataTable({
     "ordering": true,
     "searching": true,
     "autoWidth": false,
-    "lengthMenu": [
-        [10, 25, 50,100],
-        [10, 25, 50, 100],
-    ],
+    "lengthMenu": [[10, 25, 50,100],[10, 25, 50, 100]],
     "iDisplayLength": 10,
-    "language": {
+    "language": { //hidden word show entries
         "lengthMenu": "_MENU_"
     },
     "buttons": [
@@ -36,19 +31,23 @@ $('#tabelAwal').DataTable({
                 text: '<i class="fa-regular fa-copy"></i> Copy'
             },
         ]
-    },
+    }, 
 ],
-    dom: '<"row"<"col-12 col-md-2 col-lg-2"f><"col-1 col-md-6 col-lg-7"><"col-3 col-md-2 col-lg-1"l><"col-3 col-md-2 col-lg-2"B>>rt<"row"<"col-12 col-md-5 col-lg-6"i><"col-12 col-md-7 col-lg-6"p>>',
+    "initComplete": function() {
+        $('#tableMain_length .select2').addClass('custom-select2');
+    },
+    dom: '<"row"<"col-12 col-md-2 col-lg-2"f><"col-1 col-md-6 col-lg-7"><"col-5 col-md-2 col-lg-1"l><"col-5 col-md-2 col-lg-2"B>>rt<"row"<"col-12 col-md-5 col-lg-6"i><"col-12 col-md-7 col-lg-6"p>>',
+ 
 });
 
-$('#tabelLampiran').DataTable({
-    "ordering": true,
-    "searching": false,
-    "autoWidth": false,
-    "lengthChange": false,
-    "pageLength": 10,
-    "paging": true, 
-});
+
+// $('#tableData').DataTable({
+//     "ordering": true,
+//     "searching": true,
+//     "lengthChange": false,
+//     "paging": false, 
+//     "info": false
+// });
 
 // $('#tabelModal').DataTable({
 //     "ordering": true,

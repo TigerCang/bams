@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class SerialModel extends Model
 {
     protected $table      = 'm_serial';
-    protected $allowedFields = ['idunik', 'barang_id', 'noseri', 'harga', 'alat_id', 'reparasi', 'kondisi', 'save_by', 'conf_by', 'aktif_by'];
+    protected $allowedFields = ['unique', 'item_id', 'serial', 'price', 'tool_id', 'repair', 'adaptation', 'save_by', 'confirm_by', 'active_by'];
     protected $useTimestamps = true;
     protected $useSoftDeletes = true;
 }

@@ -10,14 +10,14 @@ class Auth implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
+        helper('generate_helper');
         $userModel = new \App\Models\admin\UserModel();
         // $logModel = new \App\Models\admin\LogModel();
-        $user = $userModel->getUser(session()->usernama);
+        $user = $userModel->getUser(decrypt(session()->username));
         $urls = explode('/', $_SERVER['REQUEST_URI']);
 
-        if (session()->usernama) {
+        if (session()->username) {
             if ($urls[1] != 'login' && !$user) {
-                // $logModel->saveLog('lo', '', session()->usernama);
                 session()->destroy();
                 return redirect()->to('/login');
             }

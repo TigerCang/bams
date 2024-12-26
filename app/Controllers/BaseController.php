@@ -33,14 +33,12 @@ class BaseController extends Controller
     protected $user;
     protected $menu;
     protected $level;
-    protected $key = 'KeySan17yIn#F3d0r@';
-    protected $method = 'AES-256-CBC';
 
     // protected $language;
     // protected $logModel;
     // protected $userModel;
     // protected $roleModel;
-    // protected $konfigurasiModel;
+    // protected $configModel;
     // protected $iduModel;
     // protected $mainModel;
     // protected $tranModel;
@@ -55,7 +53,7 @@ class BaseController extends Controller
      * @var array
      */
     // protected $helpers = [];
-    protected $helpers = ['url', 'form', 'satu_helper', 'json_helper', 'ganti_helper'];
+    protected $helpers = ['url', 'form', 'mix_helper', 'data_helper', 'generate_helper'];
 
     /**
      * Constructor.
@@ -66,47 +64,37 @@ class BaseController extends Controller
         parent::initController($request, $response, $logger);
         // Preload any models, libraries, etc, here.
 
-        // Inisialisasi request dan session
+        // Initialization request dan session
         $this->request = $request;
         $this->session = session();
 
-        // Inisialisasi model dan library lainnya
+        // Initialization model dan another library 
         $this->userModel = new \App\Models\admin\UserModel();
         $this->roleModel = new \App\Models\admin\RoleModel();
-        $this->konfigurasiModel = new \App\Models\admin\KonfigurasiModel();
+        $this->configModel = new \App\Models\admin\ConfigModel();
         $this->logModel = new \App\Models\admin\LogModel();
-        $this->iduModel = new \App\Models\campur\IDUnikModel();
-        $this->mainModel = new \App\Models\campur\MainModel();
-        $this->transaksiModel = new \App\Models\campur\TransaksiModel();
+        $this->mainModel = new \App\Models\mix\MainModel();
+        $this->transModel = new \App\Models\mix\TransModel();
 
         // Set language based on session
         $this->language = service('language');
         $this->language->setLocale($this->session->lang);
-        // Set validasi
         $this->validation = \Config\Services::validation();
 
-
+        $this->user = $this->userModel->getUser(decrypt($this->session->username));
         $this->menu = $this->roleModel->getRole($this->user['role_id'] ?? '');
-        $this->menu = [
-            'menu_1' => '101,102,103,104,105,106'
-        ];
-
-        $this->user = $this->userModel->getUser($this->session->usernama);
-        $this->level = $this->konfigurasiModel->getKonfigurasi('jumlah setuju');
+        $this->level = $this->configModel->getConfig('level approve');
         $this->urls = explode('/', $_SERVER['REQUEST_URI']);
 
         // Language
         // $request = \Config\Services::request();
-
         // $this->session = \Config\Services::session();
-
 
         // $this->anu = $this->konfigurasiModel->getKonfigurasi();
         // $this->levacc = (isset($this->user['acc_setuju']) ? ($this->user['acc_setuju'] == '0' ? $this->level[0]['nilai'] : $this->user['acc_setuju'] - 1) : '0');
-
-        Menu::setMenu($this->menu);
+        $menuData = $this->menu ?? ['menu_1' => '', 'menu_2' => '', 'menu_3' => '', 'menu_4' => '', 'menu_5' => '', 'menu_6' => '', 'menu_7' => '', 'menu_8' => '', 'menu_9' => ''];
+        Menu::setMenu($menuData);
         Menu::setUser($this->user);
-
         helper(['text', 'session', 'filesystem']);
     }
 
@@ -120,32 +108,10 @@ class BaseController extends Controller
     protected function render($view, $data = [])
     {
         $commonData = [
-            'tampilan' => (splitUser('tampilan', $this->user)[0]),
-            'tuser' => $this->user,
-            'tmenu' => $this->menu,
-            'tlevel' => $this->level[0]['nilai'],
+            'template' => (splitUser('template', $this->user)[0]),
+            'this_level' => $this->level[0]['value'],
         ];
-
         $data = array_merge($commonData, $data);
         echo view($view, $data);
-    }
-
-    protected function encryptData($data)
-    {
-        $ivLength = openssl_cipher_iv_length($this->method);
-        $iv = openssl_random_pseudo_bytes($ivLength);
-        $encrypted = openssl_encrypt($data, $this->method, $this->key, 0, $iv);
-        $encryptedData = base64_encode($iv . $encrypted);
-        return $encryptedData;
-    }
-
-    protected function decryptData($encryptedData)
-    {
-        $ivLength = openssl_cipher_iv_length($this->method);
-        $data = base64_decode($encryptedData);
-        $iv = substr($data, 0, $ivLength);
-        $encrypted = substr($data, $ivLength);
-        $decrypted = openssl_decrypt($encrypted, $this->method, $this->key, 0, $iv);
-        return $decrypted;
     }
 }

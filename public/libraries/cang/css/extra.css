@@ -3,48 +3,48 @@
     background-color: #b1b4ff !important;
 }
 
-.judul-modal {
+.title-modal {
     color: #fff;
 }
 
 .form-control:focus {
     background-color: #666cff;
-    color: white; /* warna teks */
-    border-color: #666cff; /* warna border */
+    color: white; /* text color */
+    border-color: #666cff; /* border color */
 }
 
 .text-selection-none{
     user-select: none; /* supported by Chrome and Opera */
     -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
+    -khtml-user-select: none; /* Conqueror HTML */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none;
 }
 .text-selection-text{
     user-select: text; /* supported by Chrome and Opera */
     -webkit-user-select: text; /* Safari */
-    -khtml-user-select: text; /* Konqueror HTML */
+    -khtml-user-select: text; /* Conqueror HTML */
     -moz-user-select: text; /* Firefox */
     -ms-user-select: text;
 }
 .text-selection-all{
     user-select: all; /* supported by Chrome and Opera */
     -webkit-user-select: all; /* Safari */
-    -khtml-user-select: all; /* Konqueror HTML */
+    -khtml-user-select: all; /* Conqueror HTML */
     -moz-user-select: all; /* Firefox */
     -ms-user-select: all;
 }
 .text-selection-auto{
     user-select: auto; /* supported by Chrome and Opera */
     -webkit-user-select: auto; /* Safari */
-    -khtml-user-select: auto; /* Konqueror HTML */
+    -khtml-user-select: auto; /* Conqueror HTML */
     -moz-user-select: auto; /* Firefox */
     -ms-user-select: auto;
 }
 .text-selection-contain{
     user-select: contain; /* supported by Chrome and Opera */
     -webkit-user-select: contain; /* Safari */
-    -khtml-user-select: contain; /* Konqueror HTML */
+    -khtml-user-select: contain; /* Conqueror HTML */
     -moz-user-select: contain; /* Firefox */
     -ms-user-select: element;
 }
@@ -60,4 +60,25 @@
 .light-style .jstree .jstree-container-ul .jstree-icon.ri-file-4-line {
     color: #666cff;
     font-size:16px;
+}
+
+.backgroundTR1 {
+    background-color: #87CEFA !important;
+}
+.backgroundTR2 {
+    background-color: #FFF380 !important;
+}
+.backgroundTR3 {
+    background-color: #EFC0FE !important;
+}
+.backgroundInactive {
+    background-color: #EEEEEE !important;
+}
+
+.toggle-password {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 24px;
+    cursor: pointer;
 }

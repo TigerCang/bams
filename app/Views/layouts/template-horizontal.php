@@ -2,7 +2,7 @@
 <html lang="en" class="light-style layout-menu-fixed layout-compact" dir="ltr" data-theme="theme-default" data-assets-path="<?= base_url('libraries') ?>/" data-template="horizontal-menu-template">
 
 <head>
-    <title><?= json('xcode') ?> | <?= json('xdesk') ?></title>
+    <title><?= json('xCode') ?> | <?= json('xdesk') ?></title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />

@@ -8,11 +8,16 @@ class User extends Seeder
 {
     public function run()
     {
+        helper('generate_helper');
         $user_data = [
             [
-                'idunik' => '31c7e482f3d466a0132766ef1f9aa0f06c64e8cc95acd3077308d8e1a77fcc8f', 'kode' => 'Administrator',
-                'password' => '$2y$10$tPzJ1EnbMDtmscyLwCJ.kOCsL3J460jwg4gvZhB8.6xswwBmf4wDq', 'role_id' => '1',
-                'act_button' => '111111', 'act_akses' => '1111111111', 'kondisi' => '111',
+                'unique' => create_Unique(),
+                'code' => 'Administrator',
+                'password' => password_hash('A1b2c3d4#', PASSWORD_BCRYPT),
+                'role_id' => '1',
+                'act_button' => '111111',
+                'act_access' => '1111111111',
+                'adaptation' => '111',
             ],
         ];
 

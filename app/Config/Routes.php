@@ -31,33 +31,32 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 // $routes->GET('/', 'Home::index');
 
-// Login _________________________________________________________________________________________________________________________
+// Login ___________________________________________________________________________________________________________________________________________________________________________________________
 $routes->GET('/logout', 'Login::logout');
 $routes->GET('/signup', 'Login::viewSignup');
-$routes->GET('/lupasandi', 'Login::viewSandi');
+$routes->GET('/forget', 'Login::viewPassword');
 $routes->group('login', function ($routes) {
     $routes->GET('/', 'Login');
     $routes->POST('auth', 'Login::auth');
-    $routes->POST('reset', 'Login::resetsandi');
-    $routes->POST('signup', 'Login::signup');
+    $routes->POST('reset', 'Login::resetPassword');
+    $routes->POST('signup', 'Login::processSignup');
 });
 
-// Home _________________________________________________________________________________________________________________________
+// Home ___________________________________________________________________________________________________________________________________________________________________________________________
 $routes->get('/', 'Home::index', ['filter' => 'auth']);
 $routes->get('/home', function () {
     return redirect()->to('/');
 });
 $routes->GET('/profile', 'Home::profilpegawai', ['filter' => 'auth']);
-$routes->GET('/sandi', 'Home::sandi', ['filter' => 'auth']);
-$routes->POST('/savepass', 'Home::savepass', ['filter' => 'auth']);
-$routes->GET('/logdata', 'Home::logdata', ['filter' => 'auth']);
+$routes->POST('/changepassword', 'Home::changePassword', ['filter' => 'auth']);
+$routes->GET('/logactivity', 'Home::logData', ['filter' => 'auth']);
 $routes->GET('/lang/{locale}', 'Home::bahasa');
 
-// Administrator _________________________________________________________________________________________________________________________
-$routes->group('konfigurasi', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'admin\Konfigurasi::index');
-    $routes->GET('input', 'admin\Konfigurasi::inputData');
-    $routes->POST('save', 'admin\Konfigurasi::saveData');
+// Administrator ___________________________________________________________________________________________________________________________________________________________________________________________
+$routes->group('config', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'admin\Config::index');
+    $routes->GET('input', 'admin\Config::inputData');
+    $routes->POST('save', 'admin\Config::saveData');
 });
 $routes->group('role', ['filter' => 'auth'],  function ($routes) {
     $routes->GET('/', 'admin\Role::index');
@@ -68,7 +67,6 @@ $routes->group('user', ['filter' => 'auth'],  function ($routes) {
     $routes->GET('/', 'admin\User::index');
     $routes->GET('input', 'admin\User::inputData');
     $routes->POST('save', 'admin\User::saveData');
-    $routes->POST('usernama', 'campur\LoadMain::loadUser');
 });
 $routes->group('token', ['filter' => 'auth'],  function ($routes) {
     $routes->GET('/', 'admin\Token::index');
@@ -76,345 +74,348 @@ $routes->group('token', ['filter' => 'auth'],  function ($routes) {
     $routes->POST('save', 'admin\Token::saveData');
 });
 $routes->group('loguser', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'file\admin\LogUser::index');
-    $routes->GET('tablog', 'file\admin\LogUser::tabellog');
+    $routes->GET('/', 'admin\LogUser::index');
 });
-$routes->group('ulangsandi', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'file\admin\ResetSandi::index');
-    $routes->GET('tabdata', 'file\admin\ResetSandi::tabeldata');
-    $routes->POST('resetdata', 'file\admin\ResetSandi::resetdata');
+$routes->group('resetpassword', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'admin\ResetPassword::index');
+    $routes->POST('reset', 'admin\ResetPassword::resetData');
 });
 
-// Deklarasi _________________________________________________________________________________________________________________________
-$routes->group('perusahaan', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'main\deklarasi\Perusahaan::index');
-    $routes->GET('input', 'main\deklarasi\Perusahaan::inputData');
-    $routes->POST('save', 'main\deklarasi\Perusahaan::saveData');
+// Mix ___________________________________________________________________________________________________________________________________________________________________________________________
+$routes->group('search', ['filter' => 'auth'],  function ($routes) {
+    $routes->POST('log', 'mix\LoadMain::searchLog');
+    $routes->POST('cost', 'mix\LoadMain::searchCost');
+    $routes->POST('tool', 'mix\LoadMain::searchTool');
+    $routes->POST('item', 'mix\LoadMain::searchItem');
+    $routes->POST('distance', 'mix\LoadMain::searchDistance');
 });
-$routes->group('divisi', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'main\deklarasi\Divisi::index');
-    $routes->GET('input', 'main\deklarasi\Divisi::inputData');
-    $routes->POST('cari', 'campur\LoadMain::cariBerkas');
-    $routes->POST('save', 'main\deklarasi\Divisi::saveData');
+$routes->group('show', ['filter' => 'auth'],  function ($routes) {
+    $routes->POST('unit', 'mix\loadMain::showUnit');
 });
-$routes->group('nuser', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'main\deklarasi\nUser::index');
-    $routes->GET('input', 'main\deklarasi\nUser::inputData');
-    $routes->POST('save', 'main\deklarasi\nUser::saveData');
-    $routes->POST('usernama', 'campur\LoadMain::loadUser');
+$routes->group('attachment', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('table', 'mix\Attachment::table');
+    $routes->GET('modal', 'mix\Attachment::modal');
+    $routes->GET('modal2', 'mix\Attachment::modal2');
+    $routes->POST('save', 'mix\Attachment::save');
+    $routes->POST('delete', 'mix\Attachment::delete');
 });
-$routes->group('satuan', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'main\deklarasi\Satuan::index');
-    $routes->GET('input', 'main\deklarasi\Satuan::inputData');
-    $routes->POST('save', 'main\deklarasi\Satuan::saveData');
+$routes->group('load', ['filter' => 'auth'],  function ($routes) {
+    $routes->POST('account', 'mix\LoadMain::loadAccount');
+    $routes->POST('standard', 'mix\LoadMain::loadStandard');
+    $routes->POST('cost', 'mix\LoadMain::loadCost');
+    $routes->POST('user', 'mix\LoadMain::loadUser');
+    $routes->POST('person', 'mix\LoadMain::loadPerson');
+    $routes->POST('item', 'mix\LoadMain::loadItem');
+    $routes->POST('project', 'mix\LoadMain::loadProject');
+    $routes->POST('branch', 'mix\LoadMain::loadBranch');
+    $routes->POST('tool', 'mix\LoadMain::loadTool');
+    $routes->POST('object', 'mix\LoadMain::loadObject');
 });
-$routes->group('nodokumen', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'main\deklarasi\NomorDokumen::index');
-    $routes->GET('input', 'main\deklarasi\NomorDokumen::inputData');
-    $routes->POST('save', 'main\deklarasi\NomorDokumen::saveData');
+$routes->group('outfocus', ['filter' => 'auth'],  function ($routes) {
+    $routes->POST('person', 'mix\LoadMain::OutFocusPerson');
 });
-$routes->group('noform', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'main\deklarasi\NomorForm::index');
-    $routes->GET('input', 'main\deklarasi\NomorForm::inputData');
-    $routes->POST('save', 'main\deklarasi\NomorForm::saveData');
-});
-$routes->group('kateproyek', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'main\deklarasi\KateProyek::index');
-    $routes->GET('input', 'main\deklarasi\KateProyek::inputData');
-    $routes->POST('save', 'main\deklarasi\KateProyek::saveData');
-});
-$routes->group('biayalangsung', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'main\deklarasi\BiayaLangsung::index');
-    $routes->GET('input', 'main\deklarasi\BiayaLangsung::inputData');
-    $routes->POST('cari', 'campur\LoadMain::cariBiaya');
-    $routes->POST('save', 'main\deklarasi\BiayaLangsung::saveData');
-});
-$routes->group('biayataklangsung', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'main\deklarasi\BiayaTakLangsung::index');
-    $routes->GET('input', 'main\deklarasi\BiayaTakLangsung::inputData');
-    $routes->POST('cari', 'campur\LoadMain::cariBiaya');
-    $routes->POST('save', 'main\deklarasi\BiayaTakLangsung::saveData');
-    $routes->POST('akun', 'campur\Loadmain::loadAkun');
-});
-$routes->group('sumberdaya', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'main\deklarasi\SumberDaya::index');
-    $routes->GET('input', 'main\deklarasi\SumberDaya::inputData');
-    $routes->POST('cari', 'campur\LoadMain::cariBiaya');
-    $routes->POST('save', 'main\deklarasi\SumberDaya::saveData');
-    $routes->POST('akun', 'campur\LoadMain::loadAkun');
-});
-$routes->group('jarak', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'main\deklarasi\Jarak::index');
-    $routes->GET('input', 'main\deklarasi\Jarak::inputData');
-    $routes->POST('cari', 'campur\LoadMain::cariRuas');
-    $routes->POST('save', 'main\deklarasi\Jarak::saveData');
-});
-$routes->group('setanggaran', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'main\deklarasi\SetAnggaran::index');
-    $routes->GET('input', 'main\deklarasi\SetAnggaran::inputData');
-    $routes->POST('add', 'main\deklarasi\SetAnggaran::tambahData');
-    $routes->POST('save', 'main\deklarasi\SetAnggaran::saveData');
-    $routes->GET('tabel', 'main\deklarasi\SetAnggaran::tabelData');
-    $routes->POST('biaya', 'campur\LoadMain::loadBiaya');
-    $routes->POST('akun', 'campur\LoadMain::loadAkun');
 
 
+// $routes->get('getUnique', 'mix\loadTransaction::CreateUnique');
+
+// Declaration ___________________________________________________________________________________________________________________________________________________________________________________________
+$routes->group('company', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\declaration\Company::index');
+    $routes->GET('input', 'main\declaration\Company::inputData');
+    $routes->POST('save', 'main\declaration\Company::saveData');
+    $routes->GET('inputmodal/(:any)', 'main\declaration\Company::inputModal/$1');
+    $routes->POST('savemodal/(:any)', 'main\declaration\Company::saveModal/$1');
+    $routes->GET('tablemodal', 'main\declaration\Company::tableModal');
+});
+$routes->group('division', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\declaration\Division::index');
+    $routes->GET('input', 'main\declaration\Division::inputData');
+    $routes->POST('save', 'main\declaration\Division::saveData');
+});
+$routes->group('auser', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\declaration\aUser::index');
+    $routes->GET('input', 'main\declaration\aUser::inputData');
+    $routes->POST('save', 'main\declaration\aUser::saveData');
+});
+$routes->group('unit', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\declaration\Unit::index');
+    $routes->GET('input', 'main\declaration\Unit::inputData');
+    $routes->POST('save', 'main\declaration\Unit::saveData');
+});
+$routes->group('groupproject', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\declaration\GroupProject::index');
+    $routes->GET('input', 'main\declaration\GroupProject::inputData');
+    $routes->POST('save', 'main\declaration\GroupProject::saveData');
+});
+$routes->group('directcost', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\declaration\DirectCost::index');
+    $routes->GET('input', 'main\declaration\DirectCost::inputData');
+    $routes->POST('save', 'main\declaration\DirectCost::saveData');
+});
+$routes->group('indirectcost', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\declaration\IndirectCost::index');
+    $routes->GET('input', 'main\declaration\IndirectCost::inputData');
+    $routes->POST('save', 'main\declaration\IndirectCost::saveData');
+});
+$routes->group('resources', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\declaration\Resources::index');
+    $routes->GET('input', 'main\declaration\Resources::inputData');
+    $routes->POST('save', 'main\declaration\Resources::saveData');
+});
+$routes->group('distance', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\declaration\Distance::index');
+    $routes->GET('input', 'main\declaration\Distance::inputData');
+    $routes->POST('save', 'main\declaration\Distance::saveData');
+    $routes->POST('outFocusProject', 'main\asset\Segment::outFocusProject');
+});
+$routes->group('defaultbudget', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\declaration\DefaultBudget::index');
+    $routes->GET('input', 'main\declaration\DefaultBudget::inputData');
+    $routes->GET('table', 'main\declaration\DefaultBudget::tableData');
+    $routes->POST('add', 'main\declaration\DefaultBudget::addData');
+    $routes->GET('modal', 'main\declaration\DefaultBudget::modalData');
+    // $routes->GET('edit', 'main\declaration\DefaultBudget::editData');
+
+    // $routes->POST('save', 'main\deklarasi\SetAnggaran::saveData');
     // $routes->GET('/', 'file\deklarasi\Anggaran::index');
     // $routes->GET('input', 'file\deklarasi\Anggaran::crany');
     // $routes->GET('input/(:any)', 'file\deklarasi\Anggaran::showdata/$1');
     // $routes->POST('additem', 'file\deklarasi\Anggaran::tambahdata');
     // $routes->POST('edititem', 'file\deklarasi\Anggaran::updatedata');
     // $routes->POST('delitem', 'file\deklarasi\Anggaran::deletedata');
-    // $routes->POST('save', 'file\deklarasi\Anggaran::savedata');
+    // $routes->POST('save', 'file\deklarasi\Anggaran::savedata');  
     // $routes->GET('modalkoreksi', 'file\deklarasi\Anggaran::modaldata');
     // $routes->POST('akun', 'extra\Loadfile::loadakun');
     // $routes->POST('biaya', 'extra\Loadfile::loadbiaya');
     // $routes->GET('tabbudget', 'file\deklarasi\Anggaran::tabelbudget');
 });
-// ____________________________________________________________________________________________________________________________
-$routes->group('lampiran', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('tabel', 'campur\Lampiran::tabelLampiran');
-    $routes->GET('input', 'campur\Lampiran::modalLampiran');
-    $routes->POST('save', 'campur\Lampiran::saveLampiran');
-    $routes->POST('delete', 'campur\Lampiran::deleteLampiran');
+
+// Accounting ___________________________________________________________________________________________________________________________________________________________________________________________
+$routes->group('accounting', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\accounting\Accounting::index');
+    $routes->GET('input', 'main\accounting\Accounting::inputData');
+    $routes->POST('search', 'main\accounting\Accounting::searchData');
+    $routes->POST('save', 'main\accounting\Accounting::saveData');
 });
-$routes->group('cabang', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'main\aset\Cabang::index');
-    $routes->GET('input', 'main\aset\Cabang::inputData');
-    $routes->POST('save', 'main\aset\Cabang::saveData');
+$routes->group('groupaccount', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\accounting\GroupAccount::index');
+    $routes->GET('input', 'main\accounting\GroupAccount::inputData');
+    $routes->POST('save', 'main\accounting\GroupAccount::saveData');
 });
-$routes->group('proyek', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'main\aset\Proyek::index');
-    $routes->GET('input', 'main\aset\Proyek::inputData');
-    $routes->POST('cari', 'main\aset\Proyek::cariProyek');
-    $routes->POST('save', 'main\aset\Proyek::saveData');
-    $routes->POST('kabupaten', 'main\aset\Proyek::loadKabupaten');
+$routes->group('cashaccount', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\accounting\CashAccount::index');
+    $routes->GET('input', 'main\accounting\CashAccount::inputData');
+    $routes->POST('save', 'main\accounting\CashAccount::saveData');
 });
-$routes->group('ruas', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'main\aset\Ruas::index');
-    $routes->GET('input', 'main\aset\Ruas::inputData');
-    $routes->POST('cari', 'campur\LoadMain::cariRuas');
-    $routes->POST('save', 'main\aset\Ruas::saveData');
-    $routes->POST('proyek', 'main\aset\Ruas::loadProyek');
-    $routes->POST('klikproyek', 'main\aset\Ruas::outfocusProyek');
+$routes->group('taxaccount', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\accounting\TaxAccount::index');
+    $routes->GET('input', 'main\accounting\TaxAccount::inputData');
+    $routes->POST('save', 'main\accounting\TaxAccount::saveData');
+});
+$routes->group('otherstandard', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\accounting\Standard::index');
+    $routes->GET('input', 'main\accounting\Standard::inputData');
+    $routes->POST('search', 'main\accounting\Standard::searchData');
+    $routes->POST('save', 'main\accounting\Standard::saveData');
 });
 
-// $routes->group('subruas', ['filter' => 'auth'],  function ($routes) {
-//     $routes->GET('/', 'file\deklarasi\Subruas::index');
-//     $routes->GET('input', 'file\deklarasi\Subruas::crany');
-//     $routes->GET('input/(:any)', 'file\deklarasi\Subruas::showdata/$1');
-//     $routes->POST('save', 'file\deklarasi\Subruas::savedata');
-//     $routes->GET('tabdata', 'file\deklarasi\Subruas::tabeldata');
-//     $routes->POST('loadproyek', 'extra\Loadfile::loadproyek');
-//     $routes->POST('ruas', 'extra\Loadfile::loadruas');
-// });
-$routes->group('alat', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'main\aset\Alat::index');
-    $routes->GET('input', 'main\aset\Alat::inputData');
-    $routes->POST('cari', 'main\aset\Alat::cariAlat');
-    $routes->POST('save', 'main\aset\Alat::saveData');
-    $routes->POST('biaya', 'campur\LoadMain::loadBiaya');
+// Asset ___________________________________________________________________________________________________________________________________________________________________________________________
+$routes->group('branch', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\asset\Branch::index');
+    $routes->GET('input', 'main\asset\Branch::inputData');
+    $routes->POST('save', 'main\asset\Branch::saveData');
+});
+$routes->group('project', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\asset\Project::index');
+    $routes->GET('input', 'main\asset\Project::inputData');
+    $routes->POST('search', 'main\asset\Project::searchData');
+    $routes->POST('save', 'main\asset\Project::saveData');
+    $routes->POST('district', 'main\asset\Project::loadDistrict');
+    $routes->POST('offFocusProject', 'main\asset\Project::offFocusProject');
+});
+$routes->group('segment', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\asset\Segment::index');
+    $routes->GET('input', 'main\asset\Segment::inputData');
+    $routes->POST('save', 'main\asset\Segment::saveData');
+    $routes->POST('outFocusProject', 'main\asset\Segment::outFocusProject');
+});
+$routes->group('subsegment', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\asset\SubSegment::index');
+    $routes->GET('input', 'main\asset\SubSegment::inputData');
+    $routes->POST('save', 'main\asset\SubSegment::saveData');
+    $routes->POST('outFocusProject', 'main\asset\Segment::outFocusProject');
+});
+$routes->group('equipment', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\asset\Equipment::index');
+    $routes->GET('input', 'main\asset\Equipment::inputData');
+    $routes->POST('save', 'main\asset\Equipment::saveData');
 });
 $routes->group('tool', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'main\aset\Tool::index');
-    $routes->GET('input', 'main\aset\Tool::inputData');
-    $routes->POST('cari', 'main\aset\Tool::cariAlat');
-    $routes->POST('save', 'main\aset\Tool::saveData');
-    $routes->POST('biaya', 'campur\LoadMain::loadBiaya');
+    $routes->GET('/', 'main\asset\Tool::index');
+    $routes->GET('input', 'main\asset\Tool::inputData');
+    $routes->POST('save', 'main\asset\Tool::saveData');
 });
-$routes->group('tanahbangunan', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'main\aset\TanahBangunan::index');
-    $routes->GET('input', 'main\aset\TanahBangunan::inputData');
-    $routes->POST('cari', 'main\aset\TanahBangunan::cariTanah');
-    $routes->POST('save', 'main\aset\TanahBangunan::saveData');
-    $routes->POST('biaya', 'campur\LoadMain::loadBiaya');
+$routes->group('landbuilding', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\asset\LandBuilding::index');
+    $routes->GET('input', 'main\asset\LandBuilding::inputData');
+    $routes->POST('search', 'main\asset\LandBuilding::searchData');
+    $routes->POST('save', 'main\asset\LandBuilding::saveData');
 });
-$routes->group('inventaris', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'file\aset\Inventaris::index');
-    $routes->GET('input', 'file\aset\Inventaris::crany');
-    $routes->GET('input/(:any)', 'file\aset\Inventaris::showdata/$1');
-    $routes->POST('save', 'file\aset\Inventaris::savedata');
-    $routes->GET('tabdata', 'file\aset\Inventaris::tabeldata');
-    $routes->GET('basecamp', 'extra\Loadfile::modalcamp');
-    $routes->POST('pegawai', 'extra\Loadfile::loadpenerima');
+$routes->group('inventory', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\asset\Inventory::index');
+    $routes->GET('input', 'main\asset\Inventory::inputData');
+    $routes->POST('search', 'main\asset\Inventory::searchData');
+    $routes->POST('save', 'main\asset\Inventory::saveData');
 });
-// ____________________________________________________________________________________________________________________________
-$routes->group('akuntansi', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'main\akuntansi\Akuntansi::index');
-    $routes->GET('input', 'main\akuntansi\Akuntansi::inputData');
-    $routes->POST('cari', 'main\akuntansi\Akuntansi::cariData');
-    $routes->POST('save', 'main\akuntansi\Akuntansi::saveData');
-});
-$routes->group('akungrup', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'main\akuntansi\AkunGrup::index');
-    $routes->GET('input', 'main\akuntansi\AkunGrup::inputData');
-    $routes->POST('cari', 'main\akuntansi\AkunGrup::cariData');
-    $routes->POST('save', 'main\akuntansi\AkunGrup::saveData');
-    $routes->POST('akun', 'campur\LoadMain::loadAkun');
-});
-$routes->group('akunkas', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'main\akuntansi\AkunKas::index');
-    $routes->GET('input', 'main\akuntansi\AkunKas::inputData');
-    $routes->POST('cari', 'main\akuntansi\AkunKas::cariData');
-    $routes->POST('save', 'main\akuntansi\AkunKas::saveData');
-    $routes->POST('akun', 'campur\LoadMain::loadAkun');
-});
-$routes->group('akunpajak', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'main\akuntansi\AkunPajak::index');
-    $routes->GET('input', 'main\akuntansi\AkunPajak::inputData');
-    $routes->POST('cari', 'main\akuntansi\AkunPajak::cariData');
-    $routes->POST('save', 'main\akuntansi\AkunPajak::saveData');
-    $routes->POST('akun', 'campur\LoadMain::loadAkun');
-});
-$routes->group('kbli', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'main\akuntansi\Kbli::index');
-    $routes->GET('input', 'main\akuntansi\Kbli::inputData');
-    $routes->POST('cari', 'main\akuntansi\Kbli::cariData');
-    $routes->POST('save', 'main\akuntansi\Kbli::saveData');
-
-    // $routes->GET('/', 'file\akuntansi\Dokumenpajak::index');
-    // $routes->GET('input', 'file\akuntansi\Dokumenpajak::crany');
-    // $routes->GET('input/(:any)', 'file\akuntansi\Dokumenpajak::showdata/$1');
-    // $routes->POST('save', 'file\akuntansi\Dokumenpajak::savedata');
-    // $routes->GET('tabdata', 'file\akuntansi\Dokumenpajak::tabeldata');
-});
-// ____________________________________________________________________________________________________________________________
-$routes->group('barang', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'main\barang\Barang::index');
-    $routes->GET('input', 'main\barang\Barang::inputData');
-    $routes->POST('cari', 'main\barang\Barang::cariBarang');
-    $routes->POST('save', 'main\barang\Barang::saveData');
-});
-$routes->group('bahan', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'main\barang\Bahan::index');
-    $routes->GET('input', 'main\barang\Bahan::inputData');
-    $routes->POST('cari', 'main\barang\Bahan::cariBarang');
-    $routes->POST('save', 'main\barang\Bahan::saveData');
-    $routes->POST('biaya', 'campur\LoadMain::loadBiaya');
-    $routes->POST('satuan', 'main\barang\Bahan::loadSatuan');
-});
-$routes->group('noseri', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'file\item\Noseri::index');
-    $routes->GET('input', 'file\item\Noseri::crany');
-    $routes->GET('input/(:any)', 'file\item\Noseri::showdata/$1');
-    $routes->POST('save', 'file\item\Noseri::savedata');
-    $routes->POST('alat', 'extra\Loadfile::loadalat');
-    $routes->GET('tabdata', 'file\item\Noseri::tabelbarang');
-});
-$routes->group('gudang', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'main\barang\Gudang::index');
-    $routes->GET('input', 'main\barang\Gudang::inputData');
-    $routes->POST('save', 'main\barang\Gudang::saveData');
-});
-// ____________________________________________________________________________________________________________________________
-$routes->group('penerima', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'main\penerima\Penerima::index');
-    $routes->GET('input', 'main\penerima\Penerima::inputData');
-    $routes->POST('cari', 'main\penerima\Penerima::cariPenerima');
-    $routes->POST('save', 'main\penerima\Penerima::saveData');
-});
-$routes->group('tautp', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'file\penerima\Tautp::index');
-    $routes->GET('input/(:any)', 'file\penerima\Tautp::showdata/$1');
-    $routes->POST('save', 'file\penerima\Tautp::savedata');
-});
-$routes->group('rekanalat', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'main\penerima\RekanAlat::index');
-    $routes->GET('input', 'main\penerima\RekanAlat::inputData');
-    $routes->POST('cari', 'main\penerima\RekanAlat::cariAlat');
-    $routes->POST('save', 'main\penerima\RekanAlat::saveData');
-    $routes->POST('penerima', 'campur\LoadMain::loadPenerima');
+$routes->group('document', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\asset\Document::index');
+    $routes->GET('input', 'main\asset\Document::inputData');
+    $routes->POST('search', 'main\asset\Document::searchData');
+    $routes->POST('save', 'main\asset\Document::saveData');
+    $routes->POST('outFocusObject', 'main\asset\Document::outFocusObject');
 });
 
-$routes->group('rekanalat', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'file\penerima\RekanAlat::index');
-    $routes->GET('input', 'file\penerima\RekanAlat::crany');
-    $routes->GET('input/(:any)', 'file\penerima\RekanAlat::showdata/$1');
-    $routes->POST('save', 'file\penerima\RekanAlat::savedata');
-    $routes->POST('penerima', 'extra\Loadfile::loadpenerima');
-    $routes->GET('tabdata', 'file\penerima\RekanAlat::tabeldata');
+// Item ___________________________________________________________________________________________________________________________________________________________________________________________
+$routes->group('item', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\item\Item::index');
+    $routes->GET('input', 'main\item\Item::inputData');
+    $routes->POST('save', 'main\item\Item::saveData');
 });
-// ____________________________________________________________________________________________________________________________
-$routes->group('cuti', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'main\sdm\Cuti::index');
-    $routes->GET('input', 'main\sdm\Cuti::inputData');
-    $routes->POST('save', 'main\sdm\Cuti::saveData');
+$routes->group('material', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\item\Material::index');
+    $routes->GET('input', 'main\item\Material::inputData');
+    $routes->POST('save', 'main\item\Material::saveData');
 });
-$routes->group('kalender', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'main\sdm\Kalender::index');
-    $routes->GET('input', 'main\sdm\Kalender::inputData');
-    $routes->POST('save', 'main\sdm\Kalender::saveData');
+$routes->group('serial', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\item\Serial::index');
+    $routes->GET('input', 'main\item\Serial::inputData');
+    $routes->POST('search', 'main\item\Serial::searchData');
+    $routes->POST('save', 'main\item\Serial::saveData');
 });
-$routes->group('katerating', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'main\sdm\KateRating::index');
-    $routes->GET('input', 'main\sdm\KateRating::inputData');
-    $routes->POST('save', 'main\sdm\KateRating::saveData');
+$routes->group('warehouse', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\item\Warehouse::index');
+    $routes->GET('input', 'main\item\Warehouse::inputData');
+    $routes->POST('save', 'main\item\Warehouse::saveData');
+});
+
+// Recipient ___________________________________________________________________________________________________________________________________________________________________________________________
+$routes->group('recipient', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\person\Recipient::index');
+    $routes->GET('input', 'main\person\Recipient::inputData');
+    $routes->POST('search', 'main\person\Recipient::searchData');
+    $routes->POST('save', 'main\person\Recipient::saveData');
+});
+$routes->group('partnervehicle', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\person\PartnerVehicle::index');
+    $routes->GET('input', 'main\person\PartnerVehicle::inputData');
+    $routes->POST('save', 'main\person\PartnerVehicle::saveData');
+});
+$routes->group('linkcompany', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\person\LinkCompany::index');
+    $routes->GET('input', 'main\person\LinkCompany::inputData');
+    $routes->POST('save', 'main\person\LinkCompany::saveData');
+});
+
+
+// HRD ___________________________________________________________________________________________________________________________________________________________________________________________
+$routes->group('daysoff', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\hrd\DaysOff::index');
+    $routes->GET('input', 'main\hrd\DaysOff::inputData');
+    $routes->POST('save', 'main\hrd\DaysOff::saveData');
+});
+$routes->group('calendar', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\hrd\Calendar::index');
+    $routes->GET('input', 'main\hrd\Calendar::inputData');
+    $routes->POST('save', 'main\hrd\Calendar::saveData');
+    $routes->POST('delete', 'main\hrd\Calendar::deleteData');
+});
+$routes->group('ratingcategory', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\hrd\RatingCategory::index');
+    $routes->GET('input', 'main\hrd\RatingCategory::inputData');
+    $routes->POST('save', 'main\hrd\RatingCategory::saveData');
 });
 $routes->group('pengumuman', ['filter' => 'auth'],  function ($routes) {
     $routes->GET('/', 'file\sdm\Pengumuman::index');
     $routes->POST('save', 'file\sdm\Pengumuman::savedata');
 });
-$routes->group('pegawai', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'main\sdm\Pegawai::index');
-    $routes->GET('input', 'main\sdm\Pegawai::inputData');
-    $routes->POST('cari', 'main\sdm\Pegawai::cariPegawai');
-    $routes->POST('save', 'main\sdm\Pegawai::saveData');
-    $routes->POST('cabang', 'campur\LoadMain::loadCabang');
-    $routes->POST('usernama', 'campur\LoadMain::loadUser');
-    $routes->POST('atasan', 'campur\LoadMain::loadPenerima');
+$routes->group('employee', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\hrd\Employee::index');
+    $routes->GET('input', 'main\hrd\Employee::inputData');
+    $routes->POST('search', 'main\hrd\Employee::searchData');
+    $routes->POST('save', 'main\hrd\Employee::saveData');
 });
-// $routes->group('pegawai', ['filter' => 'auth'],  function ($routes) {
-//     $routes->GET('tabdata', 'file\sdm\Pegawai::tabeldata');
-//     $routes->GET('tablampir', 'extra\Lampiran::tabellampiran');
-//     $routes->GET('modallampir', 'extra\Lampiran::modallampiran');
-//     $routes->POST('savelampir', 'extra\Lampiran::savelampiran');
-//     $routes->POST('dellampir', 'extra\Lampiran::deletelampiran');
-//     $routes->GET('basecamp', 'extra\Loadfile::modalcamp');
-//     $routes->POST('pegawai', 'extra\Loadfile::loadpenerima');
-//     $routes->POST('user', 'extra\Loadfile::loaduser');
+$routes->group('position', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\hrd\Position::index');
+    $routes->GET('input', 'main\hrd\Position::inputData');
+    $routes->POST('save', 'main\hrd\Position::saveData');
+});
+$routes->group('formcode', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\hrd\FormCode::index');
+    $routes->GET('input', 'main\hrd\FormCode::inputData');
+    $routes->POST('save', 'main\hrd\FormCode::saveData');
+});
+$routes->group('formnumber', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'main\hrd\FormNumber::index');
+    $routes->GET('input', 'main\hrd\FormNumber::inputData');
+    $routes->POST('save', 'main\hrd\FormNumber::saveData');
+});
+
+// General Transaction ___________________________________________________________________________________________________________________________________________________________________________________________
+// $routes->group('anggbiayal', ['filter' => 'auth'],  function ($routes) {
+//     $routes->GET('/', 'trumum\anggaran\Biayalangsung::index');
+//     $routes->GET('input', 'trumum\anggaran\Biayalangsung::crany');
+//     $routes->GET('input/(:any)', 'trumum\anggaran\Biayalangsung::showdata/$1');
+//     $routes->POST('additem', 'trumum\anggaran\Biayalangsung::tambahdata');
+//     // $routes->POST('edititem', 'trumum\anggaran\Cabang::updatedata');
+//     // $routes->POST('delitem', 'trumum\anggaran\Cabang::deletedata');
+
+//     // $routes->POST('addbudget', 'umum\anggaran\Cabang::tambahdata');
+//     // $routes->POST('savedoc', 'umum\anggaran\Cabang::savedokumen');
+//     // // $routes->GET('bataldoc/(:any)', 'umum\anggaran\Biayatidaklangsung::canceldokumen/$1');
+//     $routes->GET('tabinduk', 'extra\Loadtran::tabelanggaraninduk');
+//     $routes->GET('proyek', 'extra\Loadfile::modalproyek');
+//     $routes->POST('ruas', 'extra\Loadfile::loadruas');
+//     $routes->POST('biaya', 'extra\Loadfile::loadbiaya');
+
+//     $routes->GET('tabbiaya', 'extra\Loadtran::tabeldataanggaran');
+//     $routes->POST('savedoc', 'trumum\anggaran\Biayalangsung::savedata');
+//     $routes->GET('modalbatal', 'trumum\anggaran\Biayalangsung::modalbatal');
+
+//     $routes->POST('bataldoc', 'trumum\anggaran\Biayalangsung::canceldata');
+
+//     // $routes->POST('loadbudget', 'umum\anggaran\Cabang::loadbudgetbawaan');
+//     // // $routes->GET('editkas', 'proyek\anggaran\Biayatidaklangsung::modalkoreksikas');
+//     // // $routes->POST('delbudget', 'umum\anggaran\Camp::deletedata');
 // });
-$routes->group('jabatan', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'main\sdm\Jabatan::index');
-    $routes->GET('input', 'main\sdm\Jabatan::inputData');
-    $routes->POST('cari', 'campur\LoadMain::cariBerkas');
-    $routes->POST('save', 'main\sdm\Jabatan::saveData');
+
+$routes->group('indirectbudget', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'trgeneral\budget\IndirectBudget::index');
+    $routes->GET('input', 'trgeneral\budget\IndirectBudget::inputData');
+    $routes->GET('table', 'trgeneral\budget\AccountBudget::tableData');
+    $routes->POST('add', 'trgeneral\budget\IndirectBudget::addData');
 });
 
-// Transaksi Umum____________________________________________________________________________________________________________________________
-$routes->group('anggbiayal', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'trumum\anggaran\Biayalangsung::index');
-    $routes->GET('input', 'trumum\anggaran\Biayalangsung::crany');
-    $routes->GET('input/(:any)', 'trumum\anggaran\Biayalangsung::showdata/$1');
-    $routes->POST('additem', 'trumum\anggaran\Biayalangsung::tambahdata');
-    // $routes->POST('edititem', 'trumum\anggaran\Cabang::updatedata');
-    // $routes->POST('delitem', 'trumum\anggaran\Cabang::deletedata');
+$routes->group('accountbudget', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'trgeneral\budget\AccountBudget::index');
+    $routes->GET('input', 'trgeneral\budget\AccountBudget::inputData');
+    $routes->GET('table', 'trgeneral\budget\AccountBudget::tableData');
+    $routes->POST('add', 'trgeneral\budget\AccountBudget::addData');
+    $routes->POST('save', 'trgeneral\budget\AccountBudget::saveData');
+    // $routes->POST('edititem', 'trumum\anggaran\Objek::updatedata');
+    // $routes->POST('delitem', 'trumum\anggaran\Objek::deletedata');
 
-    // $routes->POST('addbudget', 'umum\anggaran\Cabang::tambahdata');
-    // $routes->POST('savedoc', 'umum\anggaran\Cabang::savedokumen');
-    // // $routes->GET('bataldoc/(:any)', 'umum\anggaran\Biayatidaklangsung::canceldokumen/$1');
-    $routes->GET('tabinduk', 'extra\Loadtran::tabelanggaraninduk');
-    $routes->GET('proyek', 'extra\Loadfile::modalproyek');
-    $routes->POST('ruas', 'extra\Loadfile::loadruas');
-    $routes->POST('biaya', 'extra\Loadfile::loadbiaya');
 
-    $routes->GET('tabbiaya', 'extra\Loadtran::tabeldataanggaran');
-    $routes->POST('savedoc', 'trumum\anggaran\Biayalangsung::savedata');
-    $routes->GET('modalbatal', 'trumum\anggaran\Biayalangsung::modalbatal');
 
-    $routes->POST('bataldoc', 'trumum\anggaran\Biayalangsung::canceldata');
+    // $routes->group('defaultbudget', ['filter' => 'auth'],  function ($routes) {
+    //     $routes->GET('/', 'main\declaration\DefaultBudget::index');
+    //     $routes->GET('input', 'main\declaration\DefaultBudget::inputData');
 
-    // $routes->POST('loadbudget', 'umum\anggaran\Cabang::loadbudgetbawaan');
-    // // $routes->GET('editkas', 'proyek\anggaran\Biayatidaklangsung::modalkoreksikas');
-    // // $routes->POST('delbudget', 'umum\anggaran\Camp::deletedata');
-});
-$routes->group('anggobjek', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'trumum\anggaran\Objek::index');
-    $routes->GET('input', 'trumum\anggaran\Objek::crany');
-    $routes->GET('input/(:any)', 'trumum\anggaran\Objek::showdata/$1');
-    $routes->POST('additem', 'trumum\anggaran\Objek::tambahdata');
-    $routes->POST('edititem', 'trumum\anggaran\Objek::updatedata');
-    $routes->POST('delitem', 'trumum\anggaran\Objek::deletedata');
-
+    // $routes->GET('/', 'main\declaration\Company::index');
+    // $routes->GET('input', 'main\declaration\Company::inputData');
+    // $routes->POST('save', 'main\declaration\Company::saveData');
+    // $routes->GET('inputmodal/(:any)', 'main\declaration\Company::inputModal/$1');
+    // $routes->POST('savemodal/(:any)', 'main\declaration\Company::saveModal/$1');
+    // $routes->GET('tablemodal', 'main\declaration\Company::tableModal');
     // $routes->POST('addbudget', 'umum\anggaran\Cabang::tambahdata');
     // $routes->POST('savedoc', 'umum\anggaran\Cabang::savedokumen');
     // // $routes->GET('bataldoc/(:any)', 'umum\anggaran\Biayatidaklangsung::canceldokumen/$1');
@@ -428,7 +429,6 @@ $routes->group('anggobjek', ['filter' => 'auth'],  function ($routes) {
     // // $routes->GET('editkas', 'proyek\anggaran\Biayatidaklangsung::modalkoreksikas');
     // // $routes->POST('delbudget', 'umum\anggaran\Camp::deletedata');
 });
-
 
 
 // $routes->group('sojual', ['filter' => 'auth'],  function ($routes) {
@@ -764,27 +764,57 @@ $routes->group('jualbahan', ['filter' => 'auth'],  function ($routes) {
     // $routes->POST('delitem', 'camp\Biayalangsung::deletedata');
 });
 
-// Transaksi Kas____________________________________________________________________________________________________________________________
-$routes->group('kaspindah', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'kas\mintakas\KasPindah::index');
-    $routes->GET('input', 'kas\mintakas\KasPindah::inputData');
-    $routes->POST('cari', 'campur\LoadTransaksi::tabelKasinduk');
-    $routes->POST('save', 'kas\mintakas\KasPindah::saveData');
-    $routes->GET('klikbeban', 'campur\LoadMain::modalBeban');
-    $routes->POST('peminta', 'campur\LoadMain::loadUser');
-    $routes->POST('penerima', 'campur\LoadMain::loadPenerima');
-    $routes->POST('akun', 'campur\LoadMain::loadAkun');
+// Cash Transaction ___________________________________________________________________________________________________________________________________________________________________________________________
+// $routes->group('kaspindah', ['filter' => 'auth'],  function ($routes) {
+//     $routes->GET('/', 'kas\mintakas\KasPindah::index');
+//     $routes->GET('input', 'kas\mintakas\KasPindah::inputData');
+//     $routes->POST('cari', 'campur\LoadTransaksi::tabelKasinduk');
+//     $routes->POST('save', 'kas\mintakas\KasPindah::saveData');
+//     $routes->GET('klikbeban', 'campur\LoadMain::modalBeban');
+//     $routes->POST('peminta', 'campur\LoadMain::loadUser');
+//     $routes->POST('penerima', 'campur\LoadMain::loadPenerima');
+//     $routes->POST('akun', 'campur\LoadMain::loadAkun');
+// });
+
+// $routes->group('project', ['filter' => 'auth'],  function ($routes) {
+//     $routes->GET('/', 'main\asset\Project::index');
+//     $routes->GET('input', 'main\asset\Project::inputData');
+//     $routes->POST('search', 'main\asset\Project::searchData');
+//     $routes->POST('save', 'main\asset\Project::saveData');
+//     $routes->POST('district', 'main\asset\Project::loadDistrict');
+//     $routes->POST('offFocusProject', 'main\asset\Project::offFocusProject');
+// });
+
+$routes->group('directcash', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'trcash\expense\Directcash::index');
+    $routes->GET('input', 'trcash\expense\Directcash::inputData');
+    $routes->GET('table1', 'trcash\expense\Directcash::tableAP');
+    $routes->GET('table2', 'trcash\expense\Directcash::tableCash');
+    $routes->POST('add', 'trcash\expense\Directcash::addData');
+    // $routes->POST('save', 'trgeneral\budget\AccountBudget::saveData');
+
+
+    // $routes->GET('input', 'trgeneral\budget\AccountBudget::inputData');
+    // $routes->GET('table', 'trgeneral\budget\AccountBudget::tableData');
+    // $routes->POST('save', 'trgeneral\budget\AccountBudget::saveData');
+    // // $routes->POST('edititem', 'trumum\anggaran\Objek::updatedata');
+
+    // $routes->POST('save', 'trcash\expense\Directcash::saveData');
+    // $routes->POST('cancel', 'trcash\expense\Directcash::cancelData');
 });
-$routes->group('uangmuka', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'kas\mintakas\UangMuka::index');
-    $routes->GET('input', 'kas\mintakas\UangMuka::inputData');
-    $routes->POST('cari', 'campur\LoadTransaksi::tabelKasinduk');
-    $routes->POST('save', 'kas\mintakas\UangMuka::saveData');
-    $routes->GET('klikbeban', 'campur\LoadMain::modalBeban');
-    $routes->POST('peminta', 'campur\LoadMain::loadUser');
-    $routes->POST('penerima', 'campur\LoadMain::loadPenerima');
-    $routes->POST('akun', 'campur\LoadMain::loadAkun');
+$routes->group('advancepayment', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'trcash\expense\Advancepayment::index');
+    $routes->GET('input', 'trcash\expense\Advancepayment::inputData');
+    // $routes->POST('save', 'trcash\expense\Advancepayment::saveData');
+    // $routes->POST('cancel', 'trcash\expense\Advancepayment::cancelData');
 });
+$routes->group('cashtransfer', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'trcash\expense\Cashtransfer::index');
+    $routes->GET('input', 'trcash\expense\Cashtransfer::inputData');
+    // $routes->POST('save', 'trcash\expense\Cashtransfer::saveData');
+    // $routes->POST('cancel', 'trcash\expense\Cashtransfer::cancelData');
+});
+
 $routes->group('uangjalan', ['filter' => 'auth'],  function ($routes) {
     $routes->GET('/', 'kas\mintakas\UangJalan::index');
     $routes->GET('input', 'kas\mintakas\UangJalan::inputData');

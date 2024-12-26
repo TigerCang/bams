@@ -9,57 +9,62 @@ class UserLog extends Migration
     public function up()
     {
         $this->forge->addField([
-            'id'                    => [
-                'type'                  => 'BIGINT',
-                'constraint'            => 20,
-                'unsigned'              => true,
-                'auto_increment'        => true,
+            'id'                            => [
+                'type'                          => 'BIGINT',
+                'constraint'                    => 20,
+                'unsigned'                      => true,
+                'auto_increment'                => true,
             ],
-            'idunik'                => [ //optional
-                'type'                  => 'VARCHAR',
-                'constraint'            => 255,
+            'unique'                        => [
+                'type'                          => 'VARCHAR',
+                'constraint'                    => 255,
             ],
-            'usernama'              => [
-                'type'                  => 'VARCHAR',
-                'constraint'            => 255,
+            'username'                      => [
+                'type'                          => 'VARCHAR',
+                'constraint'                    => 255,
             ],
-            'menu'                  => [ //optional tunggu tes
-                'type'                  => 'VARCHAR',
-                'constraint'            => 255,
+            'menu'                          => [ // optional 
+                'type'                          => 'VARCHAR',
+                'constraint'                    => 255,
             ],
-            'aksi'                  => [
-                'type'                  => 'VARCHAR',
-                'constraint'            => 255,
+            'action'                        => [
+                'type'                          => 'VARCHAR',
+                'constraint'                    => 255,
             ],
-            'data'                  => [
-                'type'                  => 'VARCHAR',
-                'constraint'            => 255,
+            'data'                          => [
+                'type'                          => 'VARCHAR',
+                'constraint'                    => 255,
             ],
-            'catatan'               => [
-                'type'                  => 'TEXT',
+            'notes'                         => [
+                'type'                          => 'TEXT',
             ],
-            'alamat'                => [
-                'type'                  => 'TEXT',
+            'source'                        => [
+                'type'                          => 'VARCHAR',
+                'constraint'                    => 255,
+                'default'                       => 'a',
             ],
-            'ip_address'            => [
-                'type'                  => 'VARCHAR',
-                'constraint'            => 255,
+            'web_address'                   => [
+                'type'                          => 'TEXT',
             ],
-            'user_agent'            => [ // Browser OS Device
-                'type'                  => 'TEXT',
+            'ip_address'                    => [
+                'type'                          => 'VARCHAR',
+                'constraint'                    => 255,
             ],
-            'last_act'              => [
-                'type'                  => 'BIGINT',
-                'constraint'            => 20,
-                'unsigned'              => true,
+            'user_agent'                    => [ // Browser OS Device
+                'type'                          => 'TEXT',
             ],
-            'created_at'            => [
-                'type'                  => 'DATETIME',
-                'null'                  => true,
+            'last_act'                      => [
+                'type'                          => 'BIGINT',
+                'constraint'                    => 20,
+                'unsigned'                      => true,
             ],
-            'updated_at'            => [
-                'type'                  => 'DATETIME',
-                'null'                  => true,
+            'created_at'                    => [
+                'type'                          => 'DATETIME',
+                'null'                          => true,
+            ],
+            'updated_at'                    => [
+                'type'                          => 'DATETIME',
+                'null'                          => true,
             ],
         ]);
         $this->forge->addKey('id', true);

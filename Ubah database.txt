@@ -1,0 +1,12 @@
+Cek Link
+Cash Account, Tax Account 
+Branch, Equipment, Inventory, Land Building, Project, Segment, Sub Segment, Tool
+Distance, resources, dayoff, employee, formcode, formnumber, rating kategori
+Item, Material, Serial, Warehouse, partnervehicle, recipient
+
+
+
+Ubah database m_budget -> m_budget1
+              +m_budget2
+
+              

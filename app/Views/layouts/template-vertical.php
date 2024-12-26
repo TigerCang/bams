@@ -2,7 +2,7 @@
 <html lang="en" class="light-style layout-navbar-fixed layout-menu-fixed layout-compact" dir="ltr" data-theme="theme-default" data-assets-path="<?= base_url('libraries') ?>/" data-template="vertical-menu-template" data-style="light">
 
 <head>
-    <title><?= json('xcode') ?> | <?= json('xdesk') ?></title>
+    <title><?= json('xCode') ?> | <?= json('xDescription') ?></title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -17,6 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&ampdisplay=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp|Material+Icons+Two+Tone" rel="stylesheet" />
 
     <!-- Icons -->
     <link rel="stylesheet" href="<?= base_url('libraries') ?>/cang/fonts/remixicon-4.3/remixicon.css" />
@@ -51,7 +52,7 @@
     <!-- Row Group CSS -->
     <link rel="stylesheet" href="<?= base_url('libraries') ?>/vendor/libs/datatables-rowgroup-bs5/rowgroup.bootstrap5.css" />
 
-    <!-- Page CSS mau dibuang-->
+    <!-- Page CSS mau out-->
     <link rel="stylesheet" href="<?= base_url('libraries') ?>/vendor/css/pages/cards-statistics.css" />
 
     <!-- jQuery -->
@@ -85,8 +86,8 @@
 
                 <div class="content-wrapper">
                     <div class="container-xxl flex-grow-1 container-p-y">
-                        <?php if (!empty($t_judul)) : ?>
-                            <h4 class="mb-1"><?= htmlspecialchars($t_judul, ENT_QUOTES, 'UTF-8') ?></h4>
+                        <?php if (!empty($t_title)) : ?>
+                            <h4 class="mb-1"><?= htmlspecialchars($t_title, ENT_QUOTES, 'UTF-8') ?></h4>
                         <?php endif ?>
                         <?php if (!empty($t_span)) : ?>
                             <p class="mb-4"><?= htmlspecialchars($t_span, ENT_QUOTES, 'UTF-8') ?></p>
@@ -153,7 +154,6 @@
     <script src="<?= base_url('libraries') ?>/cang/js/datatable.js"></script>
     <script src="<?= base_url('libraries') ?>/cang/bootstrap5-toggle/js/bootstrap5-toggle.jquery.min.js"></script>
     <script src="<?= base_url('libraries') ?>/cang/js/treeview.js"></script>
-    <!-- <script src="<?= base_url('libraries') ?>/cang/js/kursor.js"></script> -->
 </body>
 
 </html>

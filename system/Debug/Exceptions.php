@@ -274,7 +274,7 @@ class Exceptions
             ob_end_clean();
         }
 
-        echo(function () use ($exception, $statusCode, $viewFile): string {
+        echo (function () use ($exception, $statusCode, $viewFile): string {
             $vars = $this->collectVars($exception, $statusCode);
             extract($vars, EXTR_SKIP);
 

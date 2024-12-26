@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class LogModel extends Model
 {
     protected $table      = 'user_log';
-    protected $allowedFields = ['idunik', 'usernama', 'menu', 'aksi',  'data', 'catatan', 'alamat', 'ip_address', 'user_agent', 'last_act'];
+    protected $allowedFields = ['unique', 'username', 'menu', 'action', 'data', 'notes', 'web_address', 'ip_address', 'user_agent', 'last_act'];
     protected $useTimestamps = true;
     protected $urls;
 
@@ -17,19 +17,20 @@ class LogModel extends Model
         $this->urls = explode('/', $_SERVER['REQUEST_URI']);
     }
 
-    public function saveLog($aksi, $idunik, $data = '', $catatan = '')
+    public function saveLog($action, $unique = '', $data = '', $notes = '', $source = 'a')
     {
         $session = \Config\Services::session();
         $request = \Config\Services::request();
 
         $this->save([
-            'idunik' => $idunik,
-            'usernama' => $session->get()['usernama'] ?? '',
+            'unique' => $unique,
+            'username' => decrypt($session->get()['username'] ?? ''),
             'menu' => $this->urls[1],
-            'aksi' => $aksi,
+            'action' => $action,
             'data' => $data,
-            'catatan' => $catatan,
-            'alamat' => $session->get()['_ci_previous_url'] ?? '',
+            'notes' => $notes,
+            'source' => $source,
+            'web_address' => $session->get()['_ci_previous_url'] ?? '',
             'ip_address' => getIP(),
             'user_agent' => $request->getUserAgent()->getBrowser() . ' ' . $request->getUserAgent()->getVersion() .
                 ', ' . $request->getUserAgent()->getPlatform() . ', ' . $request->getUserAgent()->getMobile(),

@@ -9,9 +9,9 @@ class User extends BaseController
 {
     public function index()
     {
-        checkPage('102');
+        checkPage('104');
         $data = [
-            't_judul' => lang('app.user'),
+            't_title' => lang('app.user'),
             't_span' => lang('app.span user'),
             'link' => '/user',
             'user' => $this->mainModel->getUser($this->urls[1]),
@@ -19,120 +19,111 @@ class User extends BaseController
         $this->render('admin/user_list', $data);
     }
 
-    // _________________________________________________________________________________________________________________________
+    // ___________________________________________________________________________________________________________________________________________________________________________________________
     public function inputData()
     {
-        $db1 = $this->mainModel->satuID('m_user', $this->request->getVar('datakey'), 'u');
-        checkPage('101', $db1, 'y', 'n');
+        $db1 = $this->mainModel->getData('m_user', $this->request->getVar('search'), 'u');
+        checkPage('104', $db1, 'y', 'n');
         $buttons = setButton($db1);
-        if ($this->request->getVar('datakey')) $this->logModel->saveLog('Read', $this->request->getVar('datakey'), "{$db1[0]->kode}");
+        if ($this->request->getVar('search')) $this->logModel->saveLog('Read', $db1[0]->unique, $db1[0]->code);
 
         $data = [
-            't_judul' => lang('app.user'),
+            't_title' => lang('app.user'),
             't_span' => lang('app.span user'),
             'link' => "/user",
-            'perusahaan' => $this->mainModel->getPerusahaan('', 't'),
-            'wilayah' => $this->mainModel->getBerkas('', 'wilayah', 't'),
-            'divisi' => $this->mainModel->getBerkas('', 'divisi', 't'),
-            'jabatan' => $this->mainModel->getBerkas('', 'jabatan', 't'),
-            'proyek' => $this->mainModel->getProyek('', 't'),
-            'cabang' => $this->mainModel->getCabang('', 't'),
-            'alat' => $this->mainModel->getAlat('', 't', 'multi'),
-            'tanah' => $this->mainModel->getTanah('', 't'),
-            'kasbank' => $this->mainModel->getKelakun('', 'kas', 't'),
+            'company' => $this->mainModel->getCompany('', 't'),
+            'region' => $this->mainModel->getFile('', 'region', 't'),
+            'division' => $this->mainModel->getFile('', 'division', 't'),
+            'salary' => $this->mainModel->getFile('', 'salary group', 't'),
+            'project' => $this->mainModel->getProject('', 't'),
+            'branch' => $this->mainModel->getBranch('', 't'),
+            'tool' => $this->mainModel->getTool('', 't', 'multi'),
+            'land' => $this->mainModel->getLand('', 't'),
+            'cash' => $this->mainModel->getGroupAccount('', 'cash', 't'),
             'role' => $this->mainModel->getRole('', 't'),
-            'token' => $this->mainModel->getToken('', $db1[0]->token_id),
-            'useratas' => $this->mainModel->satuID('m_user', $db1[0]->atasan_id ?? '', '', 'kode', 't'),
+            'token' => $this->mainModel->getData('user_token', $db1[0]->token_id ?? '', '', 'id'),
+            'supervisor' => $this->mainModel->getData('m_user', $db1[0]->supervisor_id ?? '', '', 'id', 't'),
             'user' => $db1,
-            'button' => ['save' => $buttons['bsave'], 'conf' => $buttons['bconf'], 'del' => $buttons['bdel'], 'aktif' => $buttons['baktif']],
-            'btnaktif' => (isset($db1[0]->kondisi[2]) && $db1[0]->kondisi[2] == '0' ? lang('app.btn aktif') : lang('app.btn inaktif')),
-            'acby' => (isset($db1[0]->kondisi[2]) && $db1[0]->kondisi[2] == '0' ? lang('app.inacby') : lang('app.acby')),
+            'button' => ['save' => $buttons['save'], 'confirm' => $buttons['confirm'], 'delete' => $buttons['delete'], 'active' => $buttons['active']],
+            'btn_active' => (isset($db1[0]) && $db1[0]->adaptation[2] == '0' ? lang('app.btn active') : lang('app.btn inactive')),
+            'active_by' => (isset($db1[0]) && $db1[0]->adaptation[2] == '0' ? lang('app.inactive by') : lang('app.active by')),
         ];
         $this->render('admin/user_input', $data);
     }
 
-    // _________________________________________________________________________________________________________________________
+    // ___________________________________________________________________________________________________________________________________________________________________________________________
     public function saveData()
     {
         if ($this->request->isAJAX()) {
-            $db1 = $this->mainModel->satuID('m_user', $this->request->getVar('idunik'));
-            $rule_atasan = ($this->request->getVar('usernama') == $this->request->getVar('atasan') ? 'valid_email' : 'permit_empty');
+            $db1 = $this->mainModel->getData('m_user', $this->request->getVar('unique'));
+            $rule_supervisor = ($this->request->getVar('username') == $this->request->getVar('supervisor') ? 'valid_email' : 'permit_empty');
 
-            $validationRules = [
-                'atasan' => ['rules' => $rule_atasan, 'errors' => ['valid_email' => lang("app.err unik")]],
-            ];
+            $validationRules = ['supervisor' => ['rules' => $rule_supervisor, 'errors' => ['valid_email' => lang("app.err unique")]]];
             if (!$this->validate($validationRules)) {
-                $msg = ['error' => ['atasan' => $this->validation->getError('atasan')]];
+                $msg = ['error' => ['supervisor' => $this->validation->getError('supervisor')]];
             } else {
-                //Simpan
-                if ($this->request->getVar('postaction') == 'save') {
-                    $perusahaanmulti = (empty($this->request->getPost('aksesPerusahaan')) || $this->request->getPost('aksesPerusahaan') == ',') ? ',' : ',' . $this->request->getPost('aksesPerusahaan') . ',';
-                    $wilayahmulti = (empty($this->request->getPost('aksesWilayah')) || $this->request->getPost('aksesWilayah') == ',') ? ',' : ',' . $this->request->getPost('aksesWilayah') . ',';
-                    $divisimulti = (empty($this->request->getPost('aksesDivisi')) || $this->request->getPost('aksesDivisi') == ',') ? ',' : ',' . $this->request->getPost('aksesDivisi') . ',';
-                    $jabatanmulti = (!empty($_POST['daftarjabatan']) ? ',' . implode(",", $_POST['daftarjabatan']) . ',' : '' . ',');
-                    $proyekmulti = (!empty($_POST['daftarproyek']) ? ',' . implode(",", $_POST['daftarproyek']) . ',' : '' . ',');
-                    $cabangmulti = (!empty($_POST['daftarcabang']) ? ',' . implode(",", $_POST['daftarcabang']) . ',' : '' . ',');
-                    $alatmulti = (!empty($_POST['daftaralat']) ? ',' . implode(",", $_POST['daftaralat']) . ',' : '' . ',');
-                    $tanahmulti = (!empty($_POST['daftartanah']) ? ',' . implode(",", $_POST['daftartanah']) . ',' : '' . ',');
-                    $kasbankmulti = (!empty($_POST['daftarkasbank']) ? ',' . implode(",", $_POST['daftarkasbank']) . ',' : '' . ',');
-                    $kondisi = $db1[0]->kondisi[0] . '0' . $db1[0]->kondisi[2];
-                    $fieldAksi = ['buat', 'baca', 'ubah', 'hapus', 'konf', 'aktif'];
-                    $button = implode('', array_map(fn($field) => $this->request->getVar($field) == 'on' ? '1' : '0', $fieldAksi));
-                    $fieldAkses = ['perusahaan', 'wilayah', 'divisi', 'jabatan', 'proyek', 'cabang', 'alat', 'tanah', 'super', 'saring'];
-                    $akses = implode('', array_map(fn($field) => $this->request->getVar($field) == 'on' ? '1' : '0', $fieldAkses));
-
-                    var_dump($db1[0]->id, $this->request->getVar('atasan'));
-                    die;
+                // Save
+                if ($this->request->getVar('postAction') == 'save') {
+                    $companyMulti = (empty($this->request->getPost('accessCompany')) || $this->request->getPost('accessCompany') == ',') ? ',' : ',' . $this->request->getPost('accessCompany') . ',';
+                    $regionMulti = (empty($this->request->getPost('accessRegion')) || $this->request->getPost('accessRegion') == ',') ? ',' : ',' . $this->request->getPost('accessRegion') . ',';
+                    $divisionMulti = (empty($this->request->getPost('accessDivision')) || $this->request->getPost('accessDivision') == ',') ? ',' : ',' . $this->request->getPost('accessDivision') . ',';
+                    $salaryMulti = (!empty($_POST['listSalary']) ? ',' . implode(",", $_POST['listSalary']) . ',' : '' . ',');
+                    $projectMulti = (!empty($_POST['listProject']) ? ',' . implode(",", $_POST['listProject']) . ',' : '' . ',');
+                    $branchMulti = (!empty($_POST['listBranch']) ? ',' . implode(",", $_POST['listBranch']) . ',' : '' . ',');
+                    $toolMulti = (!empty($_POST['listTool']) ? ',' . implode(",", $_POST['listTool']) . ',' : '' . ',');
+                    $landMulti = (!empty($_POST['listLand']) ? ',' . implode(",", $_POST['listLand']) . ',' : '' . ',');
+                    $cashMulti = (!empty($_POST['listCash']) ? ',' . implode(",", $_POST['listCash']) . ',' : '' . ',');
+                    $adaptation = $db1[0]->adaptation[0] . '0' . $db1[0]->adaptation[2];
+                    $fieldAction = ['create', 'read', 'edit', 'delete', 'confirm', 'active'];
+                    $button = implode('', array_map(fn($field) => $this->request->getVar($field) == 'on' ? '1' : '0', $fieldAction));
+                    $fieldAccess = ['company', 'region', 'division', 'salary', 'project', 'branch', 'tool', 'land', 'super', 'saring'];
+                    $access = implode('', array_map(fn($field) => $this->request->getVar($field) == 'on' ? '1' : '0', $fieldAccess));
 
                     $this->userModel->save([
                         'id' => $db1[0]->id,
                         'role_id' => $this->request->getVar('role'),
-                        'atasan_id' => $this->request->getVar('atasan'),
-                        'act_setuju' => $this->request->getVar('setuju'),
-                        'act_limit' => ubahSeparator($this->request->getVar('batas')),
+                        'supervisor_id' => $this->request->getVar('supervisor'),
+                        'act_approve' => $this->request->getVar('approve'),
+                        'act_limit' => changeSeparator($this->request->getVar('limit')),
                         'act_button' => $button,
-                        'act_akses' => $akses,
-                        'perusahaan' => $perusahaanmulti,
-                        'wilayah' => $wilayahmulti,
-                        'divisi' => $divisimulti,
-                        'jabatan' => $jabatanmulti,
-                        'proyek' => $proyekmulti,
-                        'cabang' => $cabangmulti,
-                        'alat' => $alatmulti,
-                        'tanah' => $tanahmulti,
-                        'kasbank' => $kasbankmulti,
-                        'kondisi' => $kondisi,
+                        'act_access' => $access,
+                        'company' => $companyMulti,
+                        'region' => $regionMulti,
+                        'division' => $divisionMulti,
+                        'salary' => $salaryMulti,
+                        'project' => $projectMulti,
+                        'branch' => $branchMulti,
+                        'tool' => $toolMulti,
+                        'land' => $landMulti,
+                        'cash' => $cashMulti,
+                        'adaptation' => $adaptation,
                         'save_by' => $this->user['id'],
                     ]);
-                    $this->logModel->saveLog('Save', $db1[0]->idunik, $db1[0]->kode);
-                    $this->session->setFlashdata(['pesan' => "{$db1[0]->kode}" . lang("app.judul ubah")]);
+                    $this->logModel->saveLog('Save', $db1[0]->unique, $db1[0]->code);
+                    $this->session->setFlashdata(['message' => $db1[0]->code . lang("app.title edit")]);
                 }
 
-                //Konfirmasi
-                if ($this->request->getVar('postaction') == 'confirm') {
-                    $kondisi = '11' . $db1[0]->kondisi[2];
-                    $this->userModel->save(['id' => $db1[0]->id, 'kondisi' => $kondisi, 'conf_by' => $this->user['id']]);
-                    $this->logModel->saveLog('Confirm', "{$db1[0]->idunik}", "{$db1[0]->kode}");
-                    $this->session->setFlashdata(['pesan' => "{$db1[0]->kode}" . lang("app.judul konf")]);
+                // Confirm
+                if ($this->request->getVar('postAction') == 'confirm') {
+                    $adaptation = '11' . $db1[0]->adaptation[2];
+                    $this->userModel->save(['id' => $db1[0]->id, 'adaptation' => $adaptation, 'conf_by' => $this->user['id']]);
+                    $this->logModel->saveLog('Confirm', $db1[0]->unique, $db1[0]->code);
+                    $this->session->setFlashdata(['message' => $db1[0]->code . lang("app.title confirm")]);
                 }
 
                 // Delete
-                if ($this->request->getVar('postaction') == 'hapus') {
-                    $this->alatModel->delete($db1[0]->id);
-                    $this->logModel->saveLog('Delete', "{$db1[0]->idunik}", "{$db1[0]->kode}");
-                    $this->session->setFlashdata(['pesan' => "{$db1[0]->kode}" . lang("app.judul hapus")]);
+                if ($this->request->getVar('postAction') == 'delete') {
+                    $this->userModel->delete($db1[0]->id);
+                    $this->logModel->saveLog('Delete', $db1[0]->unique, $db1[0]->code);
+                    $this->session->setFlashdata(['message' => $db1[0]->code . lang("app.title delete")]);
                 }
 
-                //Aktifasi
-                if ($this->request->getVar('postaction') == 'aktif') {
-                    $kondisi = $db1[0]->kondisi[2] == '1';
-                    $akhir = $kondisi ? '0' : '1';
-                    $onoff = $kondisi ? 'nonaktif' : 'aktif';
-                    $judul = $kondisi ? lang("app.judul inaktif") : lang("app.judul aktif");
-
-                    $this->alatModel->save(['id' => $db1[0]->id, 'kondisi' => substr($db1[0]->kondisi, 0, 2) . $akhir, 'aktif_by' => $this->user['id']]);
-                    $this->logModel->saveLog('Active', "{$db1[0]->idunik}", "{$db1[0]->kode} {$onoff}");
-                    $this->session->setFlashdata(['pesan' => "{$db1[0]->kode} {$judul}"]);
+                // Active
+                if ($this->request->getVar('postAction') == 'active') {
+                    $result = $db1[0]->adaptation[2] == '1' ? ['0', 'inactive', lang("app.title inactive")] : ['1', 'active', lang("app.title active")];
+                    $this->userModel->save(['id' => $db1[0]->id, 'adaptation' => substr($db1[0]->adaptation, 0, 2) . $result[0], 'active_by' => $this->user['id']]);
+                    $this->logModel->saveLog('Active', $db1[0]->unique, "{$db1[0]->code} {$result[1]}");
+                    $this->session->setFlashdata(['message' => "{$db1[0]->code} {$result[2]}"]);
                 }
                 $msg = ['redirect' => '/user'];
             }
