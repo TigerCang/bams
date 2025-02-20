@@ -57,10 +57,11 @@
     $(document).on('click', '.btn-input', function(e) {
         e.preventDefault();
         var getUnique = $(this).data('unique') || '';
-        if (link === '/company') {
+
+        if (new URL(link).pathname === '/company') {
             var url = link + '/input?search=' + getUnique;
             window.location.href = url;
-        } else if (link === '/linkcompany') {
+        } else if (new URL(link).pathname === '/linkcompany') {
             $.ajax({
                 url: link + "/input",
                 data: {

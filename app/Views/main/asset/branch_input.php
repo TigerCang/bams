@@ -27,7 +27,7 @@
                     </div>
                     <div class="col-12 col-md-6 col-lg-6 mb-2">
                         <div class="form-floating form-floating-outline">
-                            <select class="select2-subtext form-select" id="company" name="company" <?= (isset($branch[0]->adaptation[0]) && $branch[0]->adaptation[0] == '1' ? 'disabled' : '') ?>>
+                            <select class="select2-non form-select" id="company" name="company" <?= (isset($branch[0]->adaptation[0]) && $branch[0]->adaptation[0] == '1' ? 'disabled' : '') ?>>
                                 <?= companyOptions($company, $branch, thisUser()) ?>
                             </select>
                             <div id="error" class="invalid-feedback err_company"></div>
@@ -125,7 +125,7 @@
         e.preventDefault();
         var getAction = $(this).val();
         if (getAction === 'delete') {
-            deleteConfirmation("<?= lang('app.sure') ?>").then((result) => {
+            askConfirmation("<?= lang('app.sure') ?>", "<?= lang('app.confirm delete') ?>").then((result) => {
                 if (result.isConfirmed) {
                     submitForm(getAction);
                 } else {

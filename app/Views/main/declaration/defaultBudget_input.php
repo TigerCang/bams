@@ -12,8 +12,8 @@
                 <input type="hidden" id="xSource" name="xSource" value="<?= ($budget[0]->source ?? '') ?>" />
                 <input type="hidden" id="xObject" name="xObject" value="<?= ($budget[0]->object ?? '') ?>" />
                 <input type="hidden" id="xType" name="xType" value="<?= ($budget[0]->type ?? '') ?>" />
-                <input type="hidden" id="access" name="access" />
-                <div id="error" class="invalid-feedback alert alert-danger err_access" role="alert"></div>
+                <input type="hidden" id="askSave" name="askSave" />
+                <div id="error" class="invalid-feedback alert alert-danger err_askSave" role="alert"></div>
                 <div class="row g-2">
                     <div class="col-12 col-md-4 col-lg-4 mb-2">
                         <div class="form-floating form-floating-outline">
@@ -22,25 +22,21 @@
                                     <option value="<?= $db->name ?>" <?= (isset($budget[0]->source) && $budget[0]->source == $db->name ? 'selected' : '') ?>><?= lang('app.' . $db->name) ?></option>
                                 <?php endforeach ?>
                             </select>
+                            <div id="error" class="invalid-feedback err_source"></div>
                             <label for="source"><?= lang('app.source') ?></label>
                         </div>
                     </div>
                     <div class="col-12 col-md-4 col-lg-4 mb-2">
                         <div class="form-floating form-floating-outline">
-                            <select class="select2-non form-select" id="object" name="object" <?= (isset($budget[0]->adaptation[0]) && $budget[0]->adaptation[0] == '1' ? 'disabled' : '') ?>>
-                                <?php foreach ($selectObject as $db) :
-                                    if ($db->number <= 10) : ?>
-                                        <option value="<?= $db->name ?>" <?= (isset($budget[0]->object) && $budget[0]->object == $db->name ? 'selected' : '') ?>><?= lang('app.' . $db->name) ?></option>
-                                    <?php endif ?>
-                                <?php endforeach ?>
+                            <select class="select2-non form-select" id="object" name="object" <?= (isset($budget[0]) ? 'disabled' : '') ?>>
+                                <?= objectOptions($selectObject, '', thisUser(), '') ?>
                             </select>
-                            <div id="error" class="invalid-feedback err_object"></div>
                             <label for="object"><?= lang('app.object') ?></label>
                         </div>
                     </div>
                     <div class="col-12 col-md-4 col-lg-4 mb-2" id="zType">
                         <div class="form-floating form-floating-outline">
-                            <select class="select2-non form-select" id="type" name="type" data-placeholder="<?= lang('app.select-') ?>">
+                            <select class="select2-non form-select" id="type" name="type" <?= (isset($budget[0]) ? 'disabled' : '') ?> data-placeholder="<?= lang('app.select-') ?>">
                                 <?php foreach ($type as $db) : ?>
                                     <option value="<?= $db->code ?>" <?= (isset($budget[0]->type) && $budget[0]->type == $db->code ? 'selected' : '') ?>><?= $db->name ?></option>
                                 <?php endforeach ?>
@@ -93,16 +89,11 @@
     <div class="col-12">
         <div class="card mb-6">
             <div class="card-body">
-                <div id="alertContainer"></div>
-                <div id="flashMessage">
-                    <?php if (session()->getFlashdata('message')):
-                        echo json('alert success-1') . session()->getFlashdata('message') . "</div>";
-                    endif ?>
-                </div>
+                <div id="alertContainer4" class="mt-2"></div>
                 <div class="row" id="zCost">
                     <div class="col-12 mb-4">
                         <div class="form-floating form-floating-outline">
-                            <select class="select2-subtext form-select" id="cost" name="cost" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>"></select>
+                            <select class="select2-non form-select" id="cost" name="cost" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>"></select>
                             <div id="error" class="invalid-feedback err_cost"></div>
                             <label for="cost"><?= lang('app.cost') ?></label>
                         </div>
@@ -111,7 +102,7 @@
                 <div class="row" id="zAccount">
                     <div class="col-12 mb-4">
                         <div class="form-floating form-floating-outline">
-                            <select class="select2-subtext form-select" id="account" name="account" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>"></select>
+                            <select class="select2-non form-select" id="account" name="account" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>"></select>
                             <div id="error" class="invalid-feedback err_account"></div>
                             <label for="account"><?= lang('app.account number') ?></label>
                         </div>
@@ -218,6 +209,7 @@
     $(document).ready(function() {
         tableBudget();
         $("#source, #object, #type").trigger("change")
+
         $('#account').select2({
             ajax: {
                 url: "/load/account",
@@ -231,7 +223,6 @@
                     };
                 },
                 processResults: function(response) {
-                    console.log(response);
                     return {
                         results: response
                     };
@@ -239,8 +230,6 @@
                 cache: true
             },
             <?= json('min input') ?>,
-            <?= json('template 1') ?>,
-            <?= json('template 2') ?>,
         });
 
         $('#cost').select2({
@@ -265,8 +254,6 @@
                 cache: true
             },
             <?= json('min input') ?>,
-            <?= json('template 1') ?>,
-            <?= json('template 2') ?>,
         });
     });
 
@@ -292,11 +279,10 @@
                 $('.btn-add').html("<?= lang('app.btn add') ?>");
             },
             success: function(response) {
-                $('#access, #object, #title, #cost, #account, #total').removeClass('is-invalid');
-                $('.err_access, .err_object, .err_title, .err_cost, .err_account, .err_total').html('');
+                $('#source, #title, #cost, #account, #total').removeClass('is-invalid');
+                $('.err_source, .err_title, .err_cost, .err_account, .err_total').html('');
                 if (response.error) {
-                    handleFieldError('access', response.error.access);
-                    handleFieldError('object', response.error.object);
+                    handleFieldError('source', response.error.source);
                     handleFieldError('title', response.error.title);
                     handleFieldError('cost', response.error.cost);
                     handleFieldError('account', response.error.account);
@@ -305,8 +291,7 @@
                     window.location.href = response.redirect;
                 } else if (response.message) {
                     var alertHtml = `<div class="alert alert-success alert-dismissible fade show" role="alert">${response.message}</div>`;
-                    $('#alertContainer').html(alertHtml);
-                    $('#flashMessage').html('');
+                    $('#alertContainer4').html(alertHtml);
                     clearElements();
                     tableBudget();
                 }
@@ -338,7 +323,7 @@
         e.preventDefault();
         var getAction = $(this).val();
         if (getAction === 'delete') {
-            deleteConfirmation("<?= lang('app.sure') ?>").then((result) => {
+            askConfirmation("<?= lang('app.sure') ?>", "<?= lang('app.confirm delete') ?>").then((result) => {
                 if (result.isConfirmed) {
                     submitForm(getAction);
                 } else {
@@ -374,14 +359,11 @@
                 });
             },
             success: function(response) {
-                $('#askDelete, #code, #initial, #description, #picture').removeClass('is-invalid');
-                $('.err_askDelete, .err_code, .err_initial, .err_description, .err_picture').html('');
+                $('#askSave, #title').removeClass('is-invalid');
+                $('.err_askSave, .err_title').html('');
                 if (response.error) {
-                    handleFieldError('askDelete', response.error.askDelete);
-                    handleFieldError('code', response.error.code);
-                    handleFieldError('initial', response.error.initial);
-                    handleFieldError('description', response.error.description);
-                    handleFieldError('picture', response.error.picture);
+                    handleFieldError('askSave', response.error.askSave);
+                    handleFieldError('title', response.error.title);
                 } else {
                     window.location.href = response.redirect;
                 }

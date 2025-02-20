@@ -21,7 +21,7 @@ class Resources extends BaseController
         $data = [
             't_title' => lang('app.resources'),
             't_span' => lang('app.span resources'),
-            'link' => '/resources',
+            'link' => base_url('resources'),
             'param' => 'resources',
             'category' => $this->mainModel->distinctCost('resources'),
         ];
@@ -39,7 +39,7 @@ class Resources extends BaseController
 
             $data = [
                 't_modal' => lang('app.resources'),
-                'link' => "/resources",
+                'link' => base_url('resources'),
                 'mpHid' => 'hidden',
                 'kHid' => 'hidden',
                 'jlHid' => '',

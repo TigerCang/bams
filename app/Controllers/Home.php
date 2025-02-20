@@ -4,47 +4,69 @@ namespace App\Controllers;
 
 use Config\App;
 use App\Controllers\BaseController;
-use App\Models\admin\UserModel;
+use App\Models\main\PersonModel;
 
 class Home extends BaseController
 {
-    protected $userModel;
+    protected $personModel;
     public function __construct()
     {
-        $this->userModel = new UserModel();
+        $this->personModel = new PersonModel();
     }
 
     // ___________________________________________________________________________________________________________________________________________________________________________________________
     public function index()
     {
-        $data = [
-            //     't_menu' => lang("app.dasbor"), 't_submenu' => '',
-            //     't_icon' => '<i class="feather icon-home ' . lang("app.xlist") . '"></i>',
-            //     't_diricon' => '<i class="icofont icofont-ui-home"></i>', 't_dir1' => lang("app.home"), 't_dirac' => lang("app.dasbor"), 't_link' => '/',
-            // 'this_user' => $this->user,
-            // 'this_menu' => $this->menu,
-            'template' => (splitUser('template', $this->user)[0]),
-        ];
-        return view('dashboard/home', $data);
+        $data = [];
+
+        $this->render('home/home_view', $data);
     }
 
     // ___________________________________________________________________________________________________________________________________________________________________________________________
-    public function profilpegawai()
+    public function profile()
     {
+        $db = $this->personModel->getPerson(decrypt(session()->username));
+        (empty($db)) && throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         $data = [
-            't_menu' => lang("app.tt_userprofil"),
-            't_submenu' => '',
-            't_icon' => '<i class="icofont icofont-business-man ' . lang("app.xlist") . '"></i>',
-            't_diricon' => '<i class="fa fa-home"></i>',
-            't_dir1' => lang("app.home"),
-            't_dirac' => lang("app.profil"),
-            't_link' => '/profile',
-            'biodata' => $this->deklarModel->getBiodata($this->user['id']),
-            'tuser' => $this->user,
-            'tmenu' => $this->menu,
+            'person' => $db,
+            'company' => $this->mainModel->getData('m_company', $db[0]->company_id, '', 'id'),
         ];
-        (empty($data['biodata'])) && throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
-        return view('home/biodata_view', $data);
+        $this->render('home/profile_view', $data);
+    }
+
+    // ___________________________________________________________________________________________________________________________________________________________________________________________
+    public function layouts()
+    {
+        $db = $this->personModel->getPerson(decrypt(session()->username));
+        (empty($db)) && throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        $data = [
+            't_title' => lang('app.layouts'),
+            't_span' => lang('app.span layouts'),
+            'company' => $this->mainModel->getCompany('', 't'),
+            'region' => $this->mainModel->getFile('', 'region', 't'),
+            'division' => $this->mainModel->getFile('', 'division', 't'),
+            'selectObject' => $this->mainModel->distSelect('object'),
+            'user' => $db,
+            'link' => base_url('layouts'),
+        ];
+        $this->render('home/layouts_input', $data);
+    }
+
+    // ___________________________________________________________________________________________________________________________________________________________________________________________
+    public function saveLayouts()
+    {
+        if ($this->request->isAJAX()) {
+            $db = $this->userModel->getUser(decrypt(session()->username));
+            $defaultHeader = implode(',', [$this->request->getVar('company'), $this->request->getVar('region'), $this->request->getVar('division'), $this->request->getVar('object')]);
+            $this->userModel->save([
+                'id' =>  $db['id'],
+                'set_default' =>  $defaultHeader,
+            ]);
+            $msg = ['message' => lang('app.layouts') . ' ' . decrypt(session()->username) . lang('app.title save')];
+            return $this->response->setJSON($msg);
+        } else {
+            exit('out');
+        }
     }
 
     // ___________________________________________________________________________________________________________________________________________________________________________________________
@@ -76,8 +98,8 @@ class Home extends BaseController
                 ];
             } else {
                 $password = password_hash($this->request->getVar('newPasswordOC'), PASSWORD_DEFAULT);
-                // $this->userModel->save(['id' => $db1['0']->id, 'password' => $password]);
-                // $this->logModel->saveLog('Save', '', $this->request->getVar('usernameOC'));
+                $this->userModel->save(['id' => $db1['0']->id, 'password' => $password]);
+                $this->logModel->saveLog('Save', '', $this->request->getVar('usernameOC'), '', 'a', 'Change Password');
                 $msg = ['success' => lang('app.password success')];
             }
             return $this->response->setJSON($msg);
@@ -92,7 +114,7 @@ class Home extends BaseController
         $data = [
             't_title' => lang("app.activity log"),
             't_span' => lang('app.span user log'),
-            'link' => '/loguser',
+            'link' => base_url('loguser'),
             'blank' => '0',
             'selectUser' => $this->mainModel->getData('m_user', decrypt(session()->username), '', 'code'),
         ];

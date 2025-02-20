@@ -85,8 +85,10 @@
                     </div>
                     <div class="col-12 mb-2">
                         <div class="form-floating form-floating-outline">
-                            <select class="select2-subtext form-select" id="branch" name="branch" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>">
-                                <?php if ($branch1) : ?> <option value="<?= $branch1[0]->id ?>" selected data-subtext="<?= $branch1[0]->name ?>"><?= $branch1[0]->code ?></option><?php endif ?>
+                            <select class="select2-non form-select" id="branch" name="branch" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>">
+                                <?php if ($branch1) : ?>
+                                    <option value="<?= $branch1[0]->id ?>" selected><?= "{$branch1[0]->code} &ensp;&emsp; {$branch1[0]->name}" ?></option>
+                                <?php endif ?>
                             </select>
                             <label for="branch"><?= lang('app.branch') ?></label>
                         </div>
@@ -135,7 +137,9 @@
                                 <?php foreach ($selectGroupSIM as $db1) : ?>
                                     <optgroup label="<?= $db1->group ?>">
                                         <?php foreach ($selectSIM as $db) : ?>
-                                            <?php if ($db->group == $db1->group) : ?> <option value="<?= $db->name ?>" <?= (isset($employee[0]->license_type) && $employee[0]->license_type == $db->name ? 'selected' : '') ?>><?= $db->name ?></option><?php endif ?>
+                                            <?php if ($db->group == $db1->group) : ?>
+                                                <option value="<?= $db->name ?>" <?= (isset($employee[0]->license_type) && $employee[0]->license_type == $db->name ? 'selected' : '') ?>><?= $db->name ?></option>
+                                            <?php endif ?>
                                         <?php endforeach ?>
                                     </optgroup>
                                 <?php endforeach ?>
@@ -164,9 +168,9 @@
                 <div class="row g-2">
                     <div class="col-12 mb-2">
                         <div class="form-floating form-floating-outline">
-                            <select class="select2-subtext form-select" id="employeeStatus" name="employeeStatus">
+                            <select class="select2-non form-select" id="employeeStatus" name="employeeStatus">
                                 <?php foreach ($selectEmployeeStatus as $db) : ?>
-                                    <option value="<?= $db->name ?>" <?= (isset($employee[0]->employee_st) && $employee[0]->employee_st == $db->name ? 'selected' : '') ?> data-subtext="<?= $db->group ?>"><?= $db->name ?></option>
+                                    <option value="<?= $db->name ?>" <?= (isset($employee[0]->employee_st) && $employee[0]->employee_st == $db->name ? 'selected' : '') ?>><?= "{$db->name} &ensp;&emsp; {$db->group}" ?></option>
                                 <?php endforeach ?>
                             </select>
                             <label for="EmployeeStatus"><?= lang('app.employee status') ?></label>
@@ -179,7 +183,9 @@
                                 <?php foreach ($selectGroupPTKP as $db1) : ?>
                                     <optgroup label="<?= $db1->group ?>">
                                         <?php foreach ($selectPTKP as $db) : ?>
-                                            <?php if ($db->group == $db1->group) : ?> <option value="<?= $db->name ?>" <?= (($employee && $employee[0]->worker == $db->name) ? 'selected' : '') ?>><?= $db->name ?></option><?php endif ?>
+                                            <?php if ($db->group == $db1->group) : ?>
+                                                <option value="<?= $db->name ?>" <?= (($employee && $employee[0]->worker == $db->name) ? 'selected' : '') ?>><?= $db->name ?></option>
+                                            <?php endif ?>
                                         <?php endforeach ?>
                                     </optgroup>
                                 <?php endforeach ?>
@@ -294,9 +300,9 @@
                 <div class="row g-2">
                     <div class="col-12 mb-2">
                         <div class="form-floating form-floating-outline">
-                            <select class="select2-subtext form-select" id="company" name="company" <?= (isset($employee[0]->adaptation[0]) && $employee[0]->adaptation[0] == '1' ? 'disabled' : '') ?>>
+                            <select class="select2-non form-select" id="company" name="company" <?= (isset($employee[0]->adaptation[0]) && $employee[0]->adaptation[0] == '1' ? 'disabled' : '') ?>>
                                 <?php foreach ($company as $db) : ?>
-                                    <option value="<?= $db->id ?>" <?= (isset($employee[0]->company_id) && $employee[0]->company_id == $db->id ? 'selected' : '') ?> data-subtext="<?= $db->name ?>"><?= $db->code ?></option>
+                                    <option value="<?= $db->id ?>" <?= (isset($employee[0]->company_id) && $employee[0]->company_id == $db->id ? 'selected' : '') ?>><?= "{$db->code} &ensp;&emsp; {$db->name}" ?></option>
                                 <?php endforeach ?>
                             </select>
                             <label for="company"><?= lang('app.company') ?></label>
@@ -332,7 +338,9 @@
                     <div class="col-12 col-md-6 col-lg-12 mb-2">
                         <div class="form-floating form-floating-outline">
                             <select class="select2-non form-select" id="username" name="username" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>">
-                                <?php if ($user1) : ?><option value="<?= $user1[0]->id ?>" selected><?= $user1[0]->code ?></option><?php endif ?>
+                                <?php if ($user1) : ?>
+                                    <option value="<?= $user1[0]->id ?>" selected><?= $user1[0]->code ?></option>
+                                <?php endif ?>
                             </select>
                             <div id="error" class="invalid-feedback err_username"></div>
                             <label for="username"><?= lang('app.username') ?></label>
@@ -340,8 +348,10 @@
                     </div>
                     <div class="col-12 col-md-6 col-lg-12 mb-2">
                         <div class="form-floating form-floating-outline">
-                            <select class="select2-subtext form-select" id="supervisor" name="supervisor" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>">
-                                <?php if ($supervisor1) : ?><option value="<?= $supervisor1[0]->code ?>" selected data-subtext="<?= $supervisor1[0]->name ?>"><?= $supervisor1[0]->code ?></option><?php endif ?>
+                            <select class="select2-non form-select" id="supervisor" name="supervisor" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>">
+                                <?php if ($supervisor1) : ?>
+                                    <option value="<?= $supervisor1[0]->code ?>" selected><?= "{$supervisor1[0]->code} &ensp;&emsp; {$supervisor1[0]->name}" ?></option>
+                                <?php endif ?>
                             </select>
                             <div id="error" class="invalid-feedback err_supervisor"></div>
                             <label for="supervisor"><?= lang('app.supervisor') ?></label>
@@ -484,8 +494,6 @@
                 cache: true
             },
             <?= json('min input') ?>,
-            <?= json('template 1') ?>,
-            <?= json('template 2') ?>,
         });
 
         $('#username').select2({
@@ -530,8 +538,6 @@
                 cache: true
             },
             <?= json('min input') ?>,
-            <?= json('template 1') ?>,
-            <?= json('template 2') ?>,
         });
     });
 
@@ -539,7 +545,7 @@
         e.preventDefault();
         var getAction = $(this).val();
         if (getAction === 'delete') {
-            deleteConfirmation("<?= lang('app.sure') ?>").then((result) => {
+            askConfirmation("<?= lang('app.sure') ?>", "<?= lang('app.confirm delete') ?>").then((result) => {
                 if (result.isConfirmed) {
                     submitForm(getAction);
                 } else {

@@ -82,3 +82,12 @@
     width: 24px;
     cursor: pointer;
 }
+
+.option-code {
+    display: inline-block;
+    width: 200px;
+}
+
+.option-name {
+    display: inline-block;
+}

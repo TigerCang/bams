@@ -21,7 +21,7 @@ class Distance extends BaseController
         $data = [
             't_title' => lang('app.distance'),
             't_span' => lang('app.span distance'),
-            'link' => '/distance',
+            'link' => base_url('distance'),
             'filter' => 'hidden',
             'bcd' => '001',
             'project1' => [],
@@ -40,7 +40,7 @@ class Distance extends BaseController
 
             $data = [
                 't_modal' => lang('app.distance'),
-                'link' => "/distance",
+                'link' => base_url('distance'),
                 'branch1' => [],
                 'project1' => [],
                 'distance' => $db1,

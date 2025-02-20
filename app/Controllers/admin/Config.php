@@ -13,7 +13,7 @@ class Config extends BaseController
         $data = [
             't_title' => lang('app.config'),
             't_span' => lang('app.span config'),
-            'link' => '/config',
+            'link' => base_url('config'),
             'config' => $this->configModel->getConfig(),
         ];
         $this->render('admin/config_list', $data);
@@ -28,7 +28,7 @@ class Config extends BaseController
             if ($db1) $this->logModel->saveLog('Read', $db1[0]['unique'], $db1[0]['param']);
 
             $data = [
-                'link' => "/config",
+                'link' => base_url('config'),
                 't_modal' => lang('app.config'),
                 'config' => $db1,
             ];

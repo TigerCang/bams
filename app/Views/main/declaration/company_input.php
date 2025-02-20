@@ -181,7 +181,7 @@
         e.preventDefault();
         var getAction = $(this).val();
         if (getAction === 'delete') {
-            deleteConfirmation("<?= lang('app.sure') ?>").then((result) => {
+            askConfirmation("<?= lang('app.sure') ?>", "<?= lang('app.confirm delete') ?>").then((result) => {
                 if (result.isConfirmed) {
                     submitForm(getAction);
                 } else {

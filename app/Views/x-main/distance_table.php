@@ -24,7 +24,7 @@
                 <td><?= $row->code ?></td>
                 <td><?= $row->name ?></td>
                 <td <?= $cHid ?>><span><?= $row->company ?></span>
-                    <small class="text-truncate mb-0 d-none d-sm-block"><?= $row->division ?></small>
+                    <small class="text-truncate mb-0 d-none d-sm-block"><?= $row->region ?></small>
                 </td>
                 <td <?= $dHid ?> class="text-center"><?= formatComa($row->distance, '0') ?></td>
                 <td class="text-center"><label class="label <?= $label['class'] ?>"><?= $label['text'] ?></label></td>

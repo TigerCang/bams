@@ -13,7 +13,7 @@ class aUser extends BaseController
         $data = [
             't_title' => lang('app.child user'),
             't_span' => lang('app.span child user'),
-            'link' => '/auser',
+            'link' => base_url('auser'),
             'user' => $this->mainModel->getUser($this->urls[1], $this->user['id']),
         ];
         $this->render('admin/user_list', $data);
@@ -30,7 +30,7 @@ class aUser extends BaseController
         $data = [
             't_title' => lang('app.user anak'),
             't_span' => lang('app.span user'),
-            'link' => "/auser",
+            'link' => base_url('auser'),
             'company' => $this->mainModel->getCompany('', 't'),
             'region' => $this->mainModel->getFile('', 'region', 't'),
             'division' => $this->mainModel->getFile('', 'division', 't'),

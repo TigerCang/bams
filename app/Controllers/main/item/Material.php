@@ -21,7 +21,7 @@ class Material extends BaseController
         $data = [
             't_title' => lang('app.material'),
             't_span' => lang('app.span material'),
-            'link' => '/material',
+            'link' => base_url('material'),
             'pHid' => '',
             'sHid' => 'hidden',
             'category' => $this->mainModel->distItem('m_item', 'category', 'param', 'material'),
@@ -40,7 +40,7 @@ class Material extends BaseController
 
             $data = [
                 't_modal' => lang('app.material'),
-                'link' => "/material",
+                'link' => base_url('material'),
                 'selectGroup' => $this->mainModel->loadGroupAccount('stock', 'material'),
                 'category' => $this->mainModel->distItem('m_item', 'category', 'param', 'material'),
                 'cost1' => $this->mainModel->getData('m_cost', $db1[0]->resource_id ?? '', '', 'id'),

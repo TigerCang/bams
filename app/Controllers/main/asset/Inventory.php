@@ -21,7 +21,7 @@ class Inventory extends BaseController
         $data = [
             't_title' => lang('app.inventory'),
             't_span' => lang("app.span inventory"),
-            'link' => '/inventory',
+            'link' => base_url('inventory'),
             'company' => $this->mainModel->getCompany('', 't'),
             'selectCategory' => $this->mainModel->distItem('m_inventory', 'category'),
         ];
@@ -39,7 +39,7 @@ class Inventory extends BaseController
         $data = [
             't_title' => lang('app.inventory'),
             't_span' => lang('app.span inventory'),
-            'link' => "/inventory",
+            'link' => base_url('inventory'),
             'company' => $this->mainModel->getCompany('', 't'),
             'region' => $this->mainModel->getFile('', 'region', 't'),
             'division' => $this->mainModel->getFile('', 'division', 't'),
@@ -47,6 +47,7 @@ class Inventory extends BaseController
             'selectGroup' => $this->mainModel->loadGroupAccount('asset', 'inventory'),
             'selectCategory' => $this->mainModel->distItem('m_inventory', 'category'),
             'selectLocation' => $this->mainModel->distItem('m_inventory', 'location'),
+            'branch1' => $this->mainModel->getData('m_branch', $db1[0]->branch_id ?? '', '', 'id'),
             'employee1' => $this->mainModel->getData('m_person', $db1[0]->person_id ?? '', '', 'id'),
             'inventory' => $db1,
             'buttonHidden' => $btnAccess = $db1 ? checkAccess($db1[0]->company_id, $db1[0]->region_id, $db1[0]->division_id) : '',

@@ -21,7 +21,7 @@ class Project extends BaseController
         $data = [
             't_title' => lang('app.project'),
             't_span' => lang('app.span project'),
-            'link' => '/project',
+            'link' => base_url('project'),
             'company' => $this->mainModel->getCompany('', 't'),
         ];
         $this->render('main/asset/project_list', $data);
@@ -38,7 +38,7 @@ class Project extends BaseController
         $data = [
             't_title' => lang('app.project'),
             't_span' => lang('app.span project'),
-            'link' => "/project",
+            'link' => base_url('project'),
             'company' => $this->mainModel->getCompany('', 't'),
             'region' => $this->mainModel->getFile('', 'region', 't'),
             'division' => $this->mainModel->getFile('', 'division', 't', '1'),

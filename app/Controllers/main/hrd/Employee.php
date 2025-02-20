@@ -21,7 +21,7 @@ class Employee extends BaseController
         $data = [
             't_title' => lang('app.employee'),
             't_span' => lang('app.span employee'),
-            'link' => '/employee',
+            'link' => base_url('employee'),
             'company' => $this->mainModel->getCompany('', 't'),
             'selectPosition' => $this->mainModel->getFile('', 'position', 't'),
         ];
@@ -39,7 +39,7 @@ class Employee extends BaseController
         $data = [
             't_title' => lang('app.employee'),
             't_span' => lang('app.span employee'),
-            'link' => "/employee",
+            'link' => base_url('employee'),
             'company' => $this->mainModel->getCompany('', 't'),
             'region' => $this->mainModel->getFile('', 'region', 't'),
             'division' => $this->mainModel->getFile('', 'division', 't'),

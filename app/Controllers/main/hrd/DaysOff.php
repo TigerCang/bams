@@ -21,7 +21,7 @@ class DaysOff extends BaseController
         $data = [
             't_title' => lang('app.days off'),
             't_span' => lang('app.span days off'),
-            'link' => '/daysoff',
+            'link' => base_url('daysoff'),
             'cHid' => '',
             'rHid' => 'hidden',
             'unit' => $this->mainModel->getFile($this->urls[1], 'days off'),
@@ -40,7 +40,7 @@ class DaysOff extends BaseController
 
             $data = [
                 't_modal' => lang('app.days off'),
-                'link' => "/daysoff",
+                'link' => base_url('daysoff'),
                 'company' => [],
                 'region' => [],
                 'division' => [],

@@ -5,8 +5,3 @@ Distance, resources, dayoff, employee, formcode, formnumber, rating kategori
 Item, Material, Serial, Warehouse, partnervehicle, recipient
 
 
-
-Ubah database m_budget -> m_budget1
-              +m_budget2
-
-              

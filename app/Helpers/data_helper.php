@@ -20,6 +20,24 @@ if (!function_exists('thisUser')) {
     }
 }
 
+if (!function_exists('getMainModel')) {
+    function getMainModel()
+    {
+        static $mainModel = null;
+        if ($mainModel === null) $mainModel = new \App\Models\mix\MainModel();
+        return $mainModel;
+    }
+}
+
+if (!function_exists('getTransModel')) {
+    function getTransModel()
+    {
+        static $transModel = null;
+        if ($transModel === null) $transModel = new \App\Models\mix\TransModel();
+        return $transModel;
+    }
+}
+
 // Check open web and ּaccess right
 if (!function_exists('checkPage')) {
     function checkPage($number, $db = [], $create = 'n', $detail = 'y', $dbe = [], $uniq = 'y')
@@ -97,6 +115,21 @@ if (!function_exists('checkObject')) {
     }
 }
 
+// Check Budget 
+if (!function_exists('checkBudget')) {
+    function checkBudget($source, $object, $objectID, $segment, $revision, $unique)
+    {
+        $transModel = getTransModel();
+        $budget1 = $transModel->cekBudget($source, $object, $objectID, $segment);
+
+        // var_dump($budget1[0]->revision);
+        // die;
+        // $order = $objects[$object]['order'];
+        // $model = $objects[$object]['model'];
+        // return ($user['act_access'][$order] == '0' && !preg_match("/(^|,)" . $objectID . "(,|$)/", $user[$model], $result)) ? 'valid_email' : 'permit_empty';
+    }
+}
+
 // Setting Button for main data
 if (!function_exists('setButton')) {
     function setButton($db1, $new = '0')
@@ -122,11 +155,11 @@ if (!function_exists('setButton')) {
 
 // Setting Button for transaction data
 if (!function_exists('transButton')) {
-    function transButton($db1, $hidden, $status)
+    function transButton($db1, $status)
     {
         $buttons = [];
-        $buttons['disabled'] = ($db1 ? '' : 'disabled');
-        $buttons['hidden'] = ($hidden == '1' ? '' : 'hidden');
+        $buttons['on'] = ($db1 ? '' : 'disabled');
+        $buttons['off'] = ($db1 ? 'disabled' : '');
         return $buttons;
     }
 }
@@ -135,7 +168,7 @@ if (!function_exists('transButton')) {
 if (!function_exists('checkDocumentCode')) {
     function checkDocumentCode($param, $subParam)
     {
-        $mainModel = new \App\Models\mix\MainModel();
+        $mainModel = getMainModel();
         $cekDoc = $mainModel->getParam($param, $subParam);
         $ruleDoc = ($cekDoc ? 'permit_empty' : 'required');
         return $ruleDoc;
@@ -146,7 +179,7 @@ if (!function_exists('checkDocumentCode')) {
 if (!function_exists('cekLink')) {
     function cekLink($table, $field, $id, &$ruleLink, $field2 = false, $id2 = false)
     {
-        $mainModel = new \App\Models\mix\MainModel();
+        $mainModel = getMainModel();
         $cekLink = ($field2 == false ? $mainModel->cekLink($table, $field, $id) : $mainModel->cekLink($table, $field, $id, $field2, $id2));
         if ($cekLink) $ruleLink =  'asd';
         return $ruleLink;
@@ -159,9 +192,11 @@ if (!function_exists('companyOptions')) {
     {
         $output = '';
         foreach ($company as $db) {
-            $selected = (isset($db1[0]->company_id) && $db1[0]->company_id == $db->id) ? 'selected' : '';
+            $companyId = is_array($db1) ? ($db1[0]->company_id ?? null) : ($db1 ?? null);
+            $selected = (!empty($db1) ? ($companyId == $db->id ? 'selected' : '') : (explode(',', $this_user['set_default'])[0] == $db->id ? 'selected' : ''));
+            // $selected = (!empty($db1) && isset($db1[0]->company_id)) ? ($db1[0]->company_id == $db->id ? 'selected' : '') : (explode(',', $this_user['set_default'])[0] == $db->id ? 'selected' : '');
             $disabled = ($this_user['act_access'][0] == '1' || preg_match("/(^|,)" . $db->id . "(:|$)/i", $this_user['company']) ? '' : 'disabled');
-            $output .= "<option value='{$db->id}' {$selected} {$disabled} data-subtext='" . $db->name . "'>" . $db->code . "</option>";
+            $output .= "<option value='{$db->id}' {$selected} {$disabled}>" . $db->code . str_repeat("&ensp;", 3) . $db->name . "</option>";
         }
         return $output;
     }
@@ -173,7 +208,8 @@ if (!function_exists('regionOptions')) {
     {
         $output = '';
         foreach ($region as $db) {
-            $selected = (isset($db1[0]->region_id) && $db1[0]->region_id == $db->id) ? 'selected' : '';
+            $regionId = is_array($db1) ? ($db1[0]->region_id ?? null) : ($db1 ?? null);
+            $selected = (!empty($db1) ? ($regionId == $db->id ? 'selected' : '') : (explode(',', $this_user['set_default'])[1] == $db->id ? 'selected' : ''));
             $disabled = ($this_user['act_access'][1] == '1' || preg_match("/(^|,)" . $db->id . "(:|$)/i", $this_user['region']) ? '' : 'disabled');
             $output .= "<option value='{$db->id}' {$selected} {$disabled}>" . $db->name . "</option>";
         }
@@ -187,9 +223,27 @@ if (!function_exists('divisionOptions')) {
     {
         $output = '';
         foreach ($division as $db) {
-            $selected = (isset($db1[0]->division_id) && $db1[0]->division_id == $db->id) ? 'selected' : '';
+            $divisionId = is_array($db1) ? ($db1[0]->division_id ?? null) : ($db1 ?? null);
+            $selected = (!empty($db1) ? ($divisionId == $db->id ? 'selected' : '') : (explode(',', $this_user['set_default'])[2] == $db->id ? 'selected' : ''));
             $disabled = ($this_user['act_access'][2] == '1' || preg_match("/(^|,)" . $db->id . "(:|$)/i", $this_user['division']) ? '' : 'disabled');
             $output .= "<option value='{$db->id}' {$selected} {$disabled}>" . $db->name . "</option>";
+        }
+        return $output;
+    }
+}
+
+// Select option object
+if (!function_exists('objectOptions')) {
+    function objectOptions($object, $db1, $this_user, $choice)
+    {
+        $output = '';
+        foreach ($object as $db) {
+            if (($choice == '') || ($choice == 'project' && $db->name == 'project') || ($choice == 'object' && $db->name != 'project')) :
+                if ($db->number <= 10) :
+                    $selected = (!empty($db1) && isset($db1[0]->object)) ? ($db1[0]->object == $db->id ? 'selected' : '') : (explode(',', $this_user['set_default'])[3] == $db->name ? 'selected' : '');
+                    $output .= "<option value='{$db->name}' {$selected}>" . lang('app.' . $db->name) . "</option>";
+                endif;
+            endif;
         }
         return $output;
     }
@@ -199,12 +253,69 @@ if (!function_exists('divisionOptions')) {
 if (!function_exists('initialCode')) {
     function initialCode($subParam, $company, $region, $division)
     {
-        $mainModel = new \App\Models\mix\MainModel();
+        $mainModel = getMainModel();
         $fileCode = $mainModel->getData('m_file', $subParam, '', 'sub_param', 't');
         $companyCode = $mainModel->getData('m_company', $company, '', 'id', 't');
         $regionCode = $mainModel->getData('m_file', $region, '', 'id', 't');
         $divisionCode = $mainModel->getData('m_file', $division, '', 'id', 't');
-        $initial = "{$fileCode[0]->name}/{$companyCode[0]->initial}/{$regionCode[0]->name2}.{$divisionCode[0]->name2}/";
+        $initial = "{$fileCode[0]->name}/{$companyCode[0]->initial}®/{$divisionCode[0]->name2}·{$regionCode[0]->name2}/"; // © ®
         return $initial;
+    }
+}
+
+// Select option segment from project
+if (!function_exists('segmentOptions')) {
+    function segmentOptions($project, $selection)
+    {
+        $mainModel = getMainModel();
+        $segment = $mainModel->getSegment('', 'segment', 't', $project);
+        $output = '';
+        foreach ($segment as $db) {
+            $selected = ($selection == $db->id) ? 'selected' : '';
+            $output .= "<option value='{$db->id}' {$selected} data-code='{$db->code}'>" . $db->code . str_repeat("&ensp;", 3) . $db->name . "</option>";
+        }
+        return $output;
+    }
+}
+
+// Search and Set Outfocus data from branch
+if (!function_exists('callFile')) {
+    function callFile($object, $value)
+    {
+        $mainModel = getMainModel();
+        $object1 = $mainModel->getData('m_' . $object, $value, '', 'id');
+        $company1 = $mainModel->getData('m_company', $object1[0]->company_id ?? '', '', 'id');
+        $region1 = $mainModel->getData('m_file', $object1[0]->region_id ?? '', '', 'id');
+        $division1 = $mainModel->getData('m_file', $object1[0]->division_id ?? '', '', 'id');
+
+        if ($object == 'project') $file['categoryProject'] = $object1[0]->category_id ?? '';
+        $file['company'] = $company1[0]->code ?? '';
+        $file['region'] = $region1[0]->name ?? '';
+        $file['division'] = $division1[0]->name ?? '';
+        return $file;
+    }
+}
+
+// Check open web and ּaccess right
+if (!function_exists('userLevel')) {
+    function userLevel($level = '')
+    {
+        $user = Menu::getUser();
+        $configModel = new \App\Models\admin\ConfigModel();
+        $approve = $configModel->getConfig('level approve');
+        $lev = explode(',', $level);
+
+        if ($level == '') {
+            $l1 = $l2 = $user['act_approve'];
+            $l3 = '101';
+            $l4 = ($user['act_approve'] == '0' ? $approve[0]['value'] : ($user['act_approve'] == '1' ? '1' : $user['act_approve'] - 1)); // Next
+        } else {
+            $l1 = $lev[0]; // Start
+            $l2 = $user['act_approve']; // Now
+            $l3 = $lev[2]; // Finance
+            $l4 = $user['act_approve'] - 1; // Next
+        }
+        $output = implode(',', [$l1, $l2, $l3, $l4]);
+        return $output;
     }
 }

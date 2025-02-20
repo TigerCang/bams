@@ -68,7 +68,7 @@
                                     <option value="<?= $db->id ?>" <?= (isset($recipient[0]->group_account_customer) && $recipient[0]->group_account_customer == $db->id ? 'selected' : '') ?>><?= $db->name ?></option>
                                 <?php endforeach ?>
                             </select>
-                            <label for="groupAccount1"><?= lang('app.account number') ?></label>
+                            <label for="groupAccount1"><?= lang('app.group account') ?></label>
                             <div id="error" class="invalid-feedback err_groupAccount1"></div>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                                     <option value="<?= $db->id ?>" <?= (isset($recipient[0]->group_account_supplier) && $recipient[0]->group_account_supplier == $db->id ? 'selected' : '') ?>><?= $db->name ?></option>
                                 <?php endforeach ?>
                             </select>
-                            <label for="groupAccount2"><?= lang('app.account number') ?></label>
+                            <label for="groupAccount2"><?= lang('app.group account') ?></label>
                             <div id="error" class="invalid-feedback err_groupAccount2"></div>
                         </div>
                     </div>
@@ -98,7 +98,7 @@
                                     <option value="<?= $db->id ?>" <?= (isset($recipient[0]->group_account_partner) && $recipient[0]->group_account_partner == $db->id ? 'selected' : '') ?>><?= $db->name ?></option>
                                 <?php endforeach ?>
                             </select>
-                            <label for="groupAccount3"><?= lang('app.account number') ?></label>
+                            <label for="groupAccount3"><?= lang('app.group account') ?></label>
                             <div id="error" class="invalid-feedback err_groupAccount3"></div>
                         </div>
                     </div>
@@ -113,7 +113,7 @@
                                     <option value="<?= $db->id ?>" <?= (isset($recipient[0]->group_account_employee) && $recipient[0]->group_account_employee == $db->id ? 'selected' : '') ?>><?= $db->name ?></option>
                                 <?php endforeach ?>
                             </select>
-                            <label for="groupAccount4"><?= lang('app.account number') ?></label>
+                            <label for="groupAccount4"><?= lang('app.group account') ?></label>
                         </div>
                     </div>
                     <div class="col-12">
@@ -180,7 +180,7 @@
         e.preventDefault();
         var getAction = $(this).val();
         if (getAction === 'delete') {
-            deleteConfirmation("<?= lang('app.sure') ?>").then((result) => {
+            askConfirmation("<?= lang('app.sure') ?>", "<?= lang('app.confirm delete') ?>").then((result) => {
                 if (result.isConfirmed) {
                     submitForm(getAction);
                 } else {

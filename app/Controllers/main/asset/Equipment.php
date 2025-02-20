@@ -21,7 +21,7 @@ class Equipment extends BaseController
         $data = [
             't_title' => lang('app.equipment'),
             't_span' => lang('app.span equipment'),
-            'link' => '/equipment',
+            'link' => base_url('equipment'),
             'company' => $this->mainModel->getCompany('', 't'),
             'selectCategory' => $this->mainModel->distItem('m_tool', 'category', 'param', 'equipment'),
         ];
@@ -39,7 +39,7 @@ class Equipment extends BaseController
         $data = [
             't_title' => lang('app.equipment'),
             't_span' => lang('app.span equipment'),
-            'link' => "/equipment",
+            'link' => base_url('equipment'),
             'company' => $this->mainModel->getCompany('', 't'),
             'region' => $this->mainModel->getFile('', 'region', 't'),
             'division' => $this->mainModel->getFile('', 'division', 't'),

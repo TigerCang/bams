@@ -20,7 +20,7 @@ class PartnerVehicle extends BaseController
         $data = [
             't_title' => lang('app.partner vehicle'),
             't_span' => lang('app.span partner vehicle'),
-            'link' => '/partnervehicle',
+            'link' => base_url('partnervehicle'),
             'person1' => $this->mainModel->getData('m_person', session()->getFlashdata('flash-person') ?? '', '', 'id'),
         ];
         $this->render('main/person/partnerVehicle_list', $data);
@@ -37,7 +37,7 @@ class PartnerVehicle extends BaseController
 
             $data = [
                 't_modal' => lang('app.partner vehicle'),
-                'link' => "/partnervehicle",
+                'link' => base_url('partnervehicle'),
                 'selectTool' => $this->mainModel->distSelect('tool shape'),
                 'selectCategory' => $this->mainModel->distItem('m_tool', 'category', 'param', 'partner'),
                 'person1' => $this->mainModel->getData('m_person', $db1[0]->partner_id ?? '', '', 'id'),

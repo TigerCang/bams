@@ -26,8 +26,10 @@
                 <div class="row g-2">
                     <div class="col-12 mb-2" <?= $bHid ?>>
                         <div class="form-floating form-floating-outline">
-                            <select class="select2-subtext form-select" id="branch" name="branch" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>" <?= (isset($distance[0]->adaptation[0]) && $distance[0]->adaptation[0] == '1' ? 'disabled' : '') ?>>
-                                <?php if ($branch1) : ?> <option value="<?= $branch1[0]->id ?>" selected data-subtext="<?= $branch1[0]->name ?>"><?= $branch1[0]->code ?></option><?php endif ?>
+                            <select class="select2-non form-select" id="branch" name="branch" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>" <?= (isset($distance[0]->adaptation[0]) && $distance[0]->adaptation[0] == '1' ? 'disabled' : '') ?>>
+                                <?php if ($branch1) : ?>
+                                    <option value="<?= $branch1[0]->id ?>" selected><?= "{$branch1[0]->code} &ensp;&emsp; {$branch1[0]->name}" ?></option>
+                                <?php endif ?>
                             </select>
                             <div id="error" class="invalid-feedback err_branch"></div>
                             <label for="branch"><?= lang('app.branch') ?></label>
@@ -35,8 +37,10 @@
                     </div>
                     <div class="col-12 mb-2" <?= $cHid ?>>
                         <div class="form-floating form-floating-outline">
-                            <select class="select2-subtext form-select" id="project" name="project" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>" <?= (isset($distance[0]->adaptation[0]) && $distance[0]->adaptation[0] == '1' ? 'disabled' : '') ?> onchange="clickProject()">
-                                <?php if ($project1) : ?> <option value="<?= $project1[0]->id ?>" selected data-subtext="<?= $project1[0]->package_name ?>"><?= $project1[0]->code ?></option><?php endif ?>
+                            <select class="select2-non form-select" id="project" name="project" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>" <?= (isset($distance[0]->adaptation[0]) && $distance[0]->adaptation[0] == '1' ? 'disabled' : '') ?> onchange="clickProject()">
+                                <?php if ($project1) : ?>
+                                    <option value="<?= $project1[0]->id ?>" selected><?= "{$project1[0]->code} &ensp;&emsp; {$project1[0]->package_name}" ?></option>
+                                <?php endif ?>
                             </select>
                             <div id="error" class="invalid-feedback err_project"></div>
                             <label for="project"><?= lang('app.project') ?></label>
@@ -56,8 +60,7 @@
                     </div>
                     <div class="col-12 mb-2" <?= $sHid ?>>
                         <div class="form-floating form-floating-outline">
-                            <select class="select2-subtext form-select" id="segment" name="segment" data-allow-clear="true" data-placeholder="<?= lang('app.select-') ?>" <?= (isset($distance[0]->adaptation[0]) && $distance[0]->adaptation[0] == '1' ? 'disabled' : '') ?>>
-                            </select>
+                            <select class="select2-non form-select" id="segment" name="segment" data-allow-clear="true" data-placeholder="<?= lang('app.select-') ?>" <?= (isset($distance[0]->adaptation[0]) && $distance[0]->adaptation[0] == '1' ? 'disabled' : '') ?>></select>
                             <div id="error" class="invalid-feedback err_segment"></div>
                             <label for="segment"><?= lang('app.segment') ?></label>
                         </div>
@@ -146,13 +149,14 @@
 
     function clickProject() {
         var getProject = $("#project").val();
-        var getSegment = "<?= $distance[0]->segment_id ?? '' ?>";
+        // var getSegment = "<= $distance[0]->segment_id ?? '' ?>";
         $.ajax({
             type: "POST",
             url: "<?= $link ?>/outFocusProject",
             data: {
                 project: getProject,
-                segment: getSegment,
+                // segment: getSegment,
+                segment: '',
             },
             dataType: "json",
             success: function(response) {
@@ -192,8 +196,6 @@
                 cache: true
             },
             <?= json('min input') ?>,
-            <?= json('template 1') ?>,
-            <?= json('template 2') ?>,
         });
 
         $('#project').select2({
@@ -219,8 +221,6 @@
                 cache: true
             },
             <?= json('min input') ?>,
-            <?= json('template 1') ?>,
-            <?= json('template 2') ?>,
         });
     });
 

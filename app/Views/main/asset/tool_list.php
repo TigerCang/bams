@@ -10,10 +10,8 @@
                 <div class="row g-2 mb-4">
                     <div class="col-12 col-md-6 col-lg-6 mb-2">
                         <div class="form-floating form-floating-outline">
-                            <select class="select2-subtext form-select" id="sCompany" name="sCompany" data-allow-clear="true" data-placeholder="<?= lang('app.select-') ?>">
-                                <?php foreach ($company as $db) : ?>
-                                    <option value="<?= $db->id ?>" <?= (session()->getFlashdata('flash-company') == $db->id ? 'selected' : '') ?> data-subtext="<?= $db->name ?>"><?= $db->code ?></option>
-                                <?php endforeach ?>
+                            <select class="select2-non form-select" id="sCompany" name="sCompany" data-allow-clear="true" data-placeholder="<?= lang('app.select-') ?>">
+                                <?= companyOptions($company, session()->getFlashdata('flash-company'), thisUser()) ?>
                             </select>
                             <label for="sCompany"><?= lang('app.company') ?></label>
                         </div>
@@ -64,7 +62,7 @@
         e.preventDefault();
         var getCompany = $("#sCompany").val();
         var getCategory = $("#sCategory").val();
-        var getUrl = "<?= substr($link, 1) ?>";
+        var getUrl = window.location.pathname.split('/').pop();
         $.ajax({
             url: "/search/tool",
             type: "POST",

@@ -21,7 +21,7 @@ class CashAccount extends BaseController
         $data = [
             't_title' => lang('app.cash bank'),
             't_span' => lang('app.span cash bank'),
-            'link' => '/cashaccount',
+            'link' => base_url('cashaccount'),
             'kHid' => 'hidden',
             'pHid' => '',
             'nHid' => 'hidden',
@@ -41,7 +41,7 @@ class CashAccount extends BaseController
 
             $data = [
                 't_modal' => lang('app.cash bank'),
-                'link' => "/cashaccount",
+                'link' => base_url('cashaccount'),
                 'selectGroup' => $this->mainModel->distSelect('cash account', 't'),
                 'selectName' => $this->mainModel->distSelect('cash account'),
                 'company' => $this->mainModel->getCompany('', 't'),

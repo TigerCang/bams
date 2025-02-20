@@ -48,7 +48,7 @@
                 <div class="row g-2" <?= $rHid ?>>
                     <div class="col-12 mb-2">
                         <div class="form-floating form-floating-outline">
-                            <select class="select2-subtext form-select" id="company" name="company" <?= (isset($tool[0]->adaptation[0]) && $tool[0]->adaptation[0] == '1' ? 'disabled' : '') ?>>
+                            <select class="select2-non form-select" id="company" name="company" <?= (isset($tool[0]->adaptation[0]) && $tool[0]->adaptation[0] == '1' ? 'disabled' : '') ?>>
                                 <?= companyOptions($company, $file, thisUser()) ?>
                             </select>
                             <label for="company"><?= lang('app.company') ?></label>
@@ -121,7 +121,7 @@
         e.preventDefault();
         var getAction = $(this).val();
         if (getAction === 'delete') {
-            deleteConfirmation("<?= lang('app.sure') ?>").then((result) => {
+            askConfirmation("<?= lang('app.sure') ?>", "<?= lang('app.confirm delete') ?>").then((result) => {
                 if (result.isConfirmed) {
                     submitForm(getAction);
                 } else {

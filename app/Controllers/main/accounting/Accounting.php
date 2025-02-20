@@ -21,7 +21,7 @@ class Accounting extends BaseController
         $data = [
             't_title' => lang('app.coa'),
             't_span' => lang('app.span coa'),
-            'link' => '/accounting',
+            'link' => base_url('accounting'),
             'selectCategory' => $this->mainModel->distSelect('category account'),
         ];
         $this->render('main/accounting/account_list', $data);
@@ -38,7 +38,7 @@ class Accounting extends BaseController
 
             $data = [
                 't_modal' => lang('app.coa'),
-                'link' => "/accounting",
+                'link' => base_url('accounting'),
                 'selectCategory' => $this->mainModel->distSelect('category account'),
                 'account' => $db1,
                 'button' => ['save' => $buttons['save'], 'confirm' => $buttons['confirm'], 'delete' => $buttons['delete'], 'active' => $buttons['active']],

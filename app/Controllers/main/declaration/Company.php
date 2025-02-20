@@ -27,7 +27,7 @@ class Company extends BaseController
         $data = [
             't_title' => lang('app.company'),
             't_span' => lang('app.span company'),
-            'link' => '/company',
+            'link' => base_url('company'),
             'pHid' => 'hidden',
             'cNew' => '',
             'company' => $this->mainModel->getCompany($this->urls[1]),
@@ -48,7 +48,7 @@ class Company extends BaseController
         $data = [
             't_title' => lang('app.company'),
             't_span' => lang('app.span company'),
-            'link' => "/company",
+            'link' => base_url('company'),
             'company' => $db1,
             'priceStock' => $dbPrice[0]->price ?? '0',
             'button' => ['save' => $buttons['save'], 'confirm' => $buttons['confirm'], 'delete' => $buttons['delete'], 'active' => $buttons['active']],
@@ -171,7 +171,7 @@ class Company extends BaseController
             }
             $data = [
                 't_modal' => $titleModal,
-                'link' => "/company",
+                'link' => base_url('company'),
                 'unique' => $this->request->getVar('unique'),
                 'price' => $this->request->getVar('price'),
             ];

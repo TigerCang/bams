@@ -12,7 +12,7 @@ class TransModel
     {
         $this->db = \config\Database::connect();
     }
-    // status =>0:new, 1:save, 2:need_acc, 3:proses, 4:revision, 5:reject, 6:cancel, 7:ok, 8:pay
+    // status =>0:new, 1:save, 2:need_acc, 3:proses, 4:revision, 5:reject, 6:cancel, 7:ok ready to next step, 10:finish
 
     // // if ($minta && in_array($minta['0']->st_setuju, ['2', '4', '5', '6', '7'])) $stadð = 'disabled';
     // // ____________________________________________________________________________________________________________________________
@@ -52,44 +52,49 @@ class TransModel
     }
 
     // ___________________________________________________________________________________________________________________________________________________________________________________________
-    public function getBudget($menu, $company = false, $division = false, $year = false, $object = false)
+    public function getBudget($menu, $object = false, $objectid = false, $type = false, $year = false)
     {
         $builder = $this->db->table('budget_parent a');
-        $builder->select('a.*, b.total_contract as totalLevel1, c.code as company, d.name as region, e.name as division, f.code as project, g.code as segment, 
-            g.name as nameSegment, h.code as branch, h.name as nameBranch, j.code as tool, j.name as nameTool, k.code as land, k.name as nameLand, x.id as xLog');
-        if ($company != '') $builder->where('a.company_id', $company);
-        if ($division != '') $builder->where('a.division_id', $division);
+        $builder->select('a.*, sum(distinct c.total_contract) as allTotal, f.code as project, g.code as segment, h.code as branch, j.code as tool, k.code as land, x.id as xLog');
+        $strX = ($menu != '' ? ' AND x.menu = "' . $menu . '" AND x.username = "' . decrypt(session()->username) . '"' : '');
+
         // $builder->where('a.data_start', $year);
         // if ($year != '') ($tujuan == 'proyek' ? $builder->where("(f.periode1 like \"%$tahun%\")") : $builder->where("(a.tanggal1 like \"%$tahun%\")"));
-        $strX = ($menu != '' ? ' AND x.menu = "' . $menu . '" AND x.username = "' . decrypt(session()->username) . '"' : '');
-        $builder->where('b.level_one', '1')->where(['a.deleted_at' => null]);
-        $builder->join('budget_child1 b', 'a.id=b.parent_id', 'left');
-        $builder->join('m_company c', 'a.company_id=c.id', 'left');
-        $builder->join('m_file d', 'a.region_id=d.id', 'left');
-        $builder->join('m_file e', 'a.division_id=e.id', 'left');
+        $builder->join('budget_child1 c', 'a.id = c.parent_id',  'left');
         $builder->join('m_project f', 'a.object_id=f.id', 'left');
         $builder->join('m_segment g', 'a.segment_id=g.id', 'left');
         $builder->join('m_branch h', 'a.object_id=h.id', 'left');
         $builder->join('m_tool j', 'a.object_id=j.id', 'left');
         $builder->join('m_land k', 'a.object_id=k.id', 'left');
         $builder->join('user_log x', 'x.unique = a.unique' . $strX, 'left');
+        ($type == true) ? $builder->where('a.type', '') : $builder->where('a.type !=', '');
+        $builder->where('a.object', $object)->where('c.level', '1')->where('SUBSTR(a.date_start, 1, 4)', $year);
+        $builder->where(['a.deleted_at' => null]);
         $builder->groupBy('a.id')->orderby('a.document_number, a.object_id, a.segment_id');
+        return $builder->get()->getResult();
+    }
+    public function cekBudget($source, $object, $objectID, $segment = false)
+    {
+        $builder = $this->db->table('budget_parent');
+        $builder->where('source', $source)->where('object', $object)->where('object_id', $objectID);
+        if ($segment == true) $builder->where('segment_id', $segment);
+        // $builder->where('status', $segment); // Status cancel
+        $builder->where(['deleted_at' => null]);
+        $builder->orderBy("SUBSTRING_INDEX(revision, '.', -1) * 1 DESC");
+        $builder->limit(1);
         return $builder->get()->getResult();
     }
     public function getBudgetChild($unique = false, $object = false)
     {
-        $builder = $this->db->table('budget_child1 a');
-        $orderBy = '';
-        $builder->select('a.*, b.code as code, b.name as description, b.level as level');
-        $builder->where('c.unique', $unique);
-        $builder->join('budget_parent c', 'a.parent_id=c.id', 'left');
+        $builder = $this->db->table('budget_parent a');
+        $builder->select('c.*, b.code as code, b.name as description, b.level as level');
+        $builder->join('budget_child1 c', 'c.parent_id=a.id', 'left');
+        $builder->where('a.unique', $unique)->where(['c.deleted_at' => null]);
         if ($object == 'project')
-            $builder->join('m_cost b', 'a.cost_id=b.id', 'left');
+            $builder->join('m_cost b', 'c.cost_id=b.id', 'left');
         else
-            $builder->join('m_account b', 'a.account_id=b.id', 'left');
-        $orderBy = ',b.code, a.id';
-        $builder->where(['a.deleted_at' => null]);
-        $builder->groupBy('a.id')->orderBy("c.object $orderBy");
+            $builder->join('m_account b', 'c.account_id=b.id', 'left');
+        $builder->groupBy('c.id')->orderBy('b.code, c.id');
         return $builder->get()->getResult();
     }
     // public function getAnggarananak($induk, $kategori, $level = false)
@@ -117,18 +122,35 @@ class TransModel
     {
         $builder = $this->db->table('budget_child1');
         $builder->where('parent_id', $parent)->where($field, $data);
+        $builder->where(['deleted_at' => null]);
         return $builder->get()->getResult();
     }
-    public function getBudgetTotal($budgetParent, $costParent, $table)
+    public function budgetTotal($table, $idBudget, $parent, $level = '0')
     {
         $builder = $this->db->table('budget_child1 a');
         $builder->select('sum(a.total_contract) as totalcontract, sum(a.total_work) as totalwork');
-        $builder->where('a.parent_id', $budgetParent)->where(['a.deleted_at' => null]);
-        $builder->where('b.parent_id', $costParent);
-        $builder->groupBy('b.parent_id');
-        ($table == 'account' ? $builder->join('m_account b', 'a.account_id = b.id', 'left') : $builder->join('m_cost b', 'a.cost_id = b.id', 'left'));
+        $builder->where('a.parent_id', $idBudget)->where(['a.deleted_at' => null]);
+        if ($level == '0') {
+            $builder->where('b.parent_id', $parent);
+            $builder->join("m_{$table} b", "a.{$table}_id = b.id", 'left');
+            $builder->groupBy('b.parent_id');
+        } else {
+            $builder->where('a.level', '1');
+            $builder->join('m_budget1 b', 'a.parent_id = b.id', 'left');
+        }
         return $builder->get()->getResult();
     }
+
+    // public function getBudgetTotal($table, $idBudget, $parent)
+    // {
+    //     $builder = $this->db->table('budget_child1 a');
+    //     $builder->select('sum(a.total_contract) as totalcontract, sum(a.total_work) as totalwork');
+    //     $builder->where('a.parent_id', $budgetParent)->where(['a.deleted_at' => null]);
+    //     $builder->where('b.parent_id', $costParent);
+    //     $builder->groupBy('b.parent_id');
+    //     ($table == 'account' ? $builder->join('m_account b', 'a.account_id = b.id', 'left') : $builder->join('m_cost b', 'a.cost_id = b.id', 'left'));
+    //     return $builder->get()->getResult();
+    // }
     // public function loadAnggaran($tujuan, $ruas, $beban, $tipe, $tanggal)
     // {
     //     $builder = $this->db->table('anggaran_anak a');

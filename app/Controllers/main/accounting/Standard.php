@@ -21,7 +21,7 @@ class Standard extends BaseController
         $data = [
             't_title' => lang('app.other standard'),
             't_span' => lang('app.span other standard'),
-            'link' => '/otherstandard',
+            'link' => base_url('otherstandard'),
             'selectCategory' => $this->mainModel->distSelect('standard'),
         ];
         $this->render('main/accounting/standard_list', $data);
@@ -38,7 +38,7 @@ class Standard extends BaseController
 
             $data = [
                 't_modal' => lang('app.other standard'),
-                'link' => "/otherstandard",
+                'link' => base_url('otherstandard'),
                 'selectCategory' => $this->mainModel->distSelect('standard'),
                 'selectGroup' => $this->mainModel->loadGroupAccount('tax', 'income tax'),
                 'standard' => $db1,

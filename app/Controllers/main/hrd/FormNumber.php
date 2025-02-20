@@ -21,7 +21,7 @@ class FormNumber extends BaseController
         $data = [
             't_title' => lang('app.form number'),
             't_span' => lang('app.span form number'),
-            'link' => '/formnumber',
+            'link' => base_url('formnumber'),
             'pHid' => '',
             'form' => $this->mainModel->getForm($this->urls[1], 'iso', '', ''),
         ];
@@ -39,7 +39,7 @@ class FormNumber extends BaseController
 
             $data = [
                 't_modal' => lang('app.form number'),
-                'link' => "/formnumber",
+                'link' => base_url('formnumber'),
                 'pHid' => '',
                 'param' => 'form number',
                 'selectGroup' => $this->mainModel->distSelect('numbering', 't'),
@@ -103,7 +103,7 @@ class FormNumber extends BaseController
                         'save_by' => $this->user['id'],
                     ]);
                     $this->logModel->saveLog('Save', $unique, $this->request->getVar('form') . ' ; ' . strtoupper($this->request->getVar('code')));
-                    $this->session->setFlashdata(['message' => $this->request->getVar('form') . ' ; ' . strtoupper($this->request->getVar('code')) . $title]);
+                    $this->session->setFlashdata(['message' => lang('app.' . $this->request->getVar('form')) . ' ; ' . strtoupper($this->request->getVar('code')) . $title]);
                 }
 
                 // Confirm
@@ -111,14 +111,14 @@ class FormNumber extends BaseController
                     $adaptation = '11' . $db1[0]->adaptation[2];
                     $this->fileModel->save(['id' => $db1[0]->id, 'adaptation' => $adaptation, 'confirm_by' => $this->user['id']]);
                     $this->logModel->saveLog('Confirm', $unique, "{$db1[0]->sub_param} ; {$db1[0]->name}");
-                    $this->session->setFlashdata(['message' => "{$db1[0]->sub_param} ; {$db1[0]->name}" . lang("app.title confirm")]);
+                    $this->session->setFlashdata(['message' => lang('app.' . $db1[0]->sub_param) . ' ; ' . $db1[0]->name . lang("app.title confirm")]);
                 }
 
                 // Delete
                 if ($this->request->getVar('postAction') == 'delete') {
                     $this->fileModel->delete($db1[0]->id);
                     $this->logModel->saveLog('Delete', $unique, "{$db1[0]->sub_param} ; {$db1[0]->name}");
-                    $this->session->setFlashdata(['message' => "{$db1[0]->sub_param} ; {$db1[0]->name}" . lang("app.title delete")]);
+                    $this->session->setFlashdata(['message' => lang('app.' . $db1[0]->sub_param) . ' ; ' . $db1[0]->name . lang("app.title delete")]);
                 }
 
                 // Active
@@ -126,7 +126,7 @@ class FormNumber extends BaseController
                     $result = $db1[0]->adaptation[2] == '1' ? ['0', 'inactive', lang("app.title inactive")] : ['1', 'active', lang("app.title active")];
                     $this->fileModel->save(['id' => $db1[0]->id, 'adaptation' => substr($db1[0]->adaptation, 0, 2) . $result[0], 'active_by' => $this->user['id']]);
                     $this->logModel->saveLog('Active', $unique, "{$db1[0]->sub_param} ; {$db1[0]->name} {$result[1]}");
-                    $this->session->setFlashdata(['message' => "{$db1[0]->sub_param} ; {$db1[0]->name} {$result[2]}"]);
+                    $this->session->setFlashdata(['message' => lang('app.' . $db1[0]->sub_param) . " ; {$db1[0]->name} {$result[2]}"]);
                 }
                 $msg = ['redirect' => '/formnumber'];
             }

@@ -175,11 +175,12 @@
     $("#pegawai").change(loadpegawai);
 
     var awal = "<?= $nodoc['0']->nama ?>";
-    $("#perusahaan").change(function() {
-        document.getElementById('kui').value = awal + '/' + $("#perusahaan").find(':selected').data('kui') + $("#wilayah").find(':selected').data('kui') + '/' + $("#divisi").find(':selected').data('kui') + '/';
-    });
-    $("#kategori").change(function() {
-        document.getElementById('lama').value = $("#kategori").find(':selected').data('lama');
+    $("#perusahaan, #kategori").change(function() {
+        if (this.id === 'perusahaan') {
+            document.getElementById('kui').value = awal + '/' + $("#perusahaan").find(':selected').data('kui') + $("#wilayah").find(':selected').data('kui') + '/' + $("#divisi").find(':selected').data('kui') + '/';
+        } else if (this.id === 'kategori') {
+            document.getElementById('lama').value = $("#kategori").find(':selected').data('lama');
+        }
     });
 
     function loadpegawai() {

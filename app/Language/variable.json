@@ -25,7 +25,7 @@
   "btn i-edit": "<i class='ri-edit-2-line ri-22px text-warning'></i>",
   "btn i-delete": "<i class='ri-delete-bin-line ri-22px text-danger'></i>",
   "btn i-toggle": "<i class='ri-more-2-fill ri-22px'></i>",
-  "btn i-select": "<i class='ri-external-link-line ri-22px'></i>",
+  "btn i-select": "<i class='ri-navigation-fill ri-22px'></i>",
   "btn i-refresh": "<i class='ri-reset-right-line ri-22px'></i>",
   "btn i-search": "<i class='ri-search-line ri-22px'></i>",
   "btn i-dropdown": "<i class='ri-arrow-down-double-line ri-22px'></i>",
@@ -35,8 +35,6 @@
   "alert failed-1": "<div class='alert alert-danger alert-dismissible fade show' role='alert'>",
   "alert success-2": "<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>",
   "min input": "minimumInputLength: 1",
-  "template 1": "templateResult: formatOption",
-  "template 2": "templateSelection: formatOptionSelection",
-
+  
   "end": "End"
 }

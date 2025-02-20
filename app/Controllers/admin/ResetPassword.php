@@ -4,7 +4,6 @@ namespace App\Controllers\admin;
 
 use Config\App;
 use App\Controllers\BaseController;
-use App\Models\admin\userModel;
 
 class ResetPassword extends BaseController
 {
@@ -14,7 +13,6 @@ class ResetPassword extends BaseController
         $data = [
             't_title' => lang('app.reset password'),
             't_span' => lang('app.span reset password'),
-            // 'link' => '/password/reset',
             'user' => $this->mainModel->getUserReset(),
         ];
         $this->render('admin/resetPassword_list', $data);

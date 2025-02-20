@@ -21,7 +21,7 @@ class GroupProject extends BaseController
         $data = [
             't_title' => lang('app.project category'),
             't_span' => lang('app.span project category'),
-            'link' => '/groupproject',
+            'link' => base_url('groupproject'),
             'cHid' => 'hidden',
             'rHid' => 'hidden',
             'unit' => $this->mainModel->getFile($this->urls[1], 'project category'),
@@ -40,7 +40,7 @@ class GroupProject extends BaseController
 
             $data = [
                 't_modal' => lang('app.project category'),
-                'link' => "/groupproject",
+                'link' => base_url('groupproject'),
                 'company' => [],
                 'region' => [],
                 'division' => [],

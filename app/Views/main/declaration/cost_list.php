@@ -9,10 +9,12 @@
                 <div class="row g-2 mb-4">
                     <div class="col-12 col-md-4 col-lg-4 mb-2">
                         <div class="form-floating form-floating-outline">
-                            <select class="select2-subtext form-select" id="sCategory" name="sCategory" data-placeholder="<?= lang('app.select-') ?>">
+                            <select class="select2-non form-select" id="sCategory" name="sCategory" data-placeholder="<?= lang('app.select-') ?>">
                                 <?php foreach ($category as $db) : ?>
-                                    <?php if ($param == 'direct cost') : ?> <option value="<?= $db->id ?>" <?= (session()->getFlashdata('flash-category') == $db->id ? 'selected' : '') ?> data-subtext=""><?= $db->name ?></option>
-                                    <?php else : ?> <option value="<?= substr($db->code, 0, 2) ?>" <?= (session()->getFlashdata('flash-category') == substr($db->code, 0, 2) ? 'selected' : '') ?> data-subtext="<?= $db->name ?>"><?= $db->code ?></option><?php endif ?>
+                                    <?php if ($param == 'direct cost') : ?>
+                                        <option value="<?= $db->id ?>" <?= (session()->getFlashdata('flash-category') == $db->id ? 'selected' : '') ?>><?= $db->name ?></option>
+                                    <?php else : ?>
+                                        <option value="<?= substr($db->code, 0, 2) ?>" <?= (session()->getFlashdata('flash-category') == substr($db->code, 0, 2) ? 'selected' : '') ?>><?= "{$db->code} &ensp;&emsp; {$db->name}" ?></option><?php endif ?>
                                 <?php endforeach ?>
                             </select>
                             <label for="sCategory"><?= lang('app.category') ?></label>
@@ -67,7 +69,7 @@
         e.preventDefault();
         var getCategory = $("#sCategory").val();
         var getParam = "<?= $param ?>";
-        var getUrl = "<?= $link ?>";
+        var getUrl = window.location.pathname.split('/').pop();
         $.ajax({
             url: "/search/cost",
             type: "POST",

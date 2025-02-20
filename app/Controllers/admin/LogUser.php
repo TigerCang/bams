@@ -13,7 +13,7 @@ class LogUser extends BaseController
         $data = [
             't_title' => lang('app.user log'),
             't_span' => lang('app.span user log'),
-            'link' => '/loguser',
+            'link' => base_url('loguser'),
             'blank' => '1',
             'selectUser' => $this->mainModel->distItem('m_user', 'code'),
         ];

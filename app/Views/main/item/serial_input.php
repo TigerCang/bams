@@ -15,8 +15,10 @@
                 <div class="row g-2">
                     <div class="col-12 mb-2">
                         <div class="form-floating form-floating-outline">
-                            <select class="select2-subtext form-select" id="item" name="item" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>">
-                                <?php if ($item1) : ?> <option value="<?= $item1[0]->id ?>" selected data-subtext="<?= $item1[0]->name ?>"><?= $item1[0]->code ?></option><?php endif ?>
+                            <select class="select2-non form-select" id="item" name="item" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>">
+                                <?php if ($item1) : ?>
+                                    <option value="<?= $item1[0]->id ?>" selected><?= "{$item1[0]->code} &ensp;&emsp; {$item1[0]->name}" ?></option>
+                                <?php endif ?>
                             </select>
                             <div id="error" class="invalid-feedback err_item"></div>
                             <label for="item"><?= lang('app.item') ?></label>
@@ -43,8 +45,10 @@
                     </div>
                     <div class="col-12">
                         <div class="form-floating form-floating-outline">
-                            <select class="select2-subtext form-select" id="tool" name="tool" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>">
-                                <?php if ($tool1) : ?> <option value="<?= $tool1[0]->id ?>" selected data-subtext="<?= $tool1[0]->name . " (" . $tool1[0]->code2 . ")" ?>"><?= $tool1[0]->code ?></option><?php endif ?>
+                            <select class="select2-non form-select" id="tool" name="tool" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>">
+                                <?php if ($tool1) : ?>
+                                    <option value="<?= $tool1[0]->id ?>" selected><?= "{$tool1[0]->code} &ensp;&emsp; {$tool1[0]->name} ({$tool1[0]->code2})" ?></option>
+                                <?php endif ?>
                             </select>
                             <label for="tool"><?= lang('app.equipment tool') ?></label>
                         </div>
@@ -112,8 +116,6 @@
                 cache: true
             },
             <?= json('min input') ?>,
-            <?= json('template 1') ?>,
-            <?= json('template 2') ?>,
         });
 
         $('#tool').select2({
@@ -140,8 +142,6 @@
                 cache: true
             },
             <?= json('min input') ?>,
-            <?= json('template 1') ?>,
-            <?= json('template 2') ?>,
         });
     });
 
@@ -149,7 +149,7 @@
         e.preventDefault();
         var getAction = $(this).val();
         if (getAction === 'delete') {
-            deleteConfirmation("<?= lang('app.sure') ?>").then((result) => {
+            askConfirmation("<?= lang('app.sure') ?>", "<?= lang('app.confirm delete') ?>").then((result) => {
                 if (result.isConfirmed) {
                     submitForm(getAction);
                 } else {

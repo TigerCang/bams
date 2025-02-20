@@ -48,7 +48,7 @@
                             </div>
                             <div class="col-12 col-md-12 col-lg-6 mb-2">
                                 <div class="form-floating form-floating-outline">
-                                    <select class="select2-tokenizer form-select" id="category" name="category" data-placeholder="<?= lang('app.selectCreate') ?>">
+                                    <select class="select2-tokenizer form-select" id="category" name="category" data-allow-clear="true" data-placeholder="<?= lang('app.selectCreate') ?>">
                                         <option value="" <?= (isset($item[0]->category) && $item[0]->category == '' ? 'selected' : '') ?>></option>
                                         <?php foreach ($category as $db) : ?>
                                             <option value="<?= $db->category ?>" <?= (isset($item[0]->category) && $item[0]->category == $db->category ? 'selected' : '') ?>><?= $db->category ?></option>
@@ -161,6 +161,7 @@
 <script src="<?= base_url('libraries') ?>/cang/js/extra.js"></script>
 <script>
     $(document).ready(function() {
+        $('#zAccount').attr('hidden', 'hidden');
         $('#stock').change(function() {
             if ($(this).prop('checked')) {
                 $('#zAccount').removeAttr('hidden');
@@ -188,7 +189,7 @@
         e.preventDefault();
         var getAction = $(this).val();
         if (getAction === 'delete') {
-            deleteConfirmation("<?= lang('app.sure') ?>").then((result) => {
+            askConfirmation("<?= lang('app.sure') ?>", "<?= lang('app.confirm delete') ?>").then((result) => {
                 if (result.isConfirmed) {
                     submitForm(getAction);
                 } else {

@@ -130,8 +130,8 @@
                     </div>
                     <div class="col-12 col-md-8 col-lg-8 mb-2">
                         <div class="form-floating form-floating-outline">
-                            <select class="select2-subtext form-select" id="standard" name="standard" data-allow-clear="true" data-placeholder="<?= lang('app.select-') ?>">
-                                <?php if ($standard1) : ?> <option value="<?= $standard1[0]->id ?>" selected data-subtext="<?= $standard1[0]->name ?>"><?= $standard1[0]->code ?></option><?php endif ?>
+                            <select class="select2-non form-select" id="standard" name="standard" data-allow-clear="true" data-placeholder="<?= lang('app.select-') ?>">
+                                <?php if ($standard1) : ?> <option value="<?= $standard1[0]->id ?>" selected><?= "{$standard1[0]->code} &ensp;&emsp; {$standard1[0]->name}" ?></option><?php endif ?>
                             </select>
                             <label for="standard"><?= lang('app.standard code') ?></label>
                         </div>
@@ -153,7 +153,7 @@
                 <div class="row g-2">
                     <div class="col-12 mb-2">
                         <div class="form-floating form-floating-outline">
-                            <select class="select2-subtext form-select" id="company" name="company" <?= (isset($project[0]->adaptation[0]) && $project[0]->adaptation[0] == '1' ? 'disabled' : '') ?>>
+                            <select class="select2-non form-select" id="company" name="company" <?= (isset($project[0]->adaptation[0]) && $project[0]->adaptation[0] == '1' ? 'disabled' : '') ?>>
                                 <?= companyOptions($company, $project, thisUser()) ?>
                             </select>
                             <div id="error" class="invalid-feedback err_company"></div>
@@ -409,8 +409,6 @@
                 cache: true
             },
             <?= json('min input') ?>,
-            <?= json('template 1') ?>,
-            <?= json('template 2') ?>,
         });
     });
 
@@ -418,7 +416,7 @@
         e.preventDefault();
         var getAction = $(this).val();
         if (getAction === 'delete') {
-            deleteConfirmation("<?= lang('app.sure') ?>").then((result) => {
+            askConfirmation("<?= lang('app.sure') ?>", "<?= lang('app.confirm delete') ?>").then((result) => {
                 if (result.isConfirmed) {
                     submitForm(getAction);
                 } else {

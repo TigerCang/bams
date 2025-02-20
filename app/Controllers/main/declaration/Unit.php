@@ -21,7 +21,7 @@ class Unit extends BaseController
         $data = [
             't_title' => lang('app.unit'),
             't_span' => lang('app.span unit'),
-            'link' => '/unit',
+            'link' => base_url('unit'),
             'cHid' => 'hidden',
             'rHid' => 'hidden',
             'unit' => $this->mainModel->getFile($this->urls[1], 'unit'),
@@ -40,7 +40,7 @@ class Unit extends BaseController
 
             $data = [
                 't_modal' => lang('app.unit'),
-                'link' => "/unit",
+                'link' => base_url('unit'),
                 'company' => [],
                 'region' => [],
                 'division' => [],

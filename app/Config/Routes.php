@@ -47,10 +47,12 @@ $routes->get('/', 'Home::index', ['filter' => 'auth']);
 $routes->get('/home', function () {
     return redirect()->to('/');
 });
-$routes->GET('/profile', 'Home::profilpegawai', ['filter' => 'auth']);
+$routes->GET('/profile', 'Home::profile', ['filter' => 'auth']);
+$routes->GET('/layouts', 'Home::layouts', ['filter' => 'auth']);
+$routes->POST('/layouts/save', 'Home::saveLayouts', ['filter' => 'auth']);
 $routes->POST('/changepassword', 'Home::changePassword', ['filter' => 'auth']);
 $routes->GET('/logactivity', 'Home::logData', ['filter' => 'auth']);
-$routes->GET('/lang/{locale}', 'Home::bahasa');
+// $routes->GET('/lang/{locale}', 'Home::bahasa');
 
 // Administrator ___________________________________________________________________________________________________________________________________________________________________________________________
 $routes->group('config', ['filter' => 'auth'],  function ($routes) {
@@ -88,16 +90,16 @@ $routes->group('search', ['filter' => 'auth'],  function ($routes) {
     $routes->POST('tool', 'mix\LoadMain::searchTool');
     $routes->POST('item', 'mix\LoadMain::searchItem');
     $routes->POST('distance', 'mix\LoadMain::searchDistance');
+    $routes->POST('budget', 'mix\LoadTransaction::searchBudget');
 });
 $routes->group('show', ['filter' => 'auth'],  function ($routes) {
     $routes->POST('unit', 'mix\loadMain::showUnit');
 });
 $routes->group('attachment', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('table', 'mix\Attachment::table');
-    $routes->GET('modal', 'mix\Attachment::modal');
-    $routes->GET('modal2', 'mix\Attachment::modal2');
-    $routes->POST('save', 'mix\Attachment::save');
-    $routes->POST('delete', 'mix\Attachment::delete');
+    $routes->GET('table', 'mix\Attachment::tableData');
+    $routes->GET('modal', 'mix\Attachment::modalData');
+    $routes->POST('save', 'mix\Attachment::saveData');
+    // $routes->POST('delete', 'mix\Attachment::delete');
 });
 $routes->group('load', ['filter' => 'auth'],  function ($routes) {
     $routes->POST('account', 'mix\LoadMain::loadAccount');
@@ -115,8 +117,6 @@ $routes->group('outfocus', ['filter' => 'auth'],  function ($routes) {
     $routes->POST('person', 'mix\LoadMain::OutFocusPerson');
 });
 
-
-// $routes->get('getUnique', 'mix\loadTransaction::CreateUnique');
 
 // Declaration ___________________________________________________________________________________________________________________________________________________________________________________________
 $routes->group('company', ['filter' => 'auth'],  function ($routes) {
@@ -174,20 +174,9 @@ $routes->group('defaultbudget', ['filter' => 'auth'],  function ($routes) {
     $routes->GET('table', 'main\declaration\DefaultBudget::tableData');
     $routes->POST('add', 'main\declaration\DefaultBudget::addData');
     $routes->GET('modal', 'main\declaration\DefaultBudget::modalData');
-    // $routes->GET('edit', 'main\declaration\DefaultBudget::editData');
-
-    // $routes->POST('save', 'main\deklarasi\SetAnggaran::saveData');
-    // $routes->GET('/', 'file\deklarasi\Anggaran::index');
-    // $routes->GET('input', 'file\deklarasi\Anggaran::crany');
-    // $routes->GET('input/(:any)', 'file\deklarasi\Anggaran::showdata/$1');
-    // $routes->POST('additem', 'file\deklarasi\Anggaran::tambahdata');
-    // $routes->POST('edititem', 'file\deklarasi\Anggaran::updatedata');
-    // $routes->POST('delitem', 'file\deklarasi\Anggaran::deletedata');
-    // $routes->POST('save', 'file\deklarasi\Anggaran::savedata');  
-    // $routes->GET('modalkoreksi', 'file\deklarasi\Anggaran::modaldata');
-    // $routes->POST('akun', 'extra\Loadfile::loadakun');
-    // $routes->POST('biaya', 'extra\Loadfile::loadbiaya');
-    // $routes->GET('tabbudget', 'file\deklarasi\Anggaran::tabelbudget');
+    $routes->POST('editItem', 'main\declaration\DefaultBudget::updateData');
+    $routes->POST('deleteItem', 'main\declaration\DefaultBudget::deleteData');
+    $routes->POST('save', 'main\declaration\DefaultBudget::saveData');
 });
 
 // Accounting ___________________________________________________________________________________________________________________________________________________________________________________________
@@ -361,6 +350,18 @@ $routes->group('formnumber', ['filter' => 'auth'],  function ($routes) {
 });
 
 // General Transaction ___________________________________________________________________________________________________________________________________________________________________________________________
+
+$routes->group('directbudget', ['filter' => 'auth'],  function ($routes) {
+    $routes->GET('/', 'general\budget\DirectBudget::index');
+    $routes->GET('input', 'general\budget\DirectBudget::inputData');
+    $routes->GET('table', 'general\budget\DirectBudget::tableData');
+    $routes->POST('outFocusProject', 'general\budget\DirectBudget::outFocusProject');
+    $routes->POST('add', 'general\budget\DirectBudget::addData');
+    $routes->GET('modal', 'general\budget\DirectBudget::modalData');
+    $routes->POST('editItem', 'general\budget\DirectBudget::updateData');
+    $routes->POST('deleteItem', 'general\budget\DirectBudget::deleteData');
+    $routes->POST('save', 'general\budget\DirectBudget::saveData');
+});
 // $routes->group('anggbiayal', ['filter' => 'auth'],  function ($routes) {
 //     $routes->GET('/', 'trumum\anggaran\Biayalangsung::index');
 //     $routes->GET('input', 'trumum\anggaran\Biayalangsung::crany');
@@ -389,47 +390,37 @@ $routes->group('formnumber', ['filter' => 'auth'],  function ($routes) {
 // });
 
 $routes->group('indirectbudget', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'trgeneral\budget\IndirectBudget::index');
-    $routes->GET('input', 'trgeneral\budget\IndirectBudget::inputData');
-    $routes->GET('table', 'trgeneral\budget\AccountBudget::tableData');
-    $routes->POST('add', 'trgeneral\budget\IndirectBudget::addData');
+    $routes->GET('/', 'general\budget\IndirectBudget::index');
+    $routes->GET('input', 'general\budget\IndirectBudget::inputData');
+    $routes->GET('table', 'general\budget\AccountBudget::tableData');
+    $routes->POST('add', 'general\budget\IndirectBudget::addData');
+    $routes->GET('import', 'general\budget\AccountBudget::importData');
+    $routes->GET('modal', 'general\budget\AccountBudget::modalData');
+    $routes->POST('editItem', 'general\budget\IndirectBudget::updateData');
+    $routes->POST('deleteItem', 'general\budget\IndirectBudget::deleteData');
+    $routes->POST('save', 'general\budget\IndirectBudget::saveData');
 });
-
 $routes->group('accountbudget', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'trgeneral\budget\AccountBudget::index');
-    $routes->GET('input', 'trgeneral\budget\AccountBudget::inputData');
-    $routes->GET('table', 'trgeneral\budget\AccountBudget::tableData');
-    $routes->POST('add', 'trgeneral\budget\AccountBudget::addData');
-    $routes->POST('save', 'trgeneral\budget\AccountBudget::saveData');
-    // $routes->POST('edititem', 'trumum\anggaran\Objek::updatedata');
-    // $routes->POST('delitem', 'trumum\anggaran\Objek::deletedata');
-
-
-
-    // $routes->group('defaultbudget', ['filter' => 'auth'],  function ($routes) {
-    //     $routes->GET('/', 'main\declaration\DefaultBudget::index');
-    //     $routes->GET('input', 'main\declaration\DefaultBudget::inputData');
-
-    // $routes->GET('/', 'main\declaration\Company::index');
-    // $routes->GET('input', 'main\declaration\Company::inputData');
-    // $routes->POST('save', 'main\declaration\Company::saveData');
-    // $routes->GET('inputmodal/(:any)', 'main\declaration\Company::inputModal/$1');
-    // $routes->POST('savemodal/(:any)', 'main\declaration\Company::saveModal/$1');
-    // $routes->GET('tablemodal', 'main\declaration\Company::tableModal');
-    // $routes->POST('addbudget', 'umum\anggaran\Cabang::tambahdata');
-    // $routes->POST('savedoc', 'umum\anggaran\Cabang::savedokumen');
-    // // $routes->GET('bataldoc/(:any)', 'umum\anggaran\Biayatidaklangsung::canceldokumen/$1');
-    $routes->GET('tabinduk', 'extra\Loadtran::tabelanggaraninduk');
-    $routes->GET('beban', 'extra\Loadfile::modalbeban');
-    $routes->POST('akun', 'extra\Loadfile::loadakun');
-    $routes->POST('biaya', 'extra\Loadfile::loadbiaya');
-
-    $routes->GET('tabbiaya', 'extra\Loadtran::tabeldataanggaran');
-    // $routes->POST('loadbudget', 'umum\anggaran\Cabang::loadbudgetbawaan');
-    // // $routes->GET('editkas', 'proyek\anggaran\Biayatidaklangsung::modalkoreksikas');
-    // // $routes->POST('delbudget', 'umum\anggaran\Camp::deletedata');
+    $routes->GET('/', 'general\budget\AccountBudget::index');
+    $routes->GET('input', 'general\budget\AccountBudget::inputData');
+    $routes->GET('table', 'general\budget\AccountBudget::tableData');
+    $routes->POST('add', 'general\budget\AccountBudget::addData');
+    $routes->GET('import', 'general\budget\AccountBudget::importData');
+    $routes->GET('modal', 'general\budget\AccountBudget::modalData');
+    $routes->POST('editItem', 'general\budget\AccountBudget::updateData');
+    $routes->POST('deleteItem', 'general\budget\AccountBudget::deleteData');
+    $routes->POST('save', 'general\budget\AccountBudget::saveData');
 });
-
+// $routes->group('defaultbudget', ['filter' => 'auth'],  function ($routes) {
+//     $routes->GET('/', 'main\declaration\DefaultBudget::index');
+//     $routes->GET('input', 'main\declaration\DefaultBudget::inputData');
+//     $routes->GET('table', 'main\declaration\DefaultBudget::tableData');
+//     $routes->POST('add', 'main\declaration\DefaultBudget::addData');
+//     $routes->GET('modal', 'main\declaration\DefaultBudget::modalData');
+//     $routes->POST('editItem', 'main\declaration\DefaultBudget::updateData');
+//     $routes->POST('deleteItem', 'main\declaration\DefaultBudget::deleteData');
+//     $routes->POST('save', 'main\declaration\DefaultBudget::saveData');
+// });
 
 // $routes->group('sojual', ['filter' => 'auth'],  function ($routes) {
 //     $routes->GET('/', 'umum\penjualan\SOJual::index');
@@ -791,28 +782,40 @@ $routes->group('directcash', ['filter' => 'auth'],  function ($routes) {
     $routes->GET('table1', 'trcash\expense\Directcash::tableAP');
     $routes->GET('table2', 'trcash\expense\Directcash::tableCash');
     $routes->POST('add', 'trcash\expense\Directcash::addData');
-    // $routes->POST('save', 'trgeneral\budget\AccountBudget::saveData');
+    // $routes->POST('save', 'general\budget\AccountBudget::saveData');
 
 
-    // $routes->GET('input', 'trgeneral\budget\AccountBudget::inputData');
-    // $routes->GET('table', 'trgeneral\budget\AccountBudget::tableData');
-    // $routes->POST('save', 'trgeneral\budget\AccountBudget::saveData');
+    // $routes->GET('input', 'general\budget\AccountBudget::inputData');
+    // $routes->GET('table', 'general\budget\AccountBudget::tableData');
+    // $routes->POST('save', 'general\budget\AccountBudget::saveData');
     // // $routes->POST('edititem', 'trumum\anggaran\Objek::updatedata');
 
     // $routes->POST('save', 'trcash\expense\Directcash::saveData');
     // $routes->POST('cancel', 'trcash\expense\Directcash::cancelData');
 });
 $routes->group('advancepayment', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'trcash\expense\Advancepayment::index');
-    $routes->GET('input', 'trcash\expense\Advancepayment::inputData');
+    $routes->GET('/', 'cash\expense\Advancepayment::index');
+    $routes->GET('input', 'cash\expense\Advancepayment::inputData');
     // $routes->POST('save', 'trcash\expense\Advancepayment::saveData');
     // $routes->POST('cancel', 'trcash\expense\Advancepayment::cancelData');
 });
 $routes->group('cashtransfer', ['filter' => 'auth'],  function ($routes) {
-    $routes->GET('/', 'trcash\expense\Cashtransfer::index');
-    $routes->GET('input', 'trcash\expense\Cashtransfer::inputData');
+    $routes->GET('/', 'cash\expense\Cashtransfer::index');
+    $routes->GET('input', 'cash\expense\Cashtransfer::inputData');
+    $routes->POST('save', 'cash\expense\Cashtransfer::saveData');
     // $routes->POST('save', 'trcash\expense\Cashtransfer::saveData');
     // $routes->POST('cancel', 'trcash\expense\Cashtransfer::cancelData');
+
+
+
+    // $routes->GET('table', 'general\budget\AccountBudget::tableData');
+    // $routes->POST('add', 'general\budget\AccountBudget::addData');
+    // $routes->GET('import', 'general\budget\AccountBudget::importData');
+    // $routes->GET('modal', 'general\budget\AccountBudget::modalData');
+    // $routes->POST('editItem', 'general\budget\AccountBudget::updateData');
+    // $routes->POST('deleteItem', 'general\budget\AccountBudget::deleteData');
+
+
 });
 
 $routes->group('uangjalan', ['filter' => 'auth'],  function ($routes) {

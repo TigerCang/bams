@@ -21,7 +21,7 @@ class Tool extends BaseController
         $data = [
             't_title' => lang('app.tool'),
             't_span' => lang('app.span tool'),
-            'link' => '/tool',
+            'link' => base_url('tool'),
             'company' => $this->mainModel->getCompany('', 't'),
             'selectCategory' => $this->mainModel->distItem('m_tool', 'category', 'param', 'tool'),
         ];
@@ -39,7 +39,7 @@ class Tool extends BaseController
         $data = [
             't_title' => lang('app.tool'),
             't_span' => lang('app.span tool'),
-            'link' => "/tool",
+            'link' => base_url('tool'),
             'company' => $this->mainModel->getCompany('', 't'),
             'region' => $this->mainModel->getFile('', 'region', 't'),
             'division' => $this->mainModel->getFile('', 'division', 't'),

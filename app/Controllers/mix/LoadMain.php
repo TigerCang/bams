@@ -27,7 +27,7 @@ class LoadMain extends BaseController
     {
         if ($this->request->isAJAX()) {
             $category = ($this->request->getVar('category') != '' ? $this->request->getVar('category') : 'XYZ');
-            $data = ['cost' => $this->mainModel->getCost(substr($this->request->getVar('url'), 1), $this->request->getVar('param'), $category)];
+            $data = ['cost' => $this->mainModel->getCost($this->request->getVar('url'), $this->request->getVar('param'), $category)];
             $msg = ['data' => view('x-main/cost_table', $data)];
             return $this->response->setJSON($msg);
         } else {
@@ -69,7 +69,7 @@ class LoadMain extends BaseController
     {
         if ($this->request->isAJAX()) {
             $data = [
-                'item' => $this->mainModel->getItem(substr($this->request->getVar('url'), 1), substr($this->request->getVar('url'), 1), $this->request->getVar('category')),
+                'item' => $this->mainModel->getItem($this->request->getVar('url'), $this->request->getVar('url'), $this->request->getVar('category')),
                 'pHid' => $this->request->getVar('pHid'),
                 'sHid' => $this->request->getVar('sHid'),
             ];
@@ -121,14 +121,14 @@ class LoadMain extends BaseController
                     if ($this->request->getVar('segment') == '')
                         $cost = $this->mainModel->loadCost('indirect cost', '4', '', $this->request->getVar('searchTerm'), $this->request->getVar('start'));
                     else
-                        $cost = $this->mainModel->loadCost('direct cost', '3', $this->request->getVar('kategori'), $this->request->getVar('searchTerm'));
+                        $cost = $this->mainModel->loadCost('direct cost', '3', $this->request->getVar('category'), $this->request->getVar('searchTerm'));
                     break;
                 case 'blank';
                     break;
             }
             $costData = array();
             foreach ($cost as $row) {
-                $costData[] = array('id' => $row->id, 'text' => $row->code, 'data-subtext' => $row->name);
+                $costData[] = array('id' => $row->id, 'text' => $row->code . str_repeat("\u{00A0}", 6) . $row->name);
             }
             echo json_encode($costData);
         } else {
@@ -142,7 +142,7 @@ class LoadMain extends BaseController
             $account = $this->mainModel->loadAccount($this->request->getVar('searchTerm'), $this->request->getVar('start'));
             $accountData = array();
             foreach ($account as $row) {
-                $accountData[] = array('id' => $row->id, 'text' => $row->code, 'data-subtext' => $row->name);
+                $accountData[] = array('id' => $row->id, 'text' => $row->code . str_repeat("\u{00A0}", 6) . $row->name);
             }
             return $this->response->setJSON($accountData);
         } else {
@@ -156,7 +156,7 @@ class LoadMain extends BaseController
             $standard = $this->mainModel->loadStandard($this->request->getVar('searchTerm'), $this->request->getVar('param'));
             $standardData = array();
             foreach ($standard as $row) {
-                $standardData[] = array('id' => $row->id, 'text' => $row->code, 'data-subtext' => $row->name);
+                $standardData[] = array('id' => $row->id, 'text' => $row->code . str_repeat("\u{00A0}", 6) . $row->name);
             }
             echo json_encode($standardData);
         } else {
@@ -170,7 +170,7 @@ class LoadMain extends BaseController
             $user = $this->mainModel->loadUser($this->request->getVar('searchTerm'), '', $this->request->getVar('employee'));
             $userData = array();
             foreach ($user as $row) {
-                $userData[] = array('id' => $row->id, 'text' => $row->code, 'data-subtext' => $row->employeeName);
+                $userData[] = array('id' => $row->id, 'text' => $row->code . str_repeat("\u{00A0}", 6) . $row->employeeName);
             }
             echo json_encode($userData);
         } else {
@@ -189,7 +189,7 @@ class LoadMain extends BaseController
             $person = $this->mainModel->loadPerson($this->request->getVar('searchTerm'), $customer, $supplier, $subcontractor, $employee, $osm);
             $personData = array();
             foreach ($person as $row) {
-                $personData[] = array('id' => $row->id, 'text' => $row->code, 'data-subtext' => $row->name);
+                $personData[] = array('id' => $row->id, 'text' => $row->code . str_repeat("\u{00A0}", 6) . $row->name);
             }
             echo json_encode($personData);
         } else {
@@ -203,7 +203,7 @@ class LoadMain extends BaseController
             $item = $this->mainModel->loadItem($this->request->getVar('searchTerm'), $this->request->getVar('param'), $this->request->getVar('serial'));
             $itemData = array();
             foreach ($item as $row) {
-                $itemData[] = array('id' => $row->id, 'text' => $row->code, 'data-subtext' => $row->name . " (" . $row->part_number . ")");
+                $itemData[] = array('id' => $row->id, 'text' => $row->code . str_repeat("\u{00A0}", 6) . $row->name . " (" . $row->part_number . ")");
             }
             echo json_encode($itemData);
         } else {
@@ -217,7 +217,7 @@ class LoadMain extends BaseController
             $project = $this->mainModel->loadProject($this->request->getVar('searchTerm'), $this->request->getVar('company'), $this->request->getVar('region'), $this->request->getVar('division'));
             $projectData = array();
             foreach ($project as $row) {
-                $projectData[] = array('id' => $row->id, 'text' => $row->code, 'data-subtext' => $row->package_name);
+                $projectData[] = array('id' => $row->id, 'text' => $row->code . str_repeat("\u{00A0}", 6) . $row->package_name);
             }
             echo json_encode($projectData);
         } else {
@@ -231,7 +231,7 @@ class LoadMain extends BaseController
             $branch = $this->mainModel->loadBranch($this->request->getVar('searchTerm'), $this->request->getVar('company'), $this->request->getVar('region'), $this->request->getVar('division'));
             $branchData = array();
             foreach ($branch as $row) {
-                $branchData[] = array('id' => $row->id, 'text' => $row->code, 'data-subtext' => $row->name);
+                $branchData[] = array('id' => $row->id, 'text' => $row->code . str_repeat("\u{00A0}", 6) . $row->name);
             }
             echo json_encode($branchData);
         } else {
@@ -245,7 +245,7 @@ class LoadMain extends BaseController
             $tool = $this->mainModel->loadTool($this->request->getVar('searchTerm'), $this->request->getVar('choose'), $this->request->getVar('company'), $this->request->getVar('region'), $this->request->getVar('division'));
             $toolData = array();
             foreach ($tool as $row) {
-                $toolData[] = array('id' => $row->id, 'text' => $row->code, 'data-subtext' => $row->name . " (" . $row->code2 . ")");
+                $toolData[] = array('id' => $row->id, 'text' => $row->code . str_repeat("\u{00A0}", 6) . $row->name . " (" . $row->code2 . ")",);
             }
             return $this->response->setJSON($toolData);
         } else {
@@ -262,21 +262,21 @@ class LoadMain extends BaseController
                     $result = $this->mainModel->loadProject($this->request->getVar('searchTerm'), $this->request->getVar('company'), $this->request->getVar('region'), $this->request->getVar('division'));
                     $resultData = array();
                     foreach ($result as $row) {
-                        $resultData[] = array('id' => $row->id, 'text' => $row->code, 'data-subtext' => $row->package_name);
+                        $resultData[] = array('id' => $row->id, 'text' => $row->code . str_repeat("\u{00A0}", 6) . $row->package_name);
                     }
                     break;
                 case 'branch':
                     $result = $this->mainModel->loadBranch($this->request->getVar('searchTerm'), $this->request->getVar('company'), $this->request->getVar('region'), $this->request->getVar('division'));
                     $resultData = array();
                     foreach ($result as $row) {
-                        $resultData[] = array('id' => $row->id, 'text' => $row->code, 'data-subtext' => $row->name);
+                        $resultData[] = array('id' => $row->id, 'text' => $row->code . str_repeat("\u{00A0}", 6) . $row->name);
                     }
                     break;
                 case 'equipment tool':
                     $result = $this->mainModel->loadTool($this->request->getVar('searchTerm'), $this->request->getVar('choose'), $this->request->getVar('company'), $this->request->getVar('region'), $this->request->getVar('division'));
                     $resultData = array();
                     foreach ($result as $row) {
-                        $resultData[] = array('id' => $row->id, 'text' => $row->code, 'data-subtext' => $row->name . " (" . $row->code2 . ")");
+                        $resultData[] = array('id' => $row->id, 'text' => $row->code . str_repeat("\u{00A0}", 6) . $row->name . " (" . $row->code2 . ")");
                     }
                     break;
                 case 'land building':
@@ -296,7 +296,7 @@ class LoadMain extends BaseController
                     $result = $this->mainModel->loadPerson($this->request->getVar('searchTerm'), '0', '0', '0', '1', '0');
                     $resultData = array();
                     foreach ($result as $row) {
-                        $resultData[] = array('id' => $row->id, 'text' => $row->code, 'data-subtext' => $row->name);
+                        $resultData[] = array('id' => $row->id, 'text' => $row->code . str_repeat("\u{00A0}", 6) . $row->name);
                     }
                     break;
                 default:
@@ -343,13 +343,13 @@ class LoadMain extends BaseController
             $field = $mapping[$this->request->getVar('choose')] ?? null;
 
             $dba1 = $this->mainModel->loadGA_COA($db1[0]->group_account_customer ?? '', $field);
-            if (!empty($dba1)) $resultData .= '<option value="' . $dba1[0]->id . '" data-subtext="' . $dba1[0]->name . '">' . lang('app.customer') . ' -> ' . $dba1[0]->code . '</option>';
+            if (!empty($dba1)) $resultData .= '<option value="' . $dba1[0]->id . '">' . lang('app.customer') . ' -> ' . $dba1[0]->code . str_repeat("\u{00A0}", 6) . $dba1[0]->name . '</option>';
             $dba2 = $this->mainModel->loadGA_COA($db1[0]->group_account_supplier ?? '', $field);
-            if (!empty($dba2)) $resultData .= '<option value="' . $dba2[0]->id . '" data-subtext="' . $dba2[0]->name . '">' . lang('app.supplier') . ' -> ' . $dba2[0]->code . '</option>';
+            if (!empty($dba2)) $resultData .= '<option value="' . $dba2[0]->id . '">' . lang('app.supplier') . ' -> ' . $dba2[0]->code . str_repeat("\u{00A0}", 6) . $dba2[0]->name . '</option>';
             $dba3 = $this->mainModel->loadGA_COA($db1[0]->group_account_partner ?? '', $field);
-            if (!empty($dba3)) $resultData .= '<option value="' . $dba3[0]->id . '" data-subtext="' . $dba3[0]->name . '">' . lang('app.subcontractor') . ' -> ' . $dba3[0]->code . '</option>';
+            if (!empty($dba3)) $resultData .= '<option value="' . $dba3[0]->id . '">' . lang('app.subcontractor') . ' -> ' . $dba3[0]->code . str_repeat("\u{00A0}", 6) . $dba3[0]->name . '</option>';
             $dba4 = $this->mainModel->loadGA_COA($db1[0]->group_account_employee ?? '', $field);
-            if (!empty($dba4)) $resultData .= '<option value="' . $dba4[0]->id . '" data-subtext="' . $dba4[0]->name . '">' . lang('app.employee') . ' -> ' . $dba4[0]->code . '</option>';
+            if (!empty($dba4)) $resultData .= '<option value="' . $dba4[0]->id . '">' . lang('app.employee') . ' -> ' . $dba4[0]->code . str_repeat("\u{00A0}", 6) . $dba4[0]->name . '</option>';
             $msg = ['account' => $resultData];
             return $this->response->setJSON($msg);
         } else {

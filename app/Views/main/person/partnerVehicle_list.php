@@ -10,8 +10,10 @@
                 <div class="row g-2 mb-4">
                     <div class="col-12 col-md-6 col-lg-6 mb-2">
                         <div class="form-floating form-floating-outline w-100 me-4">
-                            <select class="select2-subtext form-select" id="sPerson" name="sPerson" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>">
-                                <?php if ($person1) : ?> <option value="<?= $person1[0]->id ?>" selected data-subtext="<?= $person1[0]->name ?>"><?= $person1[0]->code ?></option><?php endif ?>
+                            <select class="select2-non form-select" id="sPerson" name="sPerson" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>">
+                                <?php if ($person1) : ?>
+                                    <option value="<?= $person1[0]->id ?>" selected><?= "{$person1[0]->code} &ensp;&emsp; {$person1[0]->name}" ?></option>
+                                <?php endif ?>
                             </select>
                             <label for="sPerson"><?= lang('app.partner') ?></label>
                         </div>
@@ -61,8 +63,6 @@
                 cache: true
             },
             <?= json('min input') ?>,
-            <?= json('template 1') ?>,
-            <?= json('template 2') ?>,
         });
     });
 
@@ -100,8 +100,6 @@
                             cache: true
                         },
                         <?= json('min input') ?>,
-                        <?= json('template 1') ?>,
-                        <?= json('template 2') ?>,
                     });
                 });
             },
@@ -115,7 +113,7 @@
     $(document).on('click', '.btn-search', function(e) {
         e.preventDefault();
         var getPerson = $("#sPerson").val();
-        var getUrl = "<?= substr($link, 1) ?>";
+        var getUrl = window.location.pathname.split('/').pop();
         $.ajax({
             url: "/search/tool",
             type: "POST",

@@ -21,7 +21,7 @@ class Position extends BaseController
         $data = [
             't_title' => lang('app.position class'),
             't_span' => lang('app.span position class'),
-            'link' => '/position',
+            'link' => base_url('position'),
             'iHid' => 'hidden',
             'division' => $this->mainModel->getFile2($this->urls[1], 'hrd'),
         ];
@@ -39,9 +39,9 @@ class Position extends BaseController
 
             $data = [
                 't_modal' => lang('app.position class'),
-                'link' => "/position",
+                'link' => base_url('position'),
                 'group' => 'hrd',
-                'elect' => $this->mainModel->distSelect('elect'),
+                'selopt' => $this->mainModel->distSelect('selopt'),
                 'file' => $db1,
                 'button' => ['save' => $buttons['save'], 'confirm' => $buttons['confirm'], 'delete' => $buttons['delete'], 'active' => $buttons['active']],
                 'btn_active' => (isset($db1[0]) && $db1[0]->adaptation[2] == '0' ? lang('app.btn active') : lang('app.btn inactive')),

@@ -51,6 +51,10 @@ class CashParent extends Migration
                 'type'                          => 'VARCHAR',
                 'constraint'                    => 255,
             ],
+            'role_as'                       => [
+                'type'                          => 'VARCHAR',
+                'constraint'                    => 255,
+            ],
             'standard_id'                   => [
                 'type'                          => 'VARCHAR',
                 'constraint'                    => 255,

@@ -23,7 +23,7 @@
                             <th width="100"><?= lang('app.source') ?></th>
                             <th width="200"><?= lang('app.object') ?></th>
                             <th><?= lang('app.title') ?></th>
-                            <th width="150"><?= lang('app.total') ?></th>
+                            <th class="text-end" width="150"><?= lang('app.total') ?></th>
                             <th width="100" class="text-center"><?= json('status') ?></th>
                             <th width="5" data-orderable="false"></th>
                         </tr>
@@ -36,7 +36,7 @@
                                 <td><?= lang('app.' . $row->source) ?></td>
                                 <td><?= lang('app.' . $row->object) ?></td>
                                 <td><?= $row->title ?></td>
-                                <td><?= formatComa($row->total) ?></td>
+                                <td class="text-end"><?= formatComa($row->allTotal) ?></td>
                                 <td class="text-center"><label class="label <?= $label['class'] ?>"><?= $label['text'] ?></label></td>
                                 <td><?php if (thisUser()['act_button'][1] == '1') : ?>
                                         <a href="javascript:void(0);" class="btn-input" data-unique="<?= $row->unique ?>"><?= json('btn i-view') ?></a>

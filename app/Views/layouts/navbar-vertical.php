@@ -136,13 +136,13 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="pages-profile-user.html">
-                            <i class="ri-account-circle-line ri-22px me-3"></i>
+                        <a class="dropdown-item" href="/profile">
+                            <i class="ri-user-3-line ri-22px me-3"></i>
                             <span class="align-middle"><?= lang('app.profile') ?></span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="pages-account-settings-account.html">
+                        <a class="dropdown-item" href="/layouts">
                             <i class="ri-layout-3-line ri-22px me-3"></i>
                             <span class="align-middle"><?= lang('app.layouts') ?></span>
                         </a>

@@ -21,7 +21,7 @@ class Serial extends BaseController
         $data = [
             't_title' => lang('app.serial'),
             't_span' => lang('app.span serial'),
-            'link' => '/serial',
+            'link' => base_url('serial'),
             'category' => $this->mainModel->distItem('m_item', 'category', 'param', 'material'),
             'serial' => $this->mainModel->getSerial($this->urls[1]),
         ];
@@ -40,7 +40,7 @@ class Serial extends BaseController
             $data = [
                 't_modal' => lang('app.serial'),
                 't_span' => lang('app.span serial'),
-                'link' => "/serial",
+                'link' => base_url('serial'),
                 'item1' => $this->mainModel->getData('m_tool', $db1[0]->item_id ?? '', '', 'id'),
                 'tool1' => $this->mainModel->getData('m_tool', $db1[0]->tool_id ?? '', '', 'id'),
                 'serial' => $db1,

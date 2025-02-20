@@ -21,7 +21,7 @@ class IndirectCost extends BaseController
         $data = [
             't_title' => lang('app.indirect cost'),
             't_span' => lang('app.span indirect cost'),
-            'link' => '/indirectcost',
+            'link' => base_url('indirectcost'),
             'param' => 'indirect cost',
             'category' => $this->mainModel->distinctCost('indirect cost'),
         ];
@@ -39,7 +39,7 @@ class IndirectCost extends BaseController
 
             $data = [
                 't_modal' => lang('app.indirect cost'),
-                'link' => "/indirectcost",
+                'link' => base_url('indirectcost'),
                 'mpHid' => 'hidden',
                 'kHid' => 'hidden',
                 'jlHid' => 'hidden',

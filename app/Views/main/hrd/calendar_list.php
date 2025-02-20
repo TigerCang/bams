@@ -71,7 +71,7 @@
         e.preventDefault();
         var getUnique = $(this).data('unique');
         var getDate = $(this).data('date');
-        deleteConfirmation("<?= lang('app.sure') ?>").then((result) => {
+        askConfirmation("<?= lang('app.sure') ?>", "<?= lang('app.confirm delete') ?>").then((result) => {
             if (result.isConfirmed) {
                 submitForm(getUnique, getDate);
             } else {

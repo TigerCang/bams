@@ -21,7 +21,7 @@ class DirectCost extends BaseController
         $data = [
             't_title' => lang('app.direct cost'),
             't_span' => lang('app.span direct cost'),
-            'link' => '/directcost',
+            'link' => base_url('directcost'),
             'param' => 'direct cost',
             'category' => $this->mainModel->getFile('', 'project category', 't'),
         ];
@@ -39,7 +39,7 @@ class DirectCost extends BaseController
 
             $data = [
                 't_modal' => lang('app.direct cost'),
-                'link' => "/directcost",
+                'link' => base_url('directcost'),
                 'mpHid' => '',
                 'kHid' => '',
                 'jlHid' => 'hidden',

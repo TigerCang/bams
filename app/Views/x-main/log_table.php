@@ -16,7 +16,7 @@
             <tr>
                 <td><?= $index + 1 ?>.</td>
                 <td <?= $uHid ?>><?= $row->username ?></td>
-                <td><a href="<?= $row->web_address ?>"><?= $row->web_address ?></a></td>
+                <td><?= filter_var($row->web_address, FILTER_VALIDATE_URL) ? '<a href="' . $row->web_address . '">' . $row->web_address . '</a>' : $row->web_address ?></td>
                 <td><?= $row->action ?></td>
                 <td><?= $row->data ?></td>
                 <td><?= $row->ip_address ?></td>

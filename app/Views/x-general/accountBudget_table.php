@@ -2,7 +2,7 @@
     <thead>
         <tr class="tr-color">
             <th width="5">#</th>
-            <th width="180"><?= ($object == 'project' ? lang('app.cost') : lang('app.account number')) ?></th>
+            <th width="250"><?= ($object == 'project' ? lang('app.cost') : lang('app.account number')) ?></th>
             <th><?= lang('app.description') ?></th>
             <th width="100" class="text-center"><?= lang('app.month') ?></th>
             <th width="100" class="text-end"><?= lang('app.quantity') ?></th>
@@ -29,8 +29,8 @@
                         <div class="dropdown">
                             <a href="javascript:void(0);" data-bs-toggle="dropdown"><?= json('btn i-dropdown') ?></a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownLink">
-                                <li><a href="javascript:void(0);" class="dropdown-item btn-edit" data-unique="<?= $row->unique ?>"><?= lang('app.edit'); ?></a></li>
-                                <li><a href="javascript:void(0);" class="dropdown-item btn-delete" data-unique="<?= $row->unique ?>"><?= lang('app.delete'); ?></a></li>
+                                <li><a href="javascript:void(0);" class="dropdown-item btn-edit" data-uniq="<?= $row->unique ?>"><?= lang('app.btn edit'); ?></a></li>
+                                <li><a href="javascript:void(0);" class="dropdown-item btn-delete" data-uniq="<?= $row->unique ?>"><?= lang('app.btn delete'); ?></a></li>
                             </ul>
                         </div>
                     <?php endif ?>
@@ -43,59 +43,58 @@
 <script src="<?= base_url('libraries') ?>/cang/js/datatable.js"></script>
 <script src="<?= base_url('libraries') ?>/cang/js/extra.js"></script>
 <script>
-    // $('.ubahdata').click(function(e) {
-    //     e.preventDefault();
-    //     var getID = $(this).data('id');
-    //     $.ajax({
-    //         url: "/mintabarang/modalkoreksi",
-    //         data: {
-    //             id: getID,
-    //         },
-    //         dataType: "json",
-    //         success: function(response) {
-    //             $('.modallampiran').html(response.data).show();
-    //             $('#modal-lampiran').modal('show')
-    //         },
-    //         error: function(xhr, ajaxOptions, thrownError) {
-    //             alert(xhr.status + "\n" + xhr.responseText);
-    //             alert(thrownError);
-    //         }
-    //     });
-    // })
+    $(document).on('click', '.btn-edit', function(e) {
+        e.preventDefault();
+        var getUniq = $(this).data('uniq') || '';
+        $.ajax({
+            url: "<?= $link ?>/modal",
+            data: {
+                uniq: getUniq,
+                link: "<?= $link ?>",
+            },
+            dataType: "json",
+            success: function(response) {
+                $('.modal-input').html(response.data).show();
+                $('#modal-input').modal('show')
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert(xhr.status + "\n" + xhr.responseText);
+                alert(thrownError);
+            }
+        });
+    })
 
-    // function hapus(id, deskripsi) {
-    //     var url = '/mintabarang/delitem';
-    //     Swal.fire({
-    //         title: '<?= lang('app.tanyadel') ?>',
-    //         text: "<?= lang('app.infodel') ?>",
-    //         icon: 'question',
-    //         showCancelButton: true,
-    //         confirmButtonColor: '#3085d6',
-    //         cancelButtonColor: '#d33',
-    //         confirmButtonText: '<?= lang('app.confirmdel') ?>',
-    //         cancelButtonText: '<?= lang('app.batal') ?>'
-    //     }).then((result) => {
-    //         if (result.isConfirmed) {
-    //             $.ajax({
-    //                 type: 'post',
-    //                 url: url,
-    //                 data: {
-    //                     id: id,
-    //                     barang: deskripsi,
-    //                 },
-    //                 dataType: "json",
-    //                 success: function(response) {
-    //                     if (response.sukses) { //dari msg save lampiran
-    //                         flashdata('success', response.sukses);
-    //                         dataitembarang();
-    //                     }
-    //                 },
-    //                 error: function(xhr, ajaxOptions, thrownError) {
-    //                     alert(xhr.status + "\n" + xhr.responseText);
-    //                     alert(thrownError);
-    //                 }
-    //             });
-    //         }
-    //     })
-    // }
+    $(document).on('click', '.btn-delete', function(e) {
+        e.preventDefault();
+        var getUniq = $(this).data('uniq');
+        askConfirmation("<?= lang('app.sure') ?>", "<?= lang('app.confirm delete') ?>").then((result) => {
+            if (result.isConfirmed) {
+                submitItem(getUniq);
+            } else {
+                return;
+            }
+        });
+    });
+
+    function submitItem(getUniq) {
+        $.ajax({
+            type: 'POST',
+            url: "<?= $link ?>/deleteItem",
+            data: {
+                unique: getUniq,
+            },
+            success: function(response) {
+                if (response.message) {
+                    tableBudget();
+                    var alertHtml = `<div class="alert alert-success alert-dismissible fade show" role="alert">${response.message}</div>`;
+                    $('#alertContainer4').html(alertHtml);
+                }
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert(xhr.status + "\n" + xhr.responseText);
+                alert(thrownError);
+            }
+        });
+        return false;
+    }
 </script>

@@ -8,6 +8,7 @@
             <th width="200" <?= $cHid ?>><?= lang('app.category') ?></th>
             <th width="200"><?= lang('app.code') ?></th>
             <th><?= lang('app.description') ?></th>
+            <th width="200" <?= $pHid ?>><?= lang('app.company') ?></th>
             <th width="150" <?= $pHid ?>><?= lang('app.position') ?></th>
             <th width="100" class="text-center"><?= json('status') ?></th>
             <th width="5" data-orderable="false"></th>
@@ -21,6 +22,7 @@
                 <td <?= $cHid ?>><?= $row->category ?></td>
                 <td><?= $row->code ?></td>
                 <td><?= $row->name ?></td>
+                <td <?= $pHid ?>><?= $row->company ?></td>
                 <td <?= $pHid ?>><?= $row->position ?></td>
                 <td class="text-center"><label class="label <?= $label['class'] ?>"><?= $label['text'] ?></label></td>
                 <td><?php if (thisUser()['act_button'][1] == '1') : ?>

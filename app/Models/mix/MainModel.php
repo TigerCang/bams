@@ -335,14 +335,16 @@ class MainModel
     public function getBudget($menu, $global = '1', $unique = false, $object = false)
     {
         $builder = $this->db->table('m_budget1 a');
-        if ($global == '1') {
-            $builder->select('a.*, b.name as typeCode, x.id as xLog');
+        if ($global == '1') { // Default Budget for list
+            $builder->select('a.*, b.name as typeCode, sum(distinct c.total) as allTotal, x.id as xLog');
             $strX = ($menu != '' ? ' AND x.menu = "' . $menu . '" AND x.username = "' . decrypt(session()->username) . '"' : '');
             $builder->join('m_cost b', 'a.type = b.code',  'left');
+            $builder->join('m_budget2 c', 'a.id = c.parent_id',  'left');
             $builder->join('user_log x', 'x.unique = a.unique' . $strX, 'left');
+            $builder->where('c.level', '1');
             $builder->where(['a.deleted_at' => null]);
             $builder->groupBy('a.id')->orderBy("a.object, a.title");
-        } else {
+        } elseif ($global == '0') { // Default Budget for detail item
             $builder->select('c.*, b.code as code, b.name as description, b.level as level');
             $builder->join('m_budget2 c', 'c.parent_id = a.id',  'left');
             $builder->where('a.unique', $unique)->where(['c.deleted_at' => null]);
@@ -350,17 +352,19 @@ class MainModel
                 $builder->join('m_cost b', 'c.cost_id=b.id', 'left');
             else
                 $builder->join('m_account b', 'c.account_id=b.id', 'left');
-            $builder->groupBy('c.id')->orderBy("b.code, c.id ");
+            $builder->groupBy('c.id')->orderBy("b.code, c.id");
+        } elseif ($global == 'mi') { // Default Budget on Modal Import
+            $builder->where('a.source', $unique)->where('a.object', $object); // String unique use on field source
+            $builder->where(['a.deleted_at' => null]);
+            $builder->orderBy("a.title");
         }
         return $builder->get()->getResult();
+        // return $builder->getCompiledSelect();
     }
-    public function cekBudget($parent, $param, $data1, $data2, $data3 = false)
+    public function cekBudget($parent, $data1, $data2)
     {
         $builder = $this->db->table('m_budget2');
-        $builder->where('parent_id', $parent);
-        // ($pilih == 'objek') ? $builder->where('object', $data1)->where('source', $data2) : $builder->where($data1, $data2);
-        ($param == 'object') ? $builder->where('pilihan', $data1)->where('tujuan', $data2) : $builder->where($data1, $data2);
-        if ($data3 == true) $builder->where('type', $data3);
+        $builder->where('parent_id', $parent)->where($data1, $data2);
         $builder->where(['deleted_at' => null]);
         return $builder->get()->getResult();
     }
@@ -395,6 +399,7 @@ class MainModel
     }
     public function loadAccount($isi, string $start)
     {
+
         $startArray = explode(',', $start);
         $builder = $this->db->table('m_account');
         // $builder->like('code', $start, 'after');
@@ -624,7 +629,7 @@ class MainModel
     public function getSegment($menu, $param, $active = false, $project = false, $branch = false)
     {
         $builder = $this->db->table('m_segment a');
-        $builder->select('a.*, b.code as codeProject, c.code as codeBranch, d.code as company, e.name as division, x.id as xLog');
+        $builder->select('a.*, b.code as codeProject, c.code as codeBranch, d.code as company, e.name as region, x.id as xLog');
         $builder->where('a.param', $param)->where(['a.deleted_at' => null]);
         if ($active == true) $builder->where('substring(a.adaptation, 2, 1)', '1')->where('substring(a.adaptation, 3, 1)', '1');
         if ($project == true) $builder->where('a.project_id', $project);
@@ -633,7 +638,7 @@ class MainModel
         $builder->join('m_project b', 'a.project_id=b.id', 'left');
         $builder->join('m_branch c', 'a.branch_id=c.id', 'left');
         $builder->join('m_company d', 'b.company_id=d.id', 'left');
-        $builder->join('m_file e', 'b.division_id=e.id', 'left');
+        $builder->join('m_file e', 'b.region_id=e.id', 'left');
         $builder->join('user_log x', 'x.unique = a.unique' . $strX, 'left');
         $builder->groupBy('a.id')->orderBy('b.code, c.code, a.code');
         return $builder->get()->getResult();
@@ -916,5 +921,6 @@ class MainModel
         $builder->join('user_log x', 'x.unique = a.unique' . $strX, 'left');
         $builder->groupBy('a.id')->orderBy('b.number');
         return $builder->get()->getResult();
+        // return $builder->getCompiledSelect();
     }
 }

@@ -60,4 +60,13 @@ class PersonModel extends Model
     ];
     protected $useTimestamps = true;
     protected $useSoftDeletes = true;
+
+    public function getPerson($username)
+    {
+        $query = $this->db->table('m_person');
+        $query->select('m_person.*, m_user.code as user');
+        $query->join('m_user', 'm_person.user_id = m_user.id', 'left');
+        $query->where('m_user.code', $username)->where('m_user.deleted_at', null);
+        return $query->get()->getResult();
+    }
 }

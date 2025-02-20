@@ -11,6 +11,8 @@ class AttachmentModel extends Model
         'unique',
         'object',
         'object_uniq',
+        'category',
+        'keeper',
         'title',
         'description',
         'ska',

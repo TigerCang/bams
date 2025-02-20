@@ -61,21 +61,24 @@ class BudgetParent extends Migration
             'date_end'                      => [
                 'type'                          => 'DATE',
             ],
-            'revision'                      => [ // addendum, revision 0,0
+            'revision'                      => [ // addendum, revision 1.1
                 'type'                          => 'VARCHAR',
                 'constraint'                    => 255,
+                'default'                       => '1.1',
             ],
-            'level'                         => [ //level start, now, next
+            'level'                         => [ //level start, now, finance, next
                 'type'                          => 'VARCHAR',
                 'constraint'                    => 255,
             ],
             'status'                        => [
                 'type'                          => 'VARCHAR',
                 'constraint'                    => 255,
+                'default'                       => '0',
             ],
             'is_use'                        => [
                 'type'                          => 'VARCHAR',
                 'constraint'                    => 255,
+                'default'                       => '0',
             ],
             'notes'                         => [
                 'type'                          => 'TEXT',

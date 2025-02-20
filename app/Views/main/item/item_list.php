@@ -65,7 +65,7 @@
     $(document).on('click', '.btn-search', function(e) {
         e.preventDefault();
         var getCategory = $("#sCategory").val();
-        var getUrl = "<?= $link ?>";
+        var getUrl = window.location.pathname.split('/').pop();
         var pHid = "<?= $pHid ?>";
         var sHid = "<?= $sHid ?>";
         $.ajax({

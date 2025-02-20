@@ -21,7 +21,7 @@ class TaxAccount extends BaseController
         $data = [
             't_title' => lang('app.tax'),
             't_span' => lang('app.span tax'),
-            'link' => '/taxaccount',
+            'link' => base_url('taxaccount'),
             'kHid' => 'hidden',
             'pHid' => 'hidden',
             'nHid' => '',
@@ -41,7 +41,7 @@ class TaxAccount extends BaseController
 
             $data = [
                 't_modal' => lang('app.tax'),
-                'link' => "/taxaccount",
+                'link' => base_url('taxaccount'),
                 'selectGroup' => $this->mainModel->distSelect('tax account', 't'),
                 'selectName' => $this->mainModel->distSelect('tax account'),
                 'company' => [],

@@ -23,6 +23,11 @@ class BudgetChild1 extends Migration
                 'type'                          => 'VARCHAR',
                 'constraint'                    => 255,
             ],
+            'budget_id'                     => [
+                'type'                          => 'VARCHAR',
+                'constraint'                    => 255,
+                'default'                       => '0',
+            ],
             'cost_id'                       => [
                 'type'                          => 'VARCHAR',
                 'constraint'                    => 255,
@@ -67,12 +72,12 @@ class BudgetChild1 extends Migration
                 'type'                          => 'VARCHAR',
                 'constraint'                    => 255,
             ],
-            'notes'                         => [
-                'type'                          => 'TEXT',
-            ],
-            'level_one'                     => [
+            'level'                         => [
                 'type'                          => 'VARCHAR',
                 'constraint'                    => 255,
+            ],
+            'notes'                         => [
+                'type'                          => 'TEXT',
             ],
             'created_at'                    => [
                 'type'                          => 'DATETIME',

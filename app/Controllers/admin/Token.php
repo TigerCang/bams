@@ -20,7 +20,7 @@ class Token extends BaseController
         $data = [
             't_title' => lang('app.token'),
             't_span' => lang('app.span token'),
-            'link' => '/token',
+            'link' => base_url('token'),
             'token' => $this->mainModel->getToken($this->urls[1]),
         ];
         $this->render('admin/token_list', $data);
@@ -33,7 +33,7 @@ class Token extends BaseController
         if ($this->request->isAJAX()) {
             $data = [
                 't_modal' => lang('app.token'),
-                'link' => "/token",
+                'link' => base_url('token'),
             ];
             $msg = ['data' => view('admin/token_input', $data)];
             return $this->response->setJSON($msg);

@@ -15,7 +15,7 @@ class Attachment extends BaseController
     }
 
     // ___________________________________________________________________________________________________________________________________________________________________________________________
-    public function table()
+    public function tableData()
     {
         if ($this->request->isAJAX()) {
             $data = [
@@ -29,7 +29,7 @@ class Attachment extends BaseController
         }
     }
     // ___________________________________________________________________________________________________________________________________________________________________________________________
-    public function modal()
+    public function modalData()
     {
         if ($this->request->isAJAX()) {
             $ska = $this->request->getVar('ska');
@@ -38,6 +38,7 @@ class Attachment extends BaseController
                 'unique' => $this->request->getVar('unique'),
                 'object' => $this->request->getVar('object'),
                 'selectAssociation' => $this->mainModel->distItem('m_attachment', 'association', 'object', 'employee'),
+                'selectCategory' => $this->mainModel->distItem('m_attachment', 'category', 'object', $this->request->getVar('object')),
                 'ska' => $ska,
                 'sHid' => ($ska == '0' ? 'hidden' : ''),
                 'tHid' => ($ska == '1' ? 'hidden' : ''),
@@ -50,12 +51,13 @@ class Attachment extends BaseController
     }
 
     // ___________________________________________________________________________________________________________________________________________________________________________________________
-    public function save()
+    public function saveData()
     {
         if ($this->request->isAJAX()) {
             $ruleA = ($this->request->getVar('skat') == '1' ? 'required' : 'permit_empty');
             $ruleB = ($this->request->getVar('skat') == '0' ? 'required' : 'permit_empty');
             $validationRules = [
+                'categoryAttachment' => ['rules' => 'required', 'errors' => ['required' => lang("app.err blank")]],
                 'qualificationAttachment' => ['rules' => $ruleA, 'errors' => ['required' => lang("app.err blank")]],
                 'registrationNumber' => ['rules' => $ruleA, 'errors' => ['required' => lang("app.err blank")]],
                 'titleAttachment' => ['rules' => $ruleB, 'errors' => ['required' => lang("app.err blank")]],
@@ -70,6 +72,7 @@ class Attachment extends BaseController
             if (!$this->validate($validationRules)) {
                 $msg = [
                     'error' => [
+                        'categoryAttachment' => $this->validation->getError('categoryAttachment'),
                         'qualificationAttachment' => $this->validation->getError('qualificationAttachment'),
                         'registrationNumber' => $this->validation->getError('registrationNumber'),
                         'titleAttachment' => $this->validation->getError('titleAttachment'),
@@ -89,6 +92,8 @@ class Attachment extends BaseController
                     'unique' => create_Unique(),
                     'object' => $this->request->getVar('object'),
                     'object_uniq' => $this->request->getVar('unique'),
+                    'category' => $this->request->getVar('categoryAttachment'),
+                    'keeper' => $this->request->getVar('keeperAttachment'),
                     'title' => $this->request->getVar('titleAttachment'),
                     'description' => $this->request->getVar('descriptionAttachment'),
                     'ska' => $valueSka,

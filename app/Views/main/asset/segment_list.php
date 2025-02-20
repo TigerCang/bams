@@ -9,8 +9,10 @@
                 <div class="row g-2 mb-4" <?= $filter ?>>
                     <div class="col-12 col-md-6 col-lg-6 mb-2">
                         <div class="form-floating form-floating-outline">
-                            <select class="select2-subtext form-select" id="sProject" name="sProject" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>">
-                                <?php if ($project1) : ?> <option value="<?= $project1[0]->id ?>" selected data-subtext="<?= $project1[0]->package_name ?>"><?= $project1[0]->code ?></option><?php endif ?>
+                            <select class="select2-non form-select" id="sProject" name="sProject" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>">
+                                <?php if ($project1) : ?>
+                                    <option value="<?= $project1[0]->id ?>" selected><?= "{$project1[0]->code} &ensp;&emsp; {$project1[0]->package_name}" ?></option>
+                                <?php endif ?>
                             </select>
                             <label for="sProject"><?= lang('app.project') ?></label>
                         </div>
@@ -36,8 +38,36 @@
 <div class="modal-input" style="display: none;"></div>
 
 <script>
+    // function initializeSelect2(selector, ajaxUrl) {
+    //     $(selector).select2({
+    //         ajax: {
+    //             url: ajaxUrl,
+    //             type: "POST",
+    //             dataType: "json",
+    //             delay: 250,
+    //             data: function(params) {
+    //                 return {
+    //                     searchTerm: params.term,
+    //                     company: '',
+    //                     region: '',
+    //                     division: '',
+    //                 };
+    //             },
+    //             processResults: function(response) {
+    //                 return {
+    //                     results: response
+    //                 };
+    //             },
+    //             cache: true
+    //         },
+    //         <= json('min input') ?>,
+    //     });
+    // }
+
     $(document).ready(function() {
+        // initializeSelect2('#sProject', "/load/project");
         $('.btn-search').trigger('click');
+
         $('#sProject').select2({
             ajax: {
                 url: "/load/project",
@@ -60,8 +90,6 @@
                 cache: true
             },
             <?= json('min input') ?>,
-            <?= json('template 1') ?>,
-            <?= json('template 2') ?>,
         });
     });
 
@@ -77,33 +105,9 @@
             success: function(response) {
                 $('.modal-input').html(response.data).show();
                 $('#modal-input').modal('show')
-                $('#modal-input').on('shown.bs.modal', function() {
-                    $('#sProject').select2({
-                        ajax: {
-                            url: "/load/project",
-                            type: "POST",
-                            dataType: "json",
-                            delay: 250,
-                            data: function(params) {
-                                return {
-                                    searchTerm: params.term,
-                                    company: '',
-                                    region: '',
-                                    division: '',
-                                };
-                            },
-                            processResults: function(response) {
-                                return {
-                                    results: response
-                                };
-                            },
-                            cache: true
-                        },
-                        <?= json('min input') ?>,
-                        <?= json('template 1') ?>,
-                        <?= json('template 2') ?>,
-                    });
-                });
+                // $('#modal-input').on('shown.bs.modal', function() {
+                //     initializeSelect2('#sProject', "/load/project");
+                // });
             },
             error: function(xhr, ajaxOptions, thrownError) {
                 alert(xhr.status + "\n" + xhr.responseText);
@@ -114,9 +118,8 @@
 
     $(document).on('click', '.btn-search', function(e) {
         e.preventDefault();
-        var getProject = ("<?= substr($link, 1) ?>" == 'distance') ? '' : ($("#sProject").val() || '-');
-        var getUrl = "<?= substr($link, 1) ?>";
-        var getBCD = "<?= $bcd ?>";
+        var getUrl = window.location.pathname.split('/').pop();
+        var getProject = (getUrl == 'distance') ? '' : ($("#sProject").val() || '-');
         $.ajax({
             url: "/search/distance",
             type: "POST",

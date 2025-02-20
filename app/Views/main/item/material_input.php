@@ -18,8 +18,10 @@
                         <div class="row g-2">
                             <div class="col-12 col-md-9 col-lg-9 mb-2">
                                 <div class="form-floating form-floating-outline">
-                                    <select class="select2-subtext form-select" id="cost" name="cost" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>" onchange="clickCost()">
-                                        <?php if ($cost1) : ?> <option value="<?= $cost1[0]->id ?>" selected data-subtext="<?= $cost1[0]->name ?>"><?= $cost1[0]->code ?></option><?php endif ?>
+                                    <select class="select2-non form-select" id="cost" name="cost" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>" onchange="clickCost()">
+                                        <?php if ($cost1) : ?>
+                                            <option value="<?= $cost1[0]->id ?>" selected><?= "{$cost1[0]->code} &ensp;&emsp; {$cost1[0]->name}" ?></option>
+                                        <?php endif ?>
                                     </select>
                                     <div id="error" class="invalid-feedback err_cost"></div>
                                     <label for="cost"><?= lang('app.resources') ?></label>
@@ -165,8 +167,6 @@
                 cache: true
             },
             <?= json('min input') ?>,
-            <?= json('template 1') ?>,
-            <?= json('template 2') ?>,
         });
     });
 
@@ -175,7 +175,7 @@
         e.preventDefault();
         var getAction = $(this).val();
         if (getAction === 'delete') {
-            deleteConfirmation("<?= lang('app.sure') ?>").then((result) => {
+            askConfirmation("<?= lang('app.sure') ?>", "<?= lang('app.confirm delete') ?>").then((result) => {
                 if (result.isConfirmed) {
                     submitForm(getAction);
                 } else {

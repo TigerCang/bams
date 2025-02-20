@@ -21,7 +21,7 @@ class Warehouse extends BaseController
         $data = [
             't_title' => lang('app.warehouse'),
             't_span' => lang('app.span warehouse'),
-            'link' => '/warehouse',
+            'link' => base_url('warehouse'),
             'cHid' => 'hidden',
             'rHid' => '',
             'unit' => $this->mainModel->getFile($this->urls[1], 'warehouse'),
@@ -40,7 +40,7 @@ class Warehouse extends BaseController
 
             $data = [
                 't_modal' => lang('app.warehouse'),
-                'link' => "/warehouse",
+                'link' => base_url('warehouse'),
                 'company' => $this->mainModel->getCompany('', 't'),
                 'region' => $this->mainModel->getFile('', 'region', 't'),
                 'division' => $this->mainModel->getFile('', 'division', 't'),

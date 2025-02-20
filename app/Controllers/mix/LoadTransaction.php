@@ -7,13 +7,31 @@ use App\Controllers\BaseController;
 
 class LoadTransaction extends BaseController
 {
-    // ___________________________________________________________________________________________________________________________________________________________________________________________
-    public function CreateUnique()
+    // Search ___________________________________________________________________________________________________________________________________________________________________________________________
+    public function searchBudget()
     {
-        $unique = create_Unique();
-        $this->uniqModel->saveUniq($unique);
-        return $this->response->setJSON(['unique' => $unique]);
+        if ($this->request->isAJAX()) {
+            var_dump($this->request->getVar('url'), $this->request->getVar('object'), $this->request->getVar('year'));
+            $data = [
+                'budget' => $this->transModel->getBudget($this->request->getVar('url'), $this->request->getVar('object'), '', '', $this->request->getVar('year')),
+                //     $data = ['cost' => $this->mainModel->getCost(substr($this->request->getVar('url'), 1), $this->request->getVar('param'), $category)];
+                //     public function getBudget($menu, $object = false, $objectid = false, $type = false, $year = false)
+            ];
+            var_dump($data['budget']);
+            die;
+            $msg = ['data' => view('x-general/budget_table', $data)];
+            return $this->response->setJSON($msg);
+        } else {
+            exit('out');
+        }
     }
+
+
+
+
+
+
+
 
     // ____________________________________________________________________________________________________________________________
     public function tabelanggaraninduk()

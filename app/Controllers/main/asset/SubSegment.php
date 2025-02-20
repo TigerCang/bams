@@ -21,7 +21,7 @@ class SubSegment extends BaseController
         $data = [
             't_title' => lang('app.sub segment'),
             't_span' => lang('app.span sub segment'),
-            'link' => '/subsegment',
+            'link' => base_url('subsegment'),
             'filter' => '',
             'bcd' => '111',
             'project1' => $this->mainModel->getData('m_project', session()->getFlashdata('flash-project') ?? '', '', 'id'),
@@ -41,7 +41,7 @@ class SubSegment extends BaseController
 
             $data = [
                 't_modal' => lang('app.sub segment'),
-                'link' => "/subsegment",
+                'link' => base_url('subsegment'),
                 'branch1' => $this->mainModel->getData('m_branch', $db1[0]->branch_id ?? '', '', 'id'),
                 'project1' => $this->mainModel->getData('m_project', $db1[0]->project_id ?? '', '', 'id'),
                 'distance' => $db1,

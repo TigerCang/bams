@@ -35,6 +35,10 @@ class CashChild1 extends Migration // Main cost
                 'type'                          => 'BOOLEAN',
                 'default'                       => false,
             ],
+            'person_id'                     => [
+                'type'                          => 'VARCHAR',
+                'constraint'                    => 255,
+            ],
             'segment_id'                    => [
                 'type'                          => 'VARCHAR',
                 'constraint'                    => 255,

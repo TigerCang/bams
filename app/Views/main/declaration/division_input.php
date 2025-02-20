@@ -10,14 +10,14 @@
             <?= csrf_field() ?>
             <div class="modal-body">
                 <input type="hidden" id="unique" name="unique" value="<?= ($file[0]->unique ?? '') ?>" />
-                <input type="hiddena" id="xParam" name="xParam" value="<?= ($file[0]->param ?? ($group == 'main' ? 'region' : 'position')) ?>" />
+                <input type="hidden" id="xParam" name="xParam" value="<?= ($file[0]->param ?? ($group == 'main' ? 'region' : 'position')) ?>" />
                 <input type="hidden" id="askDelete" name="askDelete">
                 <div id="error" class="invalid-feedback alert alert-danger err_askDelete" role="alert"></div>
                 <div class="row g-2">
                     <div class="col-12 col-md-6 col-lg-6 mb-2">
                         <div class="form-floating form-floating-outline">
                             <select class="select2-non form-select" id="param" name="param" <?= (isset($file[0]->adaptation[0]) && $file[0]->adaptation[0] == '1' ? 'disabled' : '') ?>>
-                                <?php foreach ($elect as $db) :
+                                <?php foreach ($selopt as $db) :
                                     if ($group == $db->group) : ?>
                                         <option value="<?= $db->name ?>" <?= (isset($file[0]->param) && $file[0]->param == $db->name ? 'selected' : '') ?>><?= lang('app.' . $db->name) ?></option>
                                 <?php endif;
@@ -85,7 +85,7 @@
         e.preventDefault();
         var getAction = $(this).val();
         if (getAction === 'delete') {
-            deleteConfirmation("<?= lang('app.sure') ?>").then((result) => {
+            askConfirmation("<?= lang('app.sure') ?>", "<?= lang('app.confirm delete') ?>").then((result) => {
                 if (result.isConfirmed) {
                     submitForm(getAction);
                 } else {

@@ -143,7 +143,7 @@ if (!function_exists('labelBadge')) {
         } elseif ($source == 'cash') {
             $statLabel = [
                 '0' => ['text' => lang('app.new')],
-                '1' => ['text' => lang('app.save')],
+                '1' => ['text' => lang('app.pending')],
                 '2' => ['text' => lang('app.need acc')],
                 '3' => ['text' => lang('app.process')],
                 '4' => ['text' => lang('app.revision')],
@@ -186,6 +186,15 @@ if (!function_exists('labelLetter')) {
         else if ($number < 1000000000000000)
             $temp = labelLetter($number / 1000000000000) . " trilyun" . labelLetter(fmod($number, 1000000000000));
         return $temp;
+    }
+}
+
+if (!function_exists('optionCondition')) {
+    function optionCondition($action)
+    {
+        $isAccZero = thisUser()['act_approve'] == '0';
+        $isCheckOption = $action == 'check';
+        return ($isAccZero && !$isCheckOption) || (!$isAccZero && $isCheckOption) ? 'disabled' : '';
     }
 }
 

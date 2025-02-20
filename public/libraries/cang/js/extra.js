@@ -79,12 +79,13 @@ function previewImage() {
 }
 
 // Function SweetAlert2 for delete confirmation
-function deleteConfirmation(title) {
+function askConfirmation(title, confirm) {
     return Swal.fire({
         title: title,
         icon: "warning",
         showCancelButton: true,
-        confirmButtonText: 'Yes, delete it!',
+        // confirmButtonText: 'Yes, delete it!',
+        confirmButtonText: confirm,
         customClass: {
             confirmButton: 'btn btn-danger me-3 waves-effect waves-light',
             cancelButton: 'btn btn-outline-secondary waves-effect'

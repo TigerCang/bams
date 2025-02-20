@@ -24,3 +24,7 @@ app\Config\Routes
 
 app\Config\Validation
     PasswordStrength
+
+
+public\libraries\js\config.js
+    template customizer

@@ -20,6 +20,8 @@ return [
     "btn make" => "<i class='ri-file-add-line ri-22px me-3'></i> Create",
     // "btn batal" => "<i class='ri-close-line ri-22px me-3'></i> Cancel",
     "btn search" => "<i class='ri-search-line ri-22px me-3'></i> Search",
+    "btn download" => "<i class='ri-download-2-fill ri-22px me-3'></i> Download",
+
     // "btn import" => "<i class='ri-import-line ri-22px me-3'></i> Import",
     // "btn kembali" => "Back",
     "btn save document" => "<i class='ri-save-line ri-22px me-3'></i> Save Document",
@@ -161,12 +163,8 @@ return [
     // // // // // "btn_list" => '<i class="feather icon-list"></i> List Request',
     // // // // // "btn_pilih" => '<i class="feather icon-check-square"> Selected</i>',
     // // // // // "btn_yesyakin" => '<i class="feather icon-check"></i> Yes, I am sure ...',
-    // // // // "btn_login" => '<i class="feather icon-log-in"></i> Sign In',
     // // // // // "btn_pilihsup" => '<i class="feather icon-check-square"></i> Choose Supplier',
 
-    // // "notifikasi" => "Notifications",
-
-    // // "dasbor" => "Dashboard",
 
     // Login ___________________________________________________________________________________________________________________________________________________________________________________________
     "login start1" => "START YOUR SESSION",
@@ -275,6 +273,10 @@ return [
     "salary" => "Salary",
     "salary attribute" => "Salary Attribute",
 
+    "access rights" => "access rights",
+    "evaluation" => "Evaluation",
+    "letter" => "Letter",
+
     "general transaction" => "General Transaction",
     "budget" => "Budget",
     "direct budget" => "Direct Budget",
@@ -312,6 +314,10 @@ return [
 
     // // Span Judul Content  _________________________________________________________________________________________________________________________
     // "span wilayah divisi" => "Tes tes Berisi data wilayah dan divisi",
+
+    "dashboard" => "Dashboard",
+    "default header" => "Default Header",
+    "template" => "Template",
 
     // Select Option ___________________________________________________________________________________________________________________________________________________________________________________________
     "save by" => "Saved By",
@@ -391,6 +397,7 @@ return [
     // // "acc_invoice" => "Approval Level for Invoices", //level persetujuan untuk faktur
     // // "folder_kas" => "Cash Attachment Folder",
     // // "folder_hrd" => "Human Resources Attachment Folder",
+    "project budget" => "Project Budget",
 
     "vat" => "VAT",
     "income tax" => "Income Tax",
@@ -428,12 +435,23 @@ return [
     "purchase" => "Purchase",
     "request item" => "Request Item",
 
+    "industry" => "Industry",
+    "non industry" => "Non Industry",
+
     "cash" => "Cash",
     "direct cash" => "Direct Cash",
     "indirect cash" => "Indirect Cash",
     "advance payment" => "Advance Payment",
+    "advance receipt" => "Advance Receipt",
     "cash transfer" => "Cash Transfer",
     "road money" => "Road Money",
+    "cash receipt" => "Cash Receipt",
+
+    "check" => "Check",
+    "accept" => "Accept",
+    "accept+" => "Accept, but need other signature",
+    "revise" => "Revise",
+    "reject" => "Reject",
 
     // Message ___________________________________________________________________________________________________________________________________________________________________________________________
     "wrong user" => "Invalid User and Password",
@@ -450,12 +468,13 @@ return [
     "err select" => "Please make a selection",
     "err access" => "You don't have sufficient access",
     "err delete" => "Data already in use cannot be deleted",
+    "err save" => "Data cannot be saved",
     "err document" => "Document Code is required",
     "err length" => "This field must be at least {0, number} characters in length",
     "err file1" => "This file is too large of a file (1 MB)",
     "err file20" => "This file is too large of a file (20 MB)",
     "err fileMime" => "This file does not have a valid mime type",
-    "err fileExt" => "This file does not have a valid extension",
+    "err fileext" => "This file does not have a valid extension",
     "err notImage" => "This file is not a valid, uploaded image file",
     // "err 404" => "The page you were looking for doesn't exist",
     // "err 403" => "Sorry, you don't have access to the page you requested",
@@ -474,6 +493,8 @@ return [
     "password success" => "Password have been changed",
     "password reset" => "Password reset successful",
 
+    "confirm delete" => "Yes, delete it!",
+    "confirm cancel" => "Yes, cancel it!",
 
     // // "tanyadel2" => "Are you sure to delete this data ",
     // "tanya hapus" => "Are you sure ?",
@@ -482,7 +503,25 @@ return [
     // "ok hapus" => "Your file has been deleted.",
     // "ok batal" => "Your file is safe.",
 
-    // Isi ___________________________________________________________________________________________________________________________________________________________________________________________
+    // Label Caption ___________________________________________________________________________________________________________________________________________________________________________________________
+    "card 1" => "First Card",
+    "card 2" => "Second Card",
+    "card 3" => "Third Card",
+    "card 4" => "Fourth Card",
+    "card 5" => "Fifth Card",
+    "card 6" => "Sixth Card",
+    "card 7" => "Seventh Card",
+    "card 8" => "Eigth Card",
+    "card 9" => "Nineth Card",
+    "card 10" => "Tenth Card",
+
+    "shortcut 1" => "Shortcut 1",
+    "shortcut 2" => "Shortcut 2",
+    "shortcut 3" => "Shortcut 3",
+    "shortcut 4" => "Shortcut 4",
+    "shortcut 5" => "Shortcut 5",
+    "shortcut 6" => "Shortcut 6",
+
     "change password" => "Change Password",
     "old password" => "Old Password",
     "new password" => "New Password",
@@ -491,6 +530,7 @@ return [
     "approval" => "Approval",
     "person" => "Person",
     "initial" => "Initials",
+    "joined" => "Joined",
 
     "param" => "Parameter",
     "value" => "Value",
@@ -624,6 +664,7 @@ return [
     "day" => "Days",
     "object" => "Object",
     "title" => "Title",
+    "keeper" => "Keeper",
     "part number" => "Part Number",
     "stock min" => "Minimum Stock",
     "second" => "Second",
@@ -668,407 +709,19 @@ return [
 
     // "supir" => "Driver",
 
+    "import data" => "Import Data",
     "start date" => "Start Date",
     "end date" => "End Date",
     "document number" => "Document Number",
     "requester" => "Requester",
-
-
-    // // // Title_________________________________________________________________________________________________________________________
-
-    // // "tt_userprofil" => "USER PROFILE",
-    // // "tt_gantisandi" => "CHANGE PASSWORD",
-    // // "tt_aktifitas" => "ACTIVITY LOG",
-    // // "tt_konfig" => "CONFIGURATION FILE",
-    // // "tt_role" => "ROLE FILE",
-    // // "tt_user" => "USER FILE",
-    // // "tt_loguser" => "LOG USER",
-    // // "tt_resetsandi" => "RESET PASSWORD",
-    // // "tt_perusahaan" => "COMPANY FILE",
-    // // "tt_wilayah" => "REGION FILE",
-    // // "tt_divisi" => "DIVISION FILE",
-    // // "tt_satuan" => "UNIT FILE",
-    // // "tt_gudang" => "WAREHOUSE FILE",
-    // // "tt_nodokumen" => "DOCUMENT CODE FILE",
-    // // "tt_noform" => "FORM NUMBER FILE",
-    // // "tt_propinsi" => "PROVINCE & DISTRICT FILE",
-    // // "tt_katproyek" => "PROJECT CATEGORY FILE",
-    // // "tt_biayal" => "DIRECT COST FILE",
-    // // "tt_biayatl" => "INDIRECT COST FILE",
-    // // "tt_sd" => "RESOURCE FILE",
-    // // "tt_subruas" => "SUB SEGMENT FILE",
-    // // "tt_lokasi" => "LOCATION FILE",
-    // // // "tt_paramtrip" => "TARIF FILE",
-    // // "tt_anggaranbawaan" => "BUDGET DEFAULT FILE",
-    // // "tt_camp" => "BASE CAMP FILE",
-    // // "tt_proyek" => "PROJECT FILE",
-    // // "tt_ruas" => "SEGMENT FILE",
-    // // "tt_katalat" => "EQUIPMENT CATEGORY FILE",
-    // // "tt_alat" => "EQUIPMENT FILE",
-    // // "tt_bangunan" => "LAND & BUILDING FILE",
-    // // "tt_tool" => "TOOL FILE",
-    // // "tt_inventaris" => "INVENTORY FILE",
-    // // "tt_coa" => "CHART OF ACCOUNT",
-    // // "tt_kelakun" => "ACCOUNT GROUP FILE",
-    // // "tt_adkas" => "BANK CASH ACCOUNT FILE",
-    // // "tt_adpajak" => "TAX ACCOUNT FILE",
-    // // // "tt_dokumenref" => "REFERENCE DOCUMENT FILE",
-    // // // "tt_objekpajak" => "TAX OBJECT FILE",
-    // // // INDONESIAN STANDARD INDUSTRIAL CLASSIFICATION FILE",
-    // // "tt_item" => "SPARE PARTS FILE",
-    // // "tt_serial" => "SERIAL NUMBER FILE",
-    // // "tt_bahan" => "MATERIAL FILE",
-    // // "tt_bekas" => "SECONDHAND ITEM FILE",
-    // // "tt_nonstok" => "UNSTOCKED ITEM FILE",
-    // // "tt_penerima" => "RECIPIENT FILE",
-    // // "tt_tautperusahaan" => "LINK COMPANY FILE",
-    // // "tt_mobilrekan" => "PARTNER VEHICLES FILE",
-    // // "tt_jabatan" => "POSITION FILE",
-    // // "tt_golongan" => "EMPLOYEE CLASS FILE",
-    // // "tt_cuti" => "LEAVE FILE",
-    // // "tt_katrating" => "RATING CATEGORY FILE",
-    // // "tt_kalenderlibur" => "HOLIDAY CALENDAR FILE",
-    // // "tt_pegawai" => "EMPLOYEE FILE",
-
-    // // "tt_anggaranobjek" => "OBJECT BUDGET",
-    // // "tt_anggaranbl" => "DIRECT COST BUDGET",
-    // // "tt_anggaranbtl" => "INDIRECT COST BUDGET",
-
-    // // // // // "tt_atributgaji" => "SALARY ATTRIBUTE",
-    // // // // // // "tt_berkasgaji" => "SALARY FILE",
-
-    // // "tt_cekmintabarang" => "ITEM REQUEST SIGNATURE",
-    // // // "tt_pesanbarang" => "PURCHASE ORDER",
-    // // // "tt_terimabarang" => "GOODS RECEIPT",
-    // // // "tt_cekpesanbarang" => "PURCHASE ORDER SIGNATURE",
-
-    // // // // // "tt_addanggaranbiayal" => "DIRECT COST &nbsp;BUDGET ADDENDUM",
-
-    // // // "tt_orderpenj" => "SALES ORDER",
-    // // // "tt_ordersewa" => "RENTAL ORDER",
-
-    // // // "tt_kaslangsung" => "DIRECT CASH",
-    // // // "tt_kasum" => "ADVANCE PAYMENT",
-    // // // "tt_kaspindah" => "CASH TRANSFER",
-    // // // "tt_kasnonlangsung" => "INDIRECT CASH",
-    // // // "tt_pajakmintakas" => "CASH REQUEST TAX",
-    // // "tt_cekmintakas" => "CASH REQUEST SIGNATURE",
-    // // // "tt_kasir" => "CASHIER",
-
-    // // // "tt_ijincuti" => "LEAVE REQUEST",
-    // // // "tt_cekijincuti" => "LEAVE REQUEST SIGNATURE",
-    // // // "tt_nilaipegawai" => "EMPLOYEE APPRAISAL",
-
-
-    // // // // "deldata" => "Delete Data",
-    // // // // "konfdata" => "Confirm Data",
-    // // // "simpandata" => "Save Data",
-    // // // "ubahdoc" => "Update Document",
-
-
-    // // // "batalangg" => "Cancel Budget",
-    // // // "simpanangg" => "Save Budget",
-
-    // // // // "errorjudul" => "Oops...",
-
-    // // // // "titlekonfdelete" => "Confirm Delete",
-    // // // "titletrip" => "Trip",
-    // // // "titletawarharga" => "Price Quotation",
-    // // // "titleambilbarang" => "Item Retrieval",
-
-    // // // // // "titlepilihitem" => "Select Item",
-    // // "titlepilih" => "Select ...",
-    // // "titlepilihcamp" => "Select Base Camp",
-    // // "titlepilihalat" => "Select Equipment",
-    // // // // // "titlepilihbahan" => "Select Material",
-    // // "titlepilihproyek" => "Select Project",
-    // // // // "titlepilihtanah" => "Select Land and Buildings",
-    // // // // // "titlepilihakun" => "Select Account",
-    // // // // "titlepilihsuplier" => "Select Supplier",
-    // // // // // "titlepilihpegawai" => "Select Employee",
-    // // // // // "titlepilihpenerima" => "Select Recipient",
-    // // // // // "titlepilihsd" => "Select Resource",
-    // // // "titlepilihuser" => "Select Username",
-    // // // // // "titlepilihpart" => "Select Spare Part",
-    // // // "titlepilihdokumen" => "Select Document",
-    // // // // "titlesediabarang" => "Item Available",
-    // // "titlelogaksi" => "Log Notes",
-    // // // "titlegambarbiaya" => "Cost Overview",
-    // // // "titlebayarpiut" => "Repayment of Debt",
-
-
-    // // // // Switch, tab, tabel_________________________________________________________________________________________________________________________
-    // // // // // "input" => "Input",
-    // // // // // // "view" => "View",
-    // // // "back" => "Back",
-
-
-
-    // // // // // "daftar" => "List",
-
-    // // // "sukses" => "succeed",
-
-    // // // "judulpilih" => "has been selected",
-
-    // // // "panggilanggaran" => "Load budget default sukses",
-    // // // "tanyadel2" => "Are you sure to delete this data ",
-    // // "tanyadel" => "Are you sure ?",
-    // // "infodel" => "You won't be able to revert this !",
-    // // "inforeset" => "Reset password to default : A1b2c3d4#",
-
-    // // // // "newjudul" => "New Data...",
-    // // // // "inputjudul" => "Input Data",
-    // // // // "ubahjudul" => "Changed !",
-    // // // // "deljudul" => "Deleted !",
-    // // // // "deltanggal" => "Delete Date",
-    // // // // "lampirjudul" => "New Attachment...",
-    // // // // "tawarjudul" => "Add Comparison...",
-    // // // // "passjudul" => "Password",
-    // // // // "cekjudul" => "Signature !",
-    // // // // "bataljudul" => "Cancel !",
-
-
-
-    // // // "create" => "Create",
-    // // // "lihat" => "Read",
-    // // // "update" => "Update",
-    // // // "delete" => "Delete",
-    // // // "simpan" => "Save",
-    // // // "tambah" => "Add",
-    // // // "log10" => "Log In-Out",
-
-    // // // "tunggusimpan" => "Waiting to save",
-    // // // "terjual" => "Sold",
-
-
-    // // // "ubahdata" => "Update Data",
-    // // // "konfdata" => "Confirm Data",
-    // // // "deldata" => "Delete Data",
-    // // // // "tambahlampir" => "Add Attachment",
-    // // // // "dellampir" => "Delete Attachment",
-    // // // "delitem" => "Delete Item",
-    // // // "cekdata" => "Signature Data",
-
-    // // // // // // "hapusdata" => "Delete Data",
-    // // // // // // "confdata" => "Confirm Data",
-    // // // // // // "simpandata" => "Save Data",terima
-    // // // // // "tambahdata" => "Add Data",
-
-
-    // // // // "ubahdoc" => "Update Document",
-    // // // // "bataldoc" => "Cancel Document",
-
-    // // // "siapbayar" => "Ready to pay",
-    // // // "dibayar" => "Paid",
-
-
-
-    // // // // // // status =>0:blm acc, 1:minta, 2:aksi,  5:pajak / accounting, 6:siap bayar, 7:bayar
-
-
-
-    // // // // // "kosong" => "Blank",
-
-
-    // // // Judul_________________________________________________________________________________________________________________________
-    // // "daftardata" => "List Data",
-    // // "inputdata" => "Input Data",
-    // // "detildata" => "Detail Data",
-    // // "bataldata" => "Cancel Data",
-    // // "data+" => "Additional Data",
-    // // "gambar" => "Picture",
-    // // "uploadfile" => "Upload File",
-    // // "idkontrak" => "Identifier and Contract",
-    // // "header" => "Header",
-
-    // // "xlist" => "bg-c-lite-green",
-    // // "xinput" => "bg-c-lite-green",
-    // // "xdetil" => "bg-c-yellow",
-
-    // // "bgList" => "bg-c-lite-green",
-    // // "bgInput" => "bg-c-lite-green",
-    // // "bgDetil" => "bg-c-yellow",
-    // // "bgMselect" => "bg-c-lite-green",
-    // // "bgMinput" => "bg-c-lite-green",
-    // // "bgMedit" => "bg-c-yellow",
-    // // "bgMdetil" => "bg-c-lite-green",
-    // // "bgMbatal" => "bg-c-pink",
-
-    // // // // "bgMdel" => "bg-c-pink",
-    // // // "bgMedit" => "bg-c-yellow",
-    // // "lampir" => "Attachment",
-    // // "anggaran" => "Budget",
-
-
-    // // "verortu" => "Parent Version",
-    // // "veranak" => "Child Version",
-
-    // // // Error_________________________________________________________________________________________________________________________
-    // // "min3kar" => "Minimum 3 characters",
-    // // "min4kar" => "Minimum 4 characters",
-    // // "min5kar" => "Minimum 5 characters",
-    // // "min6kar" => "Minimum 6 characters",
-    // // "min8kar" => "Minimum 8 characters",
-    // // "min10kar" => "Minimum 10 characters",
-    // // "min16kar" => "Minimum 16 characters",
-    // // "harusisi" => "Required",
-    // // // "jikanodata" => "Input Here, if There's not Data in Database",
-
-    // // // // // // "datatidakada" => "could not be found",
-    // // // // // // "hapusdata" => "Delete Data",
-    // // // // // // "confdata" => "Confirm Data",
-    // // // // // "tambahdata" => "Add Data",
-    // // "salahuser" => "Invalid User",
-
-    // // "buatusersukses" => "New User has been created",
-
-
-    // // "errnoakses" => "User doesn't have access rights",
-
-
-    // // // "errfilebesar2" => "This file is too large of a file (2 MB)",
-    // // // // "err100" => "This field must contain a number greater than or equal to 100.0000",
-    // // // "err0" => "This field must contain a number greater than 0",
-    // // // "err1" => "This field must contain a number greater than 0",
-    // // // // "err1" => "This field must contain a number greater than or equal to 1",
-    // // // // // "erremail" => "This field is not a valid E-Mail",
-    // // // // "errnodata" => "Data not found",
-    // // "errnodatatabel" => "No data available in table",
-
-
-    // // // Sidebar Link_________________________________________________________________________________________________________________________
-    // // "log_lupa" => "Forgot Password",
-    // // "log_kembali" => "Back to login",
-
-    // // "home" => "Home",
-    // // "layar" => "Screen",
-    // // "cari+" => "Search...",
-    // // "profil" => "Profile",
-    // // "atur" => "Settings",
-    // // "sandi" => "Password",
-    // // "aktifitas" => "Activity Log",
-    // // "logout" => "Sign Out",
-    // // // "bahasa" => "Language",
-    // // "bahasaingg" => "English",
-    // // "bahasaindo" => "Indonesian",
-
-    // "berkas" => "File",
-    // "admin" => "Administrator",
-    // "db" => "Database",
-    // // "config" => "Configuration",
-    // // "role" => "Role",
-    // // "user" => "User",
-    // // "loguser" => "Log User",
-    // // "resetpass" => "Reset Password",
-    // // "deklar" => "Declaration",
-    // // "perusahaan" => "Company",
-    // // "wilayah" => "Region",
-    // // "divisi" => "Division",
-    // // "satuan" => "Unit",
-    // // "gudang" => "Warehouse",
-    // // "nodokumen" => "Document Code",
-    // // "noform" => "Form Number - ISO",
-    // // "propkabu" => "Province & District",
-    // // "biayaproyek" => "Project Cost",
-    // // "katproyek" => "Project Category",
-    // // "biayal" => "Direct Cost",
-    // // "biayatl" => "Indirect Cost",
-    // // "sumberdaya" => "Resource",
-    // // "jarak" => "Distance",
-    // // "subruas" => "Sub Segment",
-    // // "anggaranbawaan" => "Budget Default",
-    // // // "configtrip" => "Trip Configuration",
-    // // // "persentase" => "Percentage",
-    // // "cabangaset" => "Branch & Asset",
-    // // "camp" => "Base Camp",
-    // // "proyek" => "Project",
-    // // "ruas" => "Segment",
-    // // "alat" => "Equipment",
-    // // "katalat" => "Equipment Category",
-    // // "tanah" => "Land & Building",
-    // // "tool" => "Tool",
-    // // "inventaris" => "Inventory",
-    // // "akuntansi" => "Accounting",
-    // // "coa" => "Chart of Account",
-    // // "akungrup" => "Account Group",
-    // // "akunbawaan" => "Account Default",
-    // // "kasbank" => "Cash & Bank",
-    // // "dokumenpajak" => "Tax Document",
-    // // "item" => "Item",
-    // // "sparepart" => "Spare Parts",
-    // // "sn" => "Serial Number",
-    // // "bahan" => "Material",
-    // // "sesuaistok" => "Stock Adjustment",
-    // // "penerima" => "Recipient",
-    // // "tautperusahaan" => "Link Company",
-    // // "mobilrekan" => "Partner Vehicles",
-    // // "sdm" => "Human Resources",
-    // // "cuti" => "Days Off",
-    // // "kalender" => "Calendar",
-    // // "pengumuman" => "Announcement",
-    // // "pegawai" => "Employee",
-    // // "gaji" => "Salary",
-    // // // "atribut" => "Atribute",
-
-    // // "trumum" => "General Transaction",
-    // // "hargadetil" => "Unit Price Detail",
-
-    // // "tritem" => "Item Transaction",
-    // // "ceksedia" => "Checking Inventory",
-    // // "tandat" => "Signature",
-    // "pembelian" => "Purchase",
-    // "minta barang" => "Item Request",
-    // // "tawarharga" => "Price Quotation",
-    // // "pilihharga" => "Select Price",
-
-
-
-    // // // "pesanbarang" => "Purchase Order",
-    // // // "terimabarang" => "Goods Receipt",
-
-    // // // "tlproyek" => "Indirect Project Cost",
-
-    // // // // // // "terimabarang" => "Purchase Receipt",
-    // // // // // // "kembalibarang" => "Sales Returns",
-    // // // // // // "rekaptagihan" => "Bill Recap",
-
-    // // // // "anggaran" => "Budget",
-    // // // // // // "bengkel" => "Workshop",
-
-    // // // // // // "pinjam" => "Loan",
-    // // // // // // "kasbon" => "Cash Receipt",
-    // // // // // // "tiket" => "Ticket",
-
-
-
-
-
-    // // "trdivisi" => "Division Transaction",
-    // // // "anggaran" => "Budget",
-
-    // // // "penjualan" => "Sales",
-    // // // "pesanjual" => "Sales Order",
-    // // // "pesansewa" => "Rental Order",
-
-    // // "trkas" => "Cash Transaction",
-    // // "mintakas" => "Cash Request",
-    // // "kaslangsung" => "Direct Cash",
-    // // "kasum" => "Advance Payment",
-    // // // "kaspindah" => "Cash Transfer",
-    // // // "kasnonlangsung" => "Indirect Cash",
-    // // // "ummasuk" => "Advance Receipt",
-    // // "potongpajak" => "Tax Collection",
-    // // // "kasir" => "Cashier",
-
-    // // "trakuntansi" => "Accounting Transaction",
-    // // "trhrd" => "HR Transaction",
-    // // "ambilbarang" => "Item Retrieval",
-    // // // "nilaipegawai" => "Employee Appraisal",
-
-    // // // // // // "laporan" => "Report",
-    // // // // // // "dukungan" => "Support",
-    // // // // // // "dokumentasi" => "Documentation",
-
+    "price contract" => "Price Contract",
+    "price work" => "Price Work",
+    "contract" => "Contract",
+    "work" => "Work",
+    "total contract" => "Total Contract",
+    "total work" => "Total Work",
+    "group industry" => "Group Industry",
+    "more attention" => "More Attention",
 
     // // // Menu_________________________________________________________________________________________________________________________
     // // "infopribadi" => "Personal Info",

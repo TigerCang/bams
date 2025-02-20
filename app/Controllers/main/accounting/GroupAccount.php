@@ -21,7 +21,7 @@ class GroupAccount extends BaseController
         $data = [
             't_title' => lang('app.group account'),
             't_span' => lang('app.span group account'),
-            'link' => '/groupaccount',
+            'link' => base_url('groupaccount'),
             'kHid' => '',
             'pHid' => 'hidden',
             'nHid' => 'hidden',
@@ -41,7 +41,7 @@ class GroupAccount extends BaseController
 
             $data = [
                 't_modal' => lang('app.group account'),
-                'link' => "/groupaccount",
+                'link' => base_url('groupaccount'),
                 'selectGroup' => $this->mainModel->distSelect('group account', 't'),
                 'selectName' => $this->mainModel->distSelect('group account'),
                 'company' => [],

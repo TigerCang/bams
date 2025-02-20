@@ -21,7 +21,7 @@ class Branch extends BaseController
         $data = [
             't_title' => lang('app.branch'),
             't_span' => lang('app.span branch'),
-            'link' => '/branch',
+            'link' => base_url('branch'),
             'branch' => $this->mainModel->getBranch($this->urls[1]),
         ];
         $this->render('main/asset/branch_list', $data);
@@ -38,7 +38,7 @@ class Branch extends BaseController
         $data = [
             't_title' => lang('app.branch'),
             't_span' => lang('app.span branch'),
-            'link' => "/branch",
+            'link' => base_url('branch'),
             'company' => $this->mainModel->getCompany('', 't'),
             'region' => $this->mainModel->getFile('', 'region', 't'),
             'division' => $this->mainModel->getFile('', 'division', 't'),

@@ -21,7 +21,7 @@ class LandBuilding extends BaseController
         $data = [
             't_title' => lang('app.land building'),
             't_span' => lang('app.span land building'),
-            'link' => '/landbuilding',
+            'link' => base_url('landbuilding'),
             'company' => $this->mainModel->getCompany('', 't'),
             'selectCategory' => $this->mainModel->distItem('m_land', 'category', '', ''),
         ];
@@ -39,7 +39,7 @@ class LandBuilding extends BaseController
         $data = [
             't_title' => lang('app.land building'),
             't_span' => lang('app.span land building'),
-            'link' => "/landbuilding",
+            'link' => base_url('landbuilding'),
             'company' => $this->mainModel->getCompany('', 't'),
             'region' => $this->mainModel->getFile('', 'region', 't'),
             'division' => $this->mainModel->getFile('', 'division', 't'),

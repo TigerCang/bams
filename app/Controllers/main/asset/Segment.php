@@ -21,7 +21,7 @@ class Segment extends BaseController
         $data = [
             't_title' => lang('app.segment'),
             't_span' => lang('app.span segment'),
-            'link' => '/segment',
+            'link' => base_url('segment'),
             'filter' => '',
             'bcd' => '010',
             'project1' => $this->mainModel->getData('m_project', session()->getFlashdata('flash-project') ?? '', '', 'id'),
@@ -41,7 +41,7 @@ class Segment extends BaseController
 
             $data = [
                 't_modal' => lang('app.segment'),
-                'link' => "/segment",
+                'link' => base_url('segment'),
                 'branch1' => [],
                 'project1' => $this->mainModel->getData('m_project', $db1[0]->project_id ?? '', '', 'id'),
                 'distance' => $db1,
@@ -156,19 +156,9 @@ class Segment extends BaseController
     {
         if ($this->request->isAJAX()) {
             $project = $this->request->getVar('project') != '' ? $this->request->getVar('project') : 'XYZ';
-            $project1 = $this->mainModel->getData('m_project', $project, '', 'id');
-            $company1 = $this->mainModel->getData('m_company', $project1[0]->company_id ?? '', '', 'id');
-            $region1 = $this->mainModel->getData('m_file', $project1[0]->region_id ?? '', '', 'id');
-            $segment = $this->mainModel->getSegment('', 'segment', 't', $project);
-
-            $sSegment = $this->request->getVar('segment');
-            $segmentData = "";
-            foreach ($segment as $db) :
-                $choose = "";
-                if ($db->id == $sSegment) $choose = 'selected';
-                $segmentData .= '<option value="' . $db->id . '" data-code="' . $db->code . '" data-subtext="' . $db->name . '" ' . $choose . '>' . $db->code . '</option>';
-            endforeach;
-            $msg = ['company' => $company1[0]->code ?? '', 'region' => $region1[0]->name ?? '', 'segment' => $segmentData];
+            $file = callFile('project', $project);
+            $segmentData = segmentOptions($project, $this->request->getVar('segment'));
+            $msg = ['company' => $file['company'], 'region' => $file['region'], 'segment' => $segmentData];
             return $this->response->setJSON($msg);
         } else {
             exit('out');

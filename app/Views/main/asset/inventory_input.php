@@ -30,7 +30,7 @@
                     </div>
                     <div class="col-12 mb-2">
                         <div class="form-floating form-floating-outline">
-                            <select class="select2-subtext form-select" id="company" name="company" <?= (isset($inventory[0]->adaptation[0]) && $inventory[0]->adaptation[0] == '1' ? 'disabled' : '') ?>>
+                            <select class="select2-non form-select" id="company" name="company" <?= (isset($inventory[0]->adaptation[0]) && $inventory[0]->adaptation[0] == '1' ? 'disabled' : '') ?>>
                                 <?= companyOptions($company, $inventory, thisUser()) ?>
                             </select>
                             <div id="error" class="invalid-feedback err_company"></div>
@@ -57,7 +57,10 @@
                     </div>
                     <div class="col-12">
                         <div class="form-floating form-floating-outline">
-                            <select class="select2-subtext form-select" id="branch" name="branch" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>">
+                            <select class="select2-non form-select" id="branch" name="branch" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>">
+                                <?php if ($branch1) : ?>
+                                    <option value="<?= $branch1[0]->id ?>" selected><?= "{$branch1[0]->code} &ensp;&emsp; {$branch1[0]->name}" ?></option>
+                                <?php endif ?>
                             </select>
                             <div id="error" class="invalid-feedback err_branch"></div>
                             <label for="branch"><?= lang('app.branch') ?></label>
@@ -189,8 +192,10 @@
                     </div>
                     <div class="col-12 col-md-6 col-lg-6 mb-2">
                         <div class="form-floating form-floating-outline">
-                            <select class="select2-subtext form-select" id="employee" name="employee" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>">
-                                <?php if ($employee1) : ?> <option value="<?= $employee1[0]->id ?>" selected data-subtext="<?= $employee1[0]->name ?>"><?= $employee1[0]->code ?></option><?php endif ?>
+                            <select class="select2-non form-select" id="employee" name="employee" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>">
+                                <?php if ($employee1) : ?>
+                                    <option value="<?= $employee1[0]->id ?>" selected><?= "{$employee1[0]->code} &ensp;&emsp; {$employee1[0]->name}" ?></option>
+                                <?php endif ?>
                             </select>
                             <div id="error" class="invalid-feedback err_employee"></div>
                             <label for="employee"><?= lang('app.employee') ?></label>
@@ -253,6 +258,28 @@
 
     $(document).ready(function() {
         $("#groupAccount").trigger("change");
+
+        $('#branch').select2({
+            ajax: {
+                url: "/load/branch",
+                type: "POST",
+                dataType: "json",
+                delay: 250,
+                data: function(params) {
+                    return {
+                        searchTerm: params.term,
+                    };
+                },
+                processResults: function(response) {
+                    return {
+                        results: response
+                    };
+                },
+                cache: true
+            },
+            <?= json('min input') ?>,
+        });
+
         $('#employee').select2({
             ajax: {
                 url: "/load/person",
@@ -273,8 +300,6 @@
                 cache: true
             },
             <?= json('min input') ?>,
-            <?= json('template 1') ?>,
-            <?= json('template 2') ?>,
         });
     });
 
@@ -282,7 +307,7 @@
         e.preventDefault();
         var getAction = $(this).val();
         if (getAction === 'delete') {
-            deleteConfirmation("<?= lang('app.sure') ?>").then((result) => {
+            askConfirmation("<?= lang('app.sure') ?>", "<?= lang('app.confirm delete') ?>").then((result) => {
                 if (result.isConfirmed) {
                     submitForm(getAction);
                 } else {

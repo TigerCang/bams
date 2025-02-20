@@ -22,7 +22,7 @@ class Calendar extends BaseController
         $data = [
             't_title' => lang('app.holiday calendar'),
             't_span' => lang('app.span holiday calendar'),
-            'link' => '/calendar',
+            'link' => base_url('calendar'),
             'calendar' => $this->mainModel->getCalendar($year),
         ];
         $this->render('main/hrd/calendar_list', $data);
@@ -35,7 +35,7 @@ class Calendar extends BaseController
             checkPage('143', '', 'y', 'n');
             $data = [
                 't_modal' => lang('app.holiday calendar'),
-                'link' => "/calendar",
+                'link' => base_url('calendar'),
             ];
             $msg = ['data' => view('main/hrd/calendar_input', $data)];
             return $this->response->setJSON($msg);

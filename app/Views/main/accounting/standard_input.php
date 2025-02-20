@@ -24,14 +24,14 @@
                             <label for="category"><?= lang('app.category') ?></label>
                         </div>
                     </div>
-                    <div class="col-12 col-md-4 col-lg-4 mb-4" id="zMode1">
+                    <div class="col-12 col-md-6 col-lg-6 mb-4" id="zMode1">
                         <div class="form-floating form-floating-outline">
                             <input type="text" class="form-control text-uppercase" <?= ((isset($standard[0]->adaptation[0]) && $standard[0]->adaptation[0] == '1') ? 'readonly' : '') ?> id="code" name="code" placeholder="" maxlength="5" value="<?= ($standard[0]->code ?? '') ?>" />
                             <label for="code"><?= lang('app.code') ?></label>
                             <div id="error" class="invalid-feedback err_code"></div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-4 col-lg-4 mb-4" id="zMode2">
+                    <div class="col-12 col-md-6 col-lg-6 mb-4" id="zMode2">
                         <div class="form-floating form-floating-outline">
                             <input type="text" class="form-control taxObject" <?= ((isset($standard[0]->adaptation[0]) && $standard[0]->adaptation[0] == '1') ? 'readonly' : '') ?> id="code2" name="code2" placeholder="" value="<?= ($standard[0]->code ?? '') ?>" data-mask="99-999-99" />
                             <label for="code2"><?= lang('app.code') ?></label>
@@ -51,9 +51,9 @@
                 <div class="row" id="zMode3">
                     <div class="col-12 mb-4">
                         <div class="form-floating form-floating-outline">
-                            <select class="select2-subtext form-select" id="tax" name="tax">
+                            <select class="select2-non form-select" id="tax" name="tax">
                                 <?php foreach ($selectGroup as $db) : ?>
-                                    <option value="<?= $db->id ?>" <?= (isset($standard[0]->tax_id) && $standard[0]->tax_id == $db->id ? 'selected' : '') ?> data-subtext="<?= $db->value ?> %"><?= $db->name ?></option>
+                                    <option value="<?= $db->id ?>" <?= (isset($standard[0]->tax_id) && $standard[0]->tax_id == $db->id ? 'selected' : '') ?>><?= "{$db->name} &ensp;&emsp; {$db->value} %" ?></option>
                                 <?php endforeach ?>
                             </select>
                             <label for="tax"><?= lang('app.tax') ?></label>
@@ -100,24 +100,26 @@
 <script src="<?= base_url('libraries') ?>/cang/js/extra.js"></script>
 <script>
     $(document).ready(function() {
-        $("#category").change(function() {
-            $("#xCategory").val($(this).val());
-            $('#zMode1, #zMode2, #zMode3').removeAttr('hidden');
-            if ($("#xCategory").val() == '' || $("#xCategory").val() == 'document reference') {
-                $('#zMode1, #zMode2, #zMode3').attr('hidden', 'hidden');
-            } else if ($("#xCategory").val() == 'tax object') {
-                $('#zMode1').attr('hidden', 'hidden');
-            } else if ($("#xCategory").val() == 'code standard') {
-                $('#zMode2, #zMode3').attr('hidden', 'hidden');
-            }
-        });
+        $("#category").trigger("change")
+    });
+
+    $("#category").change(function() {
+        $("#xCategory").val($(this).val());
+        $('#zMode1, #zMode2, #zMode3').removeAttr('hidden');
+        if ($("#xCategory").val() == '' || $("#xCategory").val() == 'document reference') {
+            $('#zMode1, #zMode2, #zMode3').attr('hidden', 'hidden');
+        } else if ($("#xCategory").val() == 'tax object') {
+            $('#zMode1').attr('hidden', 'hidden');
+        } else if ($("#xCategory").val() == 'code standard') {
+            $('#zMode2, #zMode3').attr('hidden', 'hidden');
+        }
     });
 
     $('.btn-save').click(function(e) {
         e.preventDefault();
         var getAction = $(this).val();
         if (getAction === 'delete') {
-            deleteConfirmation("<?= lang('app.sure') ?>").then((result) => {
+            askConfirmation("<?= lang('app.sure') ?>", "<?= lang('app.confirm delete') ?>").then((result) => {
                 if (result.isConfirmed) {
                     submitForm(getAction);
                 } else {

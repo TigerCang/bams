@@ -29,8 +29,8 @@
                         <div class="dropdown">
                             <a href="javascript:void(0);" data-bs-toggle="dropdown"><?= json('btn i-dropdown') ?></a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownLink">
-                                <li><a href="javascript:void(0);" class="dropdown-item btn-edit" data-uniq="<?= $row->unique ?>"><?= lang('app.edit'); ?></a></li>
-                                <li><a href="javascript:void(0);" class="dropdown-item btn-delete" data-uniq="<?= $row->unique ?>"><?= lang('app.delete'); ?></a></li>
+                                <li><a href="javascript:void(0);" class="dropdown-item btn-edit" data-uniq="<?= $row->unique ?>"><?= lang('app.btn edit'); ?></a></li>
+                                <li><a href="javascript:void(0);" class="dropdown-item btn-delete" data-uniq="<?= $row->unique ?>"><?= lang('app.btn delete'); ?></a></li>
                             </ul>
                         </div>
                     <?php endif ?>
@@ -55,57 +55,6 @@
             success: function(response) {
                 $('.modal-input').html(response.data).show();
                 $('#modal-input').modal('show')
-                $('#modal-input').on('shown.bs.modal', function() {
-                    $('#account').select2({
-                        ajax: {
-                            url: "/load/account",
-                            type: "POST",
-                            dataType: "json",
-                            delay: 250,
-                            data: function(params) {
-                                return {
-                                    searchTerm: params.term,
-                                    start: $("#start").val(),
-                                };
-                            },
-                            processResults: function(response) {
-                                return {
-                                    results: response
-                                };
-                            },
-                            cache: true
-                        },
-                        <?= json('min input') ?>,
-                        <?= json('template 1') ?>,
-                        <?= json('template 2') ?>,
-                    });
-
-                    $('#cost').select2({
-                        ajax: {
-                            url: "/load/cost",
-                            type: "POST",
-                            dataType: "json",
-                            delay: 250,
-                            data: function(params) {
-                                return {
-                                    searchTerm: params.term,
-                                    param: 'cost',
-                                    segment: '',
-                                    start: $("#xType").val().substring(0, 2),
-                                };
-                            },
-                            processResults: function(response) {
-                                return {
-                                    results: response
-                                };
-                            },
-                            cache: true
-                        },
-                        <?= json('min input') ?>,
-                        <?= json('template 1') ?>,
-                        <?= json('template 2') ?>,
-                    });
-                });
             },
             error: function(xhr, ajaxOptions, thrownError) {
                 alert(xhr.status + "\n" + xhr.responseText);
@@ -113,41 +62,38 @@
             }
         });
     })
-</script>
-<!-- <script>
-    function hapus(id, kode) {
-        var url = '/anggaran/delitem';
-        Swal.fire({
-            title: '<= lang('app.tanyadel'); ?>',
-            text: "<= lang('app.infodel'); ?>",
-            icon: 'question',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: '<= lang('app.confirmdel'); ?>',
-            cancelButtonText: '<= lang('app.batal'); ?>'
-        }).then((result) => {
+
+    $(document).on('click', '.btn-delete', function(e) {
+        e.preventDefault();
+        var getUniq = $(this).data('uniq');
+        askConfirmation("<?= lang('app.sure') ?>", "<?= lang('app.confirm delete') ?>").then((result) => {
             if (result.isConfirmed) {
-                $.ajax({
-                    type: 'post',
-                    url: url,
-                    data: {
-                        id: id,
-                        kode: kode,
-                    },
-                    dataType: "json",
-                    success: function(response) {
-                        if (response.sukses) { //dari msg save lampiran
-                            flashdata('success', response.sukses);
-                            databudget();
-                        }
-                    },
-                    error: function(xhr, ajaxOptions, thrownError) {
-                        alert(xhr.status + "\n" + xhr.responseText);
-                        alert(thrownError);
-                    }
-                });
+                submitItem(getUniq);
+            } else {
+                return;
             }
-        })
+        });
+    });
+
+    function submitItem(getUniq) {
+        $.ajax({
+            type: 'POST',
+            url: "<?= $link ?>/deleteItem",
+            data: {
+                unique: getUniq,
+            },
+            success: function(response) {
+                if (response.message) {
+                    tableBudget();
+                    var alertHtml = `<div class="alert alert-success alert-dismissible fade show" role="alert">${response.message}</div>`;
+                    $('#alertContainer4').html(alertHtml);
+                }
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert(xhr.status + "\n" + xhr.responseText);
+                alert(thrownError);
+            }
+        });
+        return false;
     }
-</script> -->
+</script>

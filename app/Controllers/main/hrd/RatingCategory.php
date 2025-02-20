@@ -21,7 +21,7 @@ class RatingCategory extends BaseController
         $data = [
             't_title' => lang('app.rating category'),
             't_span' => lang('app.span rating category'),
-            'link' => '/ratingcategory',
+            'link' => base_url('ratingcategory'),
             'cHid' => 'hidden',
             'rHid' => 'hidden',
             'unit' => $this->mainModel->getFile($this->urls[1], 'rating category'),
@@ -40,7 +40,7 @@ class RatingCategory extends BaseController
 
             $data = [
                 't_modal' => lang('app.rating category'),
-                'link' => "/ratingcategory",
+                'link' => base_url('ratingcategory'),
                 'company' => [],
                 'region' => [],
                 'division' => [],

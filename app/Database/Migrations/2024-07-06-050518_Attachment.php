@@ -27,6 +27,14 @@ class Attachment extends Migration
                 'type'                          => 'VARCHAR',
                 'constraint'                    => 255,
             ],
+            'category'                      => [
+                'type'                          => 'VARCHAR',
+                'constraint'                    => 255,
+            ],
+            'keeper'                        => [
+                'type'                          => 'VARCHAR',
+                'constraint'                    => 255,
+            ],
             'title'                         => [
                 'type'                          => 'VARCHAR',
                 'constraint'                    => 255,

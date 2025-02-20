@@ -31,8 +31,10 @@
                     </div>
                     <div class="col-12">
                         <div class="form-floating form-floating-outline">
-                            <select class="select2-subtext form-select" id="person" name="person" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>">
-                                <?php if ($person1) : ?><option value="<?= $person1[0]->code ?>" selected data-subtext="<?= $person1[0]->name ?>"><?= $person1[0]->code ?></option><?php endif ?>
+                            <select class="select2-non form-select" id="person" name="person" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>">
+                                <?php if ($person1) : ?>
+                                    <option value="<?= $person1[0]->code ?>" selected><?= "{$person1[0]->code} &ensp;&emsp; {$person1[0]->name}" ?></option>
+                                <?php endif ?>
                             </select>
                             <div id="error" class="invalid-feedback err_person"></div>
                             <label for="person"><?= lang('app.person') ?></label>
@@ -83,8 +85,6 @@
                 cache: true
             },
             <?= json('min input') ?>,
-            <?= json('template 1') ?>,
-            <?= json('template 2') ?>,
         });
     });
 

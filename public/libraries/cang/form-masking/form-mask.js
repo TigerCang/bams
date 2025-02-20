@@ -25,8 +25,8 @@ $(function() {
       // var digitAfterDecimal = $(this).data('digit-after-decimal') || 2;
       var digitAfterDecimal = $(this).data('digit-after-decimal') !== undefined ? $(this).data('digit-after-decimal') : 2; // default to 2 if undefined
       $(this).autoNumeric('init', {
-          vMax: '9999999999999' + (digitAfterDecimal > 0 ? '.' + '9'.repeat(digitAfterDecimal) : ''),
-          vMin: '-9999999999999' + (digitAfterDecimal > 0 ? '.' + '9'.repeat(digitAfterDecimal) : '')
+          vMax: '999999999999999' + (digitAfterDecimal > 0 ? '.' + '9'.repeat(digitAfterDecimal) : ''),
+          vMin: '-999999999999999' + (digitAfterDecimal > 0 ? '.' + '9'.repeat(digitAfterDecimal) : '')
         });
     });
   });

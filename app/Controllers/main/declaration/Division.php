@@ -21,7 +21,7 @@ class Division extends BaseController
         $data = [
             't_title' => lang('app.region division'),
             't_span' => lang('app.span region division'),
-            'link' => '/division',
+            'link' => base_url('division'),
             'iHid' => '',
             'division' => $this->mainModel->getFile2($this->urls[1], 'main'),
         ];
@@ -39,9 +39,9 @@ class Division extends BaseController
 
             $data = [
                 't_modal' => lang('app.region division'),
-                'link' => "/division",
+                'link' => base_url('division'),
                 'group' => 'main',
-                'elect' => $this->mainModel->distSelect('elect'),
+                'selopt' => $this->mainModel->distSelect('selopt'),
                 'file' => $db1,
                 'button' => ['save' => $buttons['save'], 'confirm' => $buttons['confirm'], 'delete' => $buttons['delete'], 'active' => $buttons['active']],
                 'btn_active' => (isset($db1[0]) && $db1[0]->adaptation[2] == '0' ? lang('app.btn active') : lang('app.btn inactive')),
@@ -63,8 +63,13 @@ class Division extends BaseController
             $ruleName = ($cekData ? 'required|is_unique[m_file.name]' : 'required');
             $unique = $this->request->getVar('unique');
 
+
             $field = ($this->request->getVar('xParam') == 'region' ? 'region_id' : 'division_id');
             $ruleLink = 'permit_empty';
+
+            cekLink('m_branch', $field, $db1[0]->id, $ruleLink);
+            die;
+
             if ($this->request->getVar('postAction') == 'delete') {
                 if ($ruleLink !== 'required') cekLink('m_branch', $field, $db1[0]->id, $ruleLink);
                 if ($ruleLink !== 'required') cekLink('m_project', $field, $db1[0]->id, $ruleLink);
@@ -110,8 +115,8 @@ class Division extends BaseController
                 // Confirm
                 if ($this->request->getVar('postAction') == 'confirm') {
                     $adaptation = '11' . $db1[0]->adaptation[2];
-                    $this->fileModel->save(['id' => $db1[0]->id, 'adaptation' => $adaptation, 'confirm_by' => $this->user['id']]);
-                    $this->logModel->saveLog('Confirm', $unique, $db1[0]->name);
+                    // $this->fileModel->save(['id' => $db1[0]->id, 'adaptation' => $adaptation, 'confirm_by' => $this->user['id']]);
+                    // $this->logModel->saveLog('Confirm', $unique, $db1[0]->name);
                     $this->session->setFlashdata(['message' => $db1[0]->name . lang("app.title confirm")]);
                 }
 

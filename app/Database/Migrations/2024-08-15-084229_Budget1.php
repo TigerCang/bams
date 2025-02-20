@@ -35,11 +35,6 @@ class Budget1 extends Migration
                 'type'                          => 'VARCHAR',
                 'constraint'                    => 255,
             ],
-            'total'                         => [
-                'type'                          => 'DECIMAL',
-                'constraint'                    => [20, 2],
-                'default'                       => '0',
-            ],
             'adaptation'                    => [
                 'type'                          => 'VARCHAR',
                 'constraint'                    => 255,

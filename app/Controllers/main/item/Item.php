@@ -21,7 +21,7 @@ class Item extends BaseController
         $data = [
             't_title' => lang('app.item'),
             't_span' => lang('app.span item'),
-            'link' => '/item',
+            'link' => base_url('item'),
             'pHid' => 'hidden',
             'sHid' => '',
             'category' => $this->mainModel->distItem('m_item', 'category', 'param', 'item'),
@@ -40,7 +40,7 @@ class Item extends BaseController
 
             $data = [
                 't_modal' => lang('app.item'),
-                'link' => "/item",
+                'link' => base_url('item'),
                 'brand' => $this->mainModel->distItem('m_item', 'brand'),
                 'selectGroup' => $this->mainModel->loadGroupAccount('stock', 'item'),
                 'unit' => $this->mainModel->getFile('', 'unit', 't'),

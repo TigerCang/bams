@@ -25,7 +25,9 @@
                                 <?php foreach ($selectGroup as $db1) : ?>
                                     <optgroup label="<?= lang('app.' . $db1->group) ?>">
                                         <?php foreach ($selectName as $db) : ?>
-                                            <?php if ($db->group == $db1->group) : ?><option value="<?= $db->name ?>" <?= (isset($form[0]->sub_param) && $form[0]->sub_param == $db->name ? 'selected' : '') ?>><?= lang('app.' . $db->name) ?></option><?php endif ?>
+                                            <?php if ($db->group == $db1->group) : ?>
+                                                <option value="<?= $db->name ?>" <?= (isset($form[0]->sub_param) && $form[0]->sub_param == $db->name ? 'selected' : '') ?>><?= lang('app.' . $db->name) ?></option>
+                                            <?php endif ?>
                                         <?php endforeach ?>
                                     </optgroup>
                                 <?php endforeach ?>
@@ -43,9 +45,9 @@
                     </div>
                     <div class="col-12 col-md-7 col-lg-7 mb-2" <?= $pHid ?>>
                         <div class="form-floating form-floating-outline">
-                            <select class="select2-subtext form-select" id="company" name="company">
+                            <select class="select2-non form-select" id="company" name="company">
                                 <?php foreach ($company as $db) : ?>
-                                    <option value="<?= $db->id ?>" <?= (isset($form[0]->company_id) && $form[0]->company_id == $db->id ? 'selected' : '') ?> data-subtext="<?= $db->name ?>"><?= $db->code ?></option>
+                                    <option value="<?= $db->id ?>" <?= (isset($form[0]->company_id) && $form[0]->company_id == $db->id ? 'selected' : '') ?>><?= $db->code . "&emsp;" . $db->name ?></option>
                                 <?php endforeach ?>
                             </select>
                             <label for="company"><?= lang('app.company') ?></label>
@@ -94,7 +96,7 @@
         e.preventDefault();
         var getAction = $(this).val();
         if (getAction === 'delete') {
-            deleteConfirmation("<?= lang('app.sure') ?>").then((result) => {
+            askConfirmation("<?= lang('app.sure') ?>", "<?= lang('app.confirm delete') ?>").then((result) => {
                 if (result.isConfirmed) {
                     submitForm(getAction);
                 } else {

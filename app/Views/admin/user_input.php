@@ -36,7 +36,9 @@
                     <div class="col-12 col-md-6 col-lg-6 mb-2">
                         <div class="form-floating form-floating-outline">
                             <select class="select2-non form-select" id="supervisor" name="supervisor" <?= ($link == '/auser' ? 'disabled' : '') ?> data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>">
-                                <?php if ($supervisor) : ?><option value="<?= $supervisor[0]->id ?>" selected><?= "{$supervisor[0]->code}" ?></option><?php endif ?>
+                                <?php if ($supervisor) : ?>
+                                    <option value="<?= $supervisor[0]->id ?>" selected><?= "{$supervisor[0]->code}" ?></option>
+                                <?php endif ?>
                             </select>
                             <label for="supervisor"><?= lang('app.supervisor') ?></label>
                             <div id="error" class="invalid-feedback err_supervisor"></div>
@@ -44,14 +46,14 @@
                     </div>
                     <div class="col-12 col-md-6 col-lg-6 mb-2">
                         <div class="form-floating form-floating-outline">
-                            <select class="select2-subtext form-select" id="approve" name="approve">
+                            <select class="select2-non form-select" id="approve" name="approve">
                                 <?php for ($i = 0; $i <= $this_level; $i++) : ?>
                                     <?php $description = ($i == '1' ? ' (' . lang('app.high') . ')' : ($i == $this_level ? ' (' . lang('app.low') . ')' : '')) ?>
-                                    <option value="<?= $i ?>" <?= ($user[0]->act_approve == $i ? 'selected' : '') . ($i == '0' ? '' : ($link == '/auser' ? ($supervisor[0]->act_approve == '0' ? 'disabled' : ($supervisor[0]->act_approve <= $i ?  '' : 'disabled')) : '')) ?> data-subtext="Level <?= $i . $description ?>"><?= $i ?></option>
+                                    <option value="<?= $i ?>" <?= ($user[0]->act_approve == $i ? 'selected' : '') . ($i == '0' ? '' : ($link == '/auser' ? ($supervisor[0]->act_approve == '0' ? 'disabled' : ($supervisor[0]->act_approve <= $i ?  '' : 'disabled')) : '')) ?>><?= "Level " . $i . $description ?></option>
                                 <?php endfor ?>
-                                <option disabled data-subtext="">-------------------------------------------</option>
-                                <option value="101" <?= ($user[0]->act_approve == '101' ? 'selected' : '') . ($link == '/auser' ? ($supervisor[0]->act_approve >= '100' ? '' : 'disabled') : '') ?> data-subtext=""><?= lang('app.finance') ?></option>
-                                <option value="102" <?= ($user[0]->act_approve == '102' ? 'selected' : '') . ($link == '/auser' ? ($supervisor[0]->act_approve >= '100' ? '' : 'disabled') : '') ?> data-subtext=""><?= lang('app.inspector') ?></option>
+                                <option disabled>-------------------------------------------</option>
+                                <option value="101" <?= ($user[0]->act_approve == '101' ? 'selected' : '') . ($link == '/auser' ? ($supervisor[0]->act_approve >= '100' ? '' : 'disabled') : '') ?>><?= lang('app.finance') ?></option>
+                                <option value="102" <?= ($user[0]->act_approve == '102' ? 'selected' : '') . ($link == '/auser' ? ($supervisor[0]->act_approve >= '100' ? '' : 'disabled') : '') ?>><?= lang('app.inspector') ?></option>
                             </select>
                             <label for="approve"><?= lang('app.approve') ?></label>
                         </div>
@@ -188,7 +190,7 @@
                                     <li class="list-group-item d-flex align-items-center justify-content-between">
                                         <div class="form-check form-check-primary">
                                             <input class="form-check-input" type="checkbox" id="companyBox_<?= $db->id ?>" name="listCompany[]" value="<?= $db->id ?>" <?= ($condition . ($link == '/auser' ? ($supervisor[0]->act_access[0] == '0' ? (preg_match("/(^|,)" . $db->id . "(:|$)/i", $supervisor[0]->company) ? '' : 'disabled') : '') : '')) ?> />
-                                            <label class="form-check-label" for="companyBox_<?= $db->id ?>"><?= $db->code . '&emsp;' . $db->name ?></label>
+                                            <label class="form-check-label" for="companyBox_<?= $db->id ?>"><?= "{$db->code} &ensp;&emsp; {$db->name}" ?></label>
                                         </div>
                                         <div class="new-size">
                                             <input type="checkbox" data-toggle="toggle" id="company_<?= $db->id ?>" name="company_<?= $db->id ?>" <?= ($nCek == '1' ? 'checked' : '') ?> <?= ($link == '/auser' && preg_match("/(^|,)" . $db->id . ":(0|1)(,|$)/i", $supervisor[0]->company, $matches) && $matches[2] == '0' ? 'disabled' : '') ?> data-onlabel="<?= lang('app.all access') ?>" data-offlabel="<?= lang('app.read') ?>" data-onstyle="success" data-offstyle="info" />
@@ -271,7 +273,7 @@
                             <select id="listProject" class="searchable" multiple="multiple" name="listProject[]">
                                 <?php foreach ($project as $db) : $condition = '';
                                     foreach ($nProject as $field) if ($field == $db->id) $condition = 'selected' ?>
-                                    <option value="<?= $db->id ?>" <?= ($condition . ($link == '/auser' ? ($supervisor[0]->act_access[4] == '0' ? (preg_match("/(^|,)" . $db->id . "(,|$)/i", $supervisor[0]->project) ? '' : 'disabled') : '') : '')) ?>><?= "{$db->code} &emsp; {$db->package_name}" ?></option>
+                                    <option value="<?= $db->id ?>" <?= ($condition . ($link == '/auser' ? ($supervisor[0]->act_access[4] == '0' ? (preg_match("/(^|,)" . $db->id . "(,|$)/i", $supervisor[0]->project) ? '' : 'disabled') : '') : '')) ?>><?= "{$db->code} &ensp;&emsp; {$db->package_name}" ?></option>
                                 <?php endforeach ?>
                             </select>
                         </div>
@@ -282,7 +284,7 @@
                             <select id="listBranch" class="searchable" multiple="multiple" name="listBranch[]">
                                 <?php foreach ($branch as $db) : $condition = '';
                                     foreach ($nBranch as $field) if ($field == $db->id) $condition = 'selected' ?>
-                                    <option value="<?= $db->id ?>" <?= ($condition . ($link == '/auser' ? ($supervisor[0]->act_access[5] == '0' ? (preg_match("/(^|,)" . $db->id . "(,|$)/i", $supervisor[0]->branch) ? '' : 'disabled') : '') : '')) ?>><?= "{$db->code} &emsp; {$db->name}" ?></option>
+                                    <option value="<?= $db->id ?>" <?= ($condition . ($link == '/auser' ? ($supervisor[0]->act_access[5] == '0' ? (preg_match("/(^|,)" . $db->id . "(,|$)/i", $supervisor[0]->branch) ? '' : 'disabled') : '') : '')) ?>><?= "{$db->code} &ensp;&emsp; {$db->name}" ?></option>
                                 <?php endforeach ?>
                             </select>
                         </div>
@@ -293,7 +295,7 @@
                             <select id="listTool" class="searchable" multiple="multiple" name="listTool[]">
                                 <?php foreach ($tool as $db) : $condition = '';
                                     foreach ($nTool as $field) if ($field == $db->id) $condition = 'selected' ?>
-                                    <option value="<?= $db->id ?>" <?= ($condition . ($link == '/auser' ? ($supervisor[0]->act_access[6] == '0' ? (preg_match("/(^|,)" . $db->id . "(,|$)/i", $supervisor[0]->tool) ? '' : 'disabled') : '') : '')) ?>><?= "{$db->code} &emsp; {$db->name}" ?></option>
+                                    <option value="<?= $db->id ?>" <?= ($condition . ($link == '/auser' ? ($supervisor[0]->act_access[6] == '0' ? (preg_match("/(^|,)" . $db->id . "(,|$)/i", $supervisor[0]->tool) ? '' : 'disabled') : '') : '')) ?>><?= "{$db->code} &ensp;&emsp; {$db->name}" ?></option>
                                 <?php endforeach ?>
                             </select>
                         </div>
@@ -304,7 +306,7 @@
                             <select id="listLand" class="searchable" multiple="multiple" name="listLand[]">
                                 <?php foreach ($land as $db) : $condition = '';
                                     foreach ($nLand as $field) if ($field == $db->id) $condition = 'selected' ?>
-                                    <option value="<?= $db->id ?>" <?= ($condition . ($link == '/auser' ? ($supervisor[0]->act_access[7] == '0' ? (preg_match("/(^|,)" . $db->id . "(,|$)/i", $supervisor[0]->land) ? '' : 'disabled') : '') : '')) ?>><?= "{$db->code} &emsp; {$db->name}" ?></option>
+                                    <option value="<?= $db->id ?>" <?= ($condition . ($link == '/auser' ? ($supervisor[0]->act_access[7] == '0' ? (preg_match("/(^|,)" . $db->id . "(,|$)/i", $supervisor[0]->land) ? '' : 'disabled') : '') : '')) ?>><?= "{$db->code} &ensp;&emsp; {$db->name}" ?></option>
                                 <?php endforeach ?>
                             </select>
                         </div>
@@ -384,7 +386,7 @@
         e.preventDefault();
         var getAction = $(this).val();
         if (getAction === 'delete') {
-            deleteConfirmation("<?= lang('app.sure') ?>").then((result) => {
+            askConfirmation("<?= lang('app.sure') ?>", "<?= lang('app.confirm delete') ?>").then((result) => {
                 if (result.isConfirmed) {
                     submitForm(getAction);
                 } else {

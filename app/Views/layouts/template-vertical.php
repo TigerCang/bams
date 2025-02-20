@@ -54,6 +54,8 @@
 
     <!-- Page CSS mau out-->
     <link rel="stylesheet" href="<?= base_url('libraries') ?>/vendor/css/pages/cards-statistics.css" />
+    <link rel="stylesheet" href="<?= base_url('libraries') ?>/vendor/css/pages/page-profile.css" />
+    <!-- ini css banner -->
 
     <!-- jQuery -->
     <script src="<?= base_url('libraries') ?>/vendor/libs/jquery/jquery.js"></script>

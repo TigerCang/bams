@@ -20,7 +20,7 @@ class Recipient extends BaseController
         $data = [
             't_title' => lang('app.recipient'),
             't_span' => lang('app.span recipient'),
-            'link' => '/recipient',
+            'link' => base_url('recipient'),
             'category' => $this->mainModel->distItem('m_person', 'category'),
         ];
         $this->render('main/person/recipient_list', $data);
@@ -37,7 +37,7 @@ class Recipient extends BaseController
 
             $data = [
                 't_modal' => lang('app.person'),
-                'link' => "/recipient",
+                'link' => base_url('recipient'),
                 'category' => $this->mainModel->distItem('m_person', 'category'),
                 'selectGroup1' => $this->mainModel->loadGroupAccount('person', 'customer'),
                 'selectGroup2' => $this->mainModel->loadGroupAccount('person', 'supplier'),

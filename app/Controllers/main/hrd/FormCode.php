@@ -21,10 +21,13 @@ class FormCode extends BaseController
         $data = [
             't_title' => lang('app.document code'),
             't_span' => lang('app.span document code'),
-            'link' => '/formcode',
+            'link' => base_url('formcode'),
             'pHid' => 'hidden',
             'form' => $this->mainModel->getForm($this->urls[1], 'document', '', ''),
         ];
+
+        // var_dump($data['form']);
+        // die;
         $this->render('main/hrd/form_list', $data);
     }
 
@@ -39,14 +42,14 @@ class FormCode extends BaseController
 
             $data = [
                 't_modal' => lang('app.document code'),
-                'link' => "/formcode",
+                'link' => base_url('formcode'),
                 'pHid' => 'hidden',
                 'param' => 'document code',
                 'selectGroup' => $this->mainModel->distSelect('numbering', 't'),
                 'selectName' => $this->mainModel->distSelect('numbering'),
                 'company' => [],
                 'form' => $db1,
-                'button' => ['save' => $buttons['save'], 'confirm' => $buttons['confirm'], 'delete' => $buttons['delete'], 'active' => $buttons['active']],
+                'button' => ['save' => $buttons['save'], 'confirm' => $buttons['confirm'], 'delete' => 'disabled', 'active' => $buttons['active']],
                 'btn_active' => (isset($db1[0]) && $db1[0]->adaptation[2] == '0' ? lang('app.btn active') : lang('app.btn inactive')),
                 'active_by' => (isset($db1[0]) && $db1[0]->adaptation[2] == '0' ? lang('app.inactive by') : lang('app.active by')),
             ];
@@ -67,14 +70,7 @@ class FormCode extends BaseController
             $ruleCode = (strlen($this->request->getVar('code')) > "3" ? 'valid_email' : 'required');
             $unique = $this->request->getVar('unique');
 
-            $ruleLink = 'permit_empty';
-            if ($this->request->getVar('postAction') == 'delete') {
-                // $cekLink = $this->mainModel->cekLink('m_item', $field, $db1[0]->id);
-                // if ($cekLink) $ruleLink = 'required';
-            }
-
             $validationRules = [
-                'askDelete' => ['rules' => $ruleLink, 'errors' => ['required' => lang("app.err delete")]],
                 'code' => ['rules' => $ruleCode, 'errors' => ['required' => lang("app.err blank"), 'valid_email' => lang("app.err unique")]],
                 'form' => ['rules' => $ruleForm, 'errors' => ['valid_email' => lang("app.err unique")]],
             ];
@@ -82,7 +78,6 @@ class FormCode extends BaseController
             if (!$this->validate($validationRules)) {
                 $msg = [
                     'error' => [
-                        'askDelete' => $this->validation->getError('askDelete'),
                         'form' => $this->validation->getError('form'),
                         'code' => $this->validation->getError('code'),
                     ]
@@ -104,7 +99,7 @@ class FormCode extends BaseController
                         'save_by' => $this->user['id'],
                     ]);
                     $this->logModel->saveLog('Save', $unique, $this->request->getVar('form') . ' ; ' . strtoupper($this->request->getVar('code')));
-                    $this->session->setFlashdata(['message' => $this->request->getVar('form') . ' ; ' . strtoupper($this->request->getVar('code')) . $title]);
+                    $this->session->setFlashdata(['message' => lang('app.' . $this->request->getVar('form')) . ' ; ' . strtoupper($this->request->getVar('code')) . $title]);
                 }
 
                 // Confirm
@@ -112,14 +107,7 @@ class FormCode extends BaseController
                     $adaptation = '11' . $db1[0]->adaptation[2];
                     $this->fileModel->save(['id' => $db1[0]->id, 'adaptation' => $adaptation, 'confirm_by' => $this->user['id']]);
                     $this->logModel->saveLog('Confirm', $unique, "{$db1[0]->sub_param} ; {$db1[0]->name}");
-                    $this->session->setFlashdata(['message' => "{$db1[0]->sub_param} ; {$db1[0]->name}" . lang("app.title confirm")]);
-                }
-
-                // Delete
-                if ($this->request->getVar('postAction') == 'delete') {
-                    $this->fileModel->delete($db1[0]->id);
-                    $this->logModel->saveLog('Delete', $unique, "{$db1[0]->sub_param} ; {$db1[0]->name}");
-                    $this->session->setFlashdata(['message' => "{$db1[0]->sub_param} ; {$db1[0]->name}" . lang("app.title delete")]);
+                    $this->session->setFlashdata(['message' => lang('app.' . $db1[0]->sub_param) . ' ; ' . $db1[0]->name . lang("app.title confirm")]);
                 }
 
                 // Active
@@ -127,7 +115,7 @@ class FormCode extends BaseController
                     $result = $db1[0]->adaptation[2] == '1' ? ['0', 'inactive', lang("app.title inactive")] : ['1', 'active', lang("app.title active")];
                     $this->fileModel->save(['id' => $db1[0]->id, 'adaptation' => substr($db1[0]->adaptation, 0, 2) . $result[0], 'active_by' => $this->user['id']]);
                     $this->logModel->saveLog('Active', $unique, "{$db1[0]->sub_param} ; {$db1[0]->name} {$result[1]}");
-                    $this->session->setFlashdata(['message' => "{$db1[0]->sub_param} ; {$db1[0]->name} {$result[2]}"]);
+                    $this->session->setFlashdata(['message' => lang('app.' . $db1[0]->sub_param) . " ; {$db1[0]->name} {$result[2]}"]);
                 }
                 $msg = ['redirect' => '/formcode'];
             }

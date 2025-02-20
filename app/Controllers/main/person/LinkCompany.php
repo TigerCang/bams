@@ -21,7 +21,7 @@ class LinkCompany extends BaseController
         $data = [
             't_title' => lang('app.link company'),
             't_span' => lang('app.span link company'),
-            'link' => '/linkcompany',
+            'link' => base_url('linkcompany'),
             'pHid' => '',
             'cNew' => 'hidden',
             'company' => $this->mainModel->getCompany($this->urls[1]),
@@ -40,7 +40,7 @@ class LinkCompany extends BaseController
 
             $data = [
                 't_modal' => lang('app.link company'),
-                'link' => "/linkcompany",
+                'link' => base_url('linkcompany'),
                 'person1' => $this->mainModel->getData('m_person', $db1[0]->person_id ?? '', '', 'id'),
                 'company' => $db1,
                 'button' => ['save' => $buttons['save'], 'confirm' => $buttons['confirm'], 'delete' => $buttons['delete'], 'active' => $buttons['active']],

@@ -17,7 +17,7 @@ class LogModel extends Model
         $this->urls = explode('/', $_SERVER['REQUEST_URI']);
     }
 
-    public function saveLog($action, $unique = '', $data = '', $notes = '', $source = 'a')
+    public function saveLog($action, $unique = '', $data = '', $notes = '', $source = 'a', $menu = '')
     {
         $session = \Config\Services::session();
         $request = \Config\Services::request();
@@ -25,12 +25,12 @@ class LogModel extends Model
         $this->save([
             'unique' => $unique,
             'username' => decrypt($session->get()['username'] ?? ''),
-            'menu' => $this->urls[1],
+            'menu' => ($menu == '' ? $this->urls[1] : $menu),
             'action' => $action,
             'data' => $data,
             'notes' => $notes,
             'source' => $source,
-            'web_address' => $session->get()['_ci_previous_url'] ?? '',
+            'web_address' => ($menu == '' ? $session->get()['_ci_previous_url'] : $menu),
             'ip_address' => getIP(),
             'user_agent' => $request->getUserAgent()->getBrowser() . ' ' . $request->getUserAgent()->getVersion() .
                 ', ' . $request->getUserAgent()->getPlatform() . ', ' . $request->getUserAgent()->getMobile(),

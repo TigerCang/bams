@@ -24,12 +24,12 @@
         <label for="confirmationOC"><?= lang('app.confirmation') ?></label>
     </div>
 
-    <button type="button" class="<?= json('btn submit') ?> btn-submit"><?= json('submit') ?></button>
+    <button type="button" class="<?= json('btn submit') ?> btn-password"><?= json('submit') ?></button>
     <?= form_close() ?>
 </div>
 
 <script>
-    $('.btn-submit').click(function(e) {
+    $('.btn-password').click(function(e) {
         e.preventDefault();
         var form = $('.form-password')[0];
         var formData = new FormData(form);
@@ -45,12 +45,12 @@
             contentType: false,
             dataType: "json",
             beforeSend: function() {
-                $('.btn-submit').attr('disabled', 'disabled');
-                $('.btn-submit').html('<i class="ri-loader-5-line ri-spin ri-24px"></i>');
+                $('.btn-password').attr('disabled', 'disabled');
+                $('.btn-password').html('<i class="ri-loader-5-line ri-spin ri-24px"></i>');
             },
             complete: function() {
-                $('.btn-submit').removeAttr('disabled');
-                $('.btn-submit').each(function() {
+                $('.btn-password').removeAttr('disabled');
+                $('.btn-password').each(function() {
                     $(this).html('<?= json('submit') ?>');
                 });
             },

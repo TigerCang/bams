@@ -21,7 +21,7 @@ class Role extends BaseController
         $data = [
             't_title' => lang('app.role'),
             't_span' => lang('app.span role'),
-            'link' => '/role',
+            'link' => base_url('role'),
             'role' => $this->mainModel->getRole($this->urls[1]),
             'totUser' => $this->mainModel->searchID('m_user', 'count'),
         ];
@@ -39,7 +39,7 @@ class Role extends BaseController
         $data = [
             't_title' => lang('app.role'),
             't_span' => lang('app.span role'),
-            'link' => "/role",
+            'link' => base_url('role'),
             'role' => $db1,
             'button' => ['save' => $buttons['save'], 'confirm' => $buttons['confirm'], 'delete' => $buttons['delete'], 'active' => $buttons['active']],
             'btn_active' => (isset($db1[0]) && $db1[0]->adaptation[2] == '0' ? lang('app.btn active') : lang('app.btn inactive')),

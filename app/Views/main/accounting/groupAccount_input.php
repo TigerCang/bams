@@ -21,7 +21,9 @@
                                 <?php foreach ($selectGroup as $db1) : ?>
                                     <optgroup label="<?= lang('app.' . $db1->group) ?>">
                                         <?php foreach ($selectName as $db) : ?>
-                                            <?php if ($db->group == $db1->group) : ?><option value="<?= $db->name ?>" data-param="<?= $db1->group ?>" <?= (isset($groupAccount[0]->sub_param) && $groupAccount[0]->sub_param == $db->name ? 'selected' : '') ?>><?= lang('app.' . $db->name) ?></option><?php endif ?>
+                                            <?php if ($db->group == $db1->group) : ?>
+                                                <option value="<?= $db->name ?>" data-param="<?= $db1->group ?>" <?= (isset($groupAccount[0]->sub_param) && $groupAccount[0]->sub_param == $db->name ? 'selected' : '') ?>><?= lang('app.' . $db->name) ?></option>
+                                            <?php endif ?>
                                         <?php endforeach ?>
                                     </optgroup>
                                 <?php endforeach ?>
@@ -49,10 +51,8 @@
                 <div class="row" id="zCompany">
                     <div class="col-12 mb-4">
                         <div class="form-floating form-floating-outline">
-                            <select class="select2-subtext form-select" id="company" name="company">
-                                <?php foreach ($company as $db) : ?>
-                                    <option value="<?= $db->id ?>" <?= (isset($groupAccount[0]->company_id) && $groupAccount[0]->company_id == $db->id ? 'selected' : '') ?> data-subtext="<?= $db->name ?>"><?= $db->code ?></option>
-                                <?php endforeach ?>
+                            <select class="select2-non form-select" id="company" name="company">
+                                <?= companyOptions($company, $groupAccount, thisUser()) ?>
                             </select>
                             <div id="error" class="invalid-feedback err_company"></div>
                             <label for="company"><?= lang('app.company') ?></label>
@@ -62,32 +62,38 @@
                 <div class="row g-2">
                     <div class="col-12 mb-2">
                         <div class="form-floating form-floating-outline">
-                            <select class="select2-subtext form-select" id="account1" name="account1" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>">
-                                <?php if ($account1) : ?> <option value="<?= $account1[0]->id ?>" selected data-subtext="<?= $account1[0]->name ?>"><?= $account1[0]->code ?></option><?php endif ?>
+                            <select class="select2-non form-select" id="account1" name="account1" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>">
+                                <?php if ($account1) : ?>
+                                    <option value="<?= $account1[0]->id ?>" selected><?= "{$account1[0]->code} &ensp;&emsp; {$account1[0]->name}" ?></option>
+                                <?php endif ?>
                             </select>
                             <label for="account1" id="zLabel1"><?= lang('app.account number') ?></label>
                         </div>
                     </div>
                     <div class="col-12 mb-2" id="zAccount2">
                         <div class="form-floating form-floating-outline">
-                            <select class="select2-subtext form-select" id="account2" name="account2" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>">
-                                <?php if ($account2) : ?> <option value="<?= $account2[0]->id ?>" selected data-subtext="<?= $account2[0]->name ?>"><?= $account2[0]->code ?></option><?php endif ?>
+                            <select class="select2-non form-select" id="account2" name="account2" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>">
+                                <?php if ($account2) : ?>
+                                    <option value="<?= $account2[0]->id ?>" selected><?= "{$account2[0]->code} &ensp;&emsp; {$account2[0]->name}" ?></option>
+                                <?php endif ?>
                             </select>
                             <label for="account2" id="zLabel2"><?= lang('app.account number') ?></label>
                         </div>
                     </div>
                     <div class="col-12 mb-2" id="zAccount3">
                         <div class="form-floating form-floating-outline">
-                            <select class="select2-subtext form-select" id="account3" name="account3" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>">
-                                <?php if ($account3) : ?> <option value="<?= $account3[0]->id ?>" selected data-subtext="<?= $account3[0]->name ?>"><?= $account3[0]->code ?></option><?php endif ?>
+                            <select class="select2-non form-select" id="account3" name="account3" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>">
+                                <?php if ($account3) : ?> <option value="<?= $account3[0]->id ?>" selected><?= "{$account3[0]->code} &ensp;&emsp; {$account3[0]->name}" ?></option><?php endif ?>
                             </select>
                             <label for="account3" id="zLabel3"><?= lang('app.road money') ?></label>
                         </div>
                     </div>
                     <div class="col-12 mb-4" id="zAccount4">
                         <div class="form-floating form-floating-outline">
-                            <select class="select2-subtext form-select" id="account4" name="account4" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>">
-                                <?php if ($account4) : ?> <option value="<?= $account4[0]->id ?>" selected data-subtext="<?= $account4[0]->name ?>"><?= $account4[0]->code ?></option><?php endif ?>
+                            <select class="select2-non form-select" id="account4" name="account4" data-allow-clear="true" data-placeholder="<?= lang('app.selectSearch') ?>">
+                                <?php if ($account4) : ?>
+                                    <option value="<?= $account4[0]->id ?>" selected><?= "{$account4[0]->code} &ensp;&emsp; {$account4[0]->name}" ?></option>
+                                <?php endif ?>
                             </select>
                             <label for="account4" id="zLabel4"><?= lang('app.cash receipt') ?></label>
                         </div>
@@ -141,11 +147,11 @@
 <script>
     $("#group").change(function() {
         $("#xSubParam").val($("#group").val());
-        var menu = "<?= $link ?>";
+        var link = "<?= $link ?>";
         var param = $("#group").find(':selected').data('param');
         $("#xParam").val(param);
 
-        if (menu == '/groupaccount') {
+        if (new URL(link).pathname === '/groupaccount') {
             switch (param) {
                 case 'asset':
                     $('#zValue, #zAccount2').removeAttr('hidden');
@@ -167,14 +173,14 @@
                     break;
             }
             $('#zAge').text('<?= lang('app.age') ?>');
-        } else if (menu == '/taxaccount') {
+        } else if (new URL(link).pathname === '/taxaccount') {
             $('#zAge').text('<?= lang('app.value') ?> (%)');
         }
     });
 
     function loadSubmenu() {
-        var menu = "<?= $link ?>";
-        switch (menu) {
+        var link = "<?= $link ?>";
+        switch (new URL(link).pathname) {
             case '/taxaccount':
                 $('#zCompany, #zAccount2, #zAccount3, #zAccount4').attr('hidden', 'hidden');
                 $('#zValue').removeAttr('hidden');
@@ -218,8 +224,6 @@
                 cache: true
             },
             <?= json('min input') ?>,
-            <?= json('template 1') ?>,
-            <?= json('template 2') ?>,
         });
     });
 
@@ -227,7 +231,7 @@
         e.preventDefault();
         var getAction = $(this).val();
         if (getAction === 'delete') {
-            deleteConfirmation("<?= lang('app.sure') ?>").then((result) => {
+            askConfirmation("<?= lang('app.sure') ?>", "<?= lang('app.confirm delete') ?>").then((result) => {
                 if (result.isConfirmed) {
                     submitForm(getAction);
                 } else {
